@@ -1,0 +1,22 @@
+/////////////////////////// ROOT FILE //////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+// Renders app component wrapped in router and provider
+
+//Imports
+import React from "react";
+import { Provider } from "react-redux";
+import { HashRouter } from 'react-router-dom';
+import App from './app'
+/////////////////////////////////////////////////
+
+
+export default function Root ({store}) {
+    return (
+        <Provider store={store}>
+            <HashRouter>
+                <App/>
+            </HashRouter>
+        </Provider>
+    )
+}

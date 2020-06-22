@@ -1,0 +1,20 @@
+////////////////////////////////////////////////////////
+/////////////// APP MAIN FILE //////////////////////////
+////////////////////////////////////////////////////////
+
+// Exports component that renders every top level component and handles routing
+// App component externally wrapped in provider and hash router
+
+/////////////Imports/////////////////////
+import React from 'react';
+
+/////////////////////////////////////////
+
+
+export default function App (){
+    return(
+        <>
+            <h1>app is mounted</h1>
+        </>
+    )
+}
