@@ -3,7 +3,9 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  username        :string           not null
+#  email           :string           not null
+#  fname           :string           not null
+#  lname           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
@@ -16,8 +18,8 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
  ############ VALIDATIONS####################
 
-    validates :username, :password_digest, :session_token, presence: true
-    validates :username, :session_token, uniqueness: true
+    validates :email, :fname, :lname, :password_digest, :session_token, presence: true
+    validates :email, :session_token, uniqueness: true
     
     ## Validate @password length and allow nil, so will give length errors on 
     # user creation but not on retreival from database 
@@ -27,8 +29,8 @@ class User < ApplicationRecord
 
  ############ AUTH METHODS ##################
     
-   def self.find_by_credentials(username,pass)
-        user = User.find_by(username: username)
+   def self.find_by_credentials(email, pass)
+        user = User.find_by(email: email)
 
         if user and user.password=(pass)
             return user 

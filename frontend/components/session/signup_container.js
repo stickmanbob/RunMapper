@@ -1,0 +1,25 @@
+//////////////////// Signup Container /////////////////////////////////
+
+// Wrapper for SignUpForm that passes it the proper dispatch and state as props
+
+//////////////////// Imports ////////////////////////////////////////////
+
+import {connect} from 'react-redux';
+import SignUpForm from './signup_form';
+import {signup} from '../../actions/session_actions';
+/////////////////////// Main ////////////////////////////////////////////
+
+mapStatetoProps = function (state) {
+    return {
+        errors: state.errors.session
+    }
+}
+
+mapDispatchtoProps = function(dispatch) {
+    return {
+        action: (user) => dispatch(signup(user))
+    }
+}
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(SignUpForm); 
+

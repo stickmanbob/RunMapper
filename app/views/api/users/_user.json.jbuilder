@@ -1,5 +1,5 @@
-## Renders basic info about a single user (username, id)
+## Renders basic info about a single user (email, id, fname, lname)
 ## Expects "user" param to be passed in 
 ## when rendering partial
 
-json.extract! user, :id, :username
+json.extract! user, :id, :email, :fname, :lname
