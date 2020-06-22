@@ -9,13 +9,13 @@ import SignUpForm from './signup_form';
 import {signup} from '../../actions/session_actions';
 /////////////////////// Main ////////////////////////////////////////////
 
-mapStatetoProps = function (state) {
+ const mapStatetoProps = function (state) {
     return {
-        errors: state.errors.session
+        // errors: state.errors.session
     }
 }
 
-mapDispatchtoProps = function(dispatch) {
+const mapDispatchtoProps = function(dispatch) {
     return {
         action: (user) => dispatch(signup(user))
     }

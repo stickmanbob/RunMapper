@@ -6,15 +6,18 @@
 // App component externally wrapped in provider and hash router
 
 /////////////Imports/////////////////////
-import React from 'react';
+  /// Utilites 
+    import React from 'react';
 
+  /// Components
+    import SignUpFormContainer from './session/signup_container'
 /////////////////////////////////////////
 
 
 export default function App (){
     return(
         <>
-            <h1>app is mounted</h1>
+            <SignUpFormContainer />
         </>
     )
 }
