@@ -20,6 +20,12 @@ import configureStore from './store/store'
 document.addEventListener("DOMContentLoaded", ()=>{
     let root = document.getElementById("root");
     let store = configureStore();
+    
+    // Test Functions /////////////////
+    window.getState = store.getState;
+    window.dispatch = store.dispatch;
+    //////////////////////////////////
+
     ReactDOM.render(<Root store={store}/> ,root)
 });
 

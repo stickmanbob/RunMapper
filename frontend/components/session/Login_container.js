@@ -9,13 +9,13 @@ import LoginForm from './login_form';
 import { login } from '../../actions/session_actions';
 /////////////////////// Main ////////////////////////////////////////////
 
-mapStatetoProps = function (state) {
+const mapStatetoProps = function (state) {
     return {
-        errors: state.errors.session
+        errors: state.errors.session // errors will contain a hash of field names: [errors] if there are any
     }
 }
 
-mapDispatchtoProps = function (dispatch) {
+const mapDispatchtoProps = function (dispatch) {
     return {
         action: (user) => dispatch(login(user))
     }

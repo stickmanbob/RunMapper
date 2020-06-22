@@ -21,7 +21,7 @@ export const logoutCurrentUser = (user) => {
 export const receiveSessionErrors = (errors) => {
     return {
         type: RECEIVE_SESSION_ERRORS,
-        errors: errors
+        errors: errors.responseJSON 
     }
 }
 

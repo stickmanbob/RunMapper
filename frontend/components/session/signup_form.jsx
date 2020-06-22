@@ -2,16 +2,18 @@
 // Exports a presentational component that renders a sign up form
 // Wrapped by signup_container.js 
 /* Props:
-        errors: [] - array of errors from state.errors.session if any 
+        errors: [] - Hash of fieldname:[errors] from state.errors.session if any
                     are present
         action: (user) - action for submitting the form. Expects a pojo
                         with all user attributes 
  */
 ///////////////////// Imports ///////////////////////////////////////
 
-import React from "react";
-import {Link} from "react-router-dom";
-
+  /// Utilities
+    import React from "react";
+    import {Link} from "react-router-dom";
+  /// Components
+    import ErrorMessage from "./session_error_message"; 
 //////////////////// Main ///////////////////////////////////////////
 
 export default class SignUpForm extends React.Component {
@@ -45,17 +47,21 @@ export default class SignUpForm extends React.Component {
 
     render() {
         return (
-            <div className="signup-form-container">
+            <div className="session-form-container">
                 <Link to="/login"> Log In</Link>
-                <form className="signup-form" onSubmit={this.handleSubmit}>
+                <form className="session-form" onSubmit={this.handleSubmit}>
 
                     <input type="text" placeholder="First Name" onChange={this.handleChange("fname")}/>
-                    
+                    <ErrorMessage errors={this.props.errors} field="fname" />
+
                     <input type="text" placeholder="Last Name" onChange={this.handleChange("lname")} />
+                    <ErrorMessage errors={this.props.errors} field="lname" />
 
                     <input type="text" placeholder="Email" onChange={this.handleChange("email")} />
+                    <ErrorMessage errors={this.props.errors} field="email" />
 
                     <input type="password" placeholder="Password" onChange={this.handleChange("password")} />
+                    <ErrorMessage errors={this.props.errors} field="password" />
 
                     <input type="submit" value="Sign Up"/>
                    

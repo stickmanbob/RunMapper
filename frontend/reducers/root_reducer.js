@@ -1,14 +1,24 @@
 //////////////////// Root Reducer //////////////////////////
+// Primary reducer, used in creating the store
+// See state shape below (May be out of date, most up to date
+// on wiki)
 
-import {combineReducers} from 'redux';
-import {sessionReducer} from "./session_reducer";
-import {usersReducer} from "./users_reducer";
+//////////////////// Imports //////////////////////////////
 
+  /// Utilites
+        import {combineReducers} from 'redux';
+  /// Reducers
+        import {sessionReducer} from "./session_reducer";
+        import {usersReducer} from "./users_reducer";
+        import entitiesReducer from "./entities_reducer";
+        import errorsReducer from "./errors_reducer";
+//////////////////// Main ////////////////////////////////////
 
-export default combineReducers({
-    users: usersReducer,
+  export default combineReducers({
+    entities: entitiesReducer,
     session: sessionReducer,
-})
+    errors: errorsReducer
+  })
 
 /*
 ///////////////////STATE SHAPE////////////////////////

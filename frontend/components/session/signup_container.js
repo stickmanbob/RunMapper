@@ -11,7 +11,7 @@ import {signup} from '../../actions/session_actions';
 
  const mapStatetoProps = function (state) {
     return {
-        // errors: state.errors.session
+        errors: state.errors.session // errors will contain a hash of field names: [errors] if there are any
     }
 }
 
