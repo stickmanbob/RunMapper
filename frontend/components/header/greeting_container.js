@@ -9,7 +9,7 @@
     import {connect} from "react-redux";
     
 /// Actions
-    import logout from "../../actions/session_actions";
+    import {logout} from "../../actions/session_actions";
 /// Components 
 
     import Greeting from "./greeting";

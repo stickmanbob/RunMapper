@@ -54,7 +54,8 @@ export default class SignUpForm extends React.Component {
         this.props.action(this.state);
     }
 
-    loginDummyUser() {
+    loginDummyUser(e) {
+        e.preventDefault(); 
         this.props.login({
             email: "dummyUser@runmapper.com",
             password: "testdummy"

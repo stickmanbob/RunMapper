@@ -29,3 +29,60 @@
 .nav-auth-button.login:hover {
     background-color: lightgrey;
 }
+
+/* USER DROPDOWN */
+.temp-dropdown-banner{
+    font-size: 16px;
+    padding: 10px 23px; 
+    margin: 5px 4px;
+    display: inline-block; 
+    border-radius: 2px;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: lightgrey;
+    cursor: default;
+}
+.user-dropdown{
+    display: block;
+    position: relative;
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute; 
+    left: 5px; 
+    
+    
+}
+
+
+.user-dropdown:hover .dropdown-menu{
+    display: block;
+    z-index: 1;
+    
+}
+
+
+.dropdown-menu-item{
+    font-size: 16px;
+    padding: 8px 15px; 
+    display: block; 
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid #9297a3;
+    border-bottom: 0px;
+    color: #9297a3;
+
+    width: 65px; 
+
+}
+
+.dropdown-menu:last-child {
+    border-bottom: 1px solid #9297a3;
+}
+
+.dropdown-menu-item:hover{
+    color:black;
+    cursor: default;
+}

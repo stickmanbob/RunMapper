@@ -14,8 +14,7 @@
     import React from 'react'
 /// Components 
     import {Link} from 'react-router-dom'; 
-
-
+    import UserDropDown from './dropdown';
 
 
 /////////////////////// Main ////////////////////////////////////////////
@@ -24,7 +23,7 @@ export default function Greeting ({currentUser, logout}) {
 
     if(currentUser) {
         return (
-        <h1>Welcome, {currentUser.fname} {currentUser.lname}</h1>
+            <UserDropDown currentUser={currentUser} logout={logout}/>
         )
     } else {
         return (
