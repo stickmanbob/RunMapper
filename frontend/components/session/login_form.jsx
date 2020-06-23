@@ -48,7 +48,9 @@ export default class LoginForm extends React.Component {
             <div className="session-form-container">
                
                 <form className="session-form" onSubmit={this.handleSubmit}>
-                    <Link className="session-form-nav" to="/signup"> Sign Up</Link>
+                    
+                    <Link className="session-form-nav" to="/signup"> SIGN UP</Link>
+                    
                     {/* Render Errors if there are any */}
                     <span className="error-message">{Object.values(this.props.errors)}</span> 
                     

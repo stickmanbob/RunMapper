@@ -48,8 +48,8 @@ export default class SignUpForm extends React.Component {
     render() {
         return (
             <div className="session-form-container">
-                <Link className="session-form-nav" to="/login"> Log In</Link>
                 <form className="session-form" onSubmit={this.handleSubmit}>
+                    <Link className="session-form-nav" to="/login"> LOG IN</Link>
 
                     <input className="session-form-input" type="text" placeholder="First Name" onChange={this.handleChange("fname")}/>
                     <ErrorMessage errors={this.props.errors} field="fname" />
