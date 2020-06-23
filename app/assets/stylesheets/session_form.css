@@ -1,0 +1,57 @@
+/* CSS for the Login and Signup components */
+
+.session-form-container{
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    height: 500px; 
+    justify-content: center;
+
+}
+
+.session-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    
+    
+}
+
+
+
+.session-form-input {
+    font-size: 14px;
+    padding: 9px 20px ;
+    margin: 10px 0px ;
+    border: 1px solid lightgrey;
+    background-color: inherit;
+    width: 30%;
+    height: 25px; 
+}
+
+.submit {
+    background-color: #16D374;
+    height: 20px; 
+    box-sizing: content-box;
+    
+    font-size: 14px;
+    width: 30%; 
+    padding: 8px 22px; 
+    margin: 10px;
+    display: inline-block; 
+    border-radius: 2px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: whitesmoke; 
+}
+
+.session-form-nav {
+   
+    color: gray;
+    
+   
+
+}

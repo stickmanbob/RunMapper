@@ -1,0 +1,31 @@
+/* Stylesheet for the Header and Nav Bar */
+
+.nav-header {
+    display:flex;
+
+    justify-content: space-between;
+
+
+}
+
+/* .nav-auth-button pertains to login and signup links in greeting.jsx */
+.nav-auth-button { 
+    font-size: 12px;
+    
+    padding: 8px 22px; 
+    margin: 10px;
+    display: inline-block; 
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: black; 
+}
+
+.nav-auth-button.signup {
+    background-color: #16D374;
+    color: white;
+}
+
+.nav-auth-button.login:hover {
+    background-color: lightgrey;
+}

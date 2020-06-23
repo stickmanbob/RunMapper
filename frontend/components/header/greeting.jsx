@@ -29,8 +29,9 @@ export default function Greeting ({currentUser, logout}) {
     } else {
         return (
             <div>
-                <Link to="/signup"> Sign Up</Link>
-                <Link to="/login"> Log In</Link>
+                <Link to="/login" className="nav-auth-button login"> LOG IN</Link>
+
+                <Link to="/signup" className="nav-auth-button signup" > SIGN UP</Link>
             </div>
         )
     }

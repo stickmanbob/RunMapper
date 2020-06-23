@@ -46,20 +46,20 @@ export default class LoginForm extends React.Component {
     render() {
         return (
             <div className="session-form-container">
-                <Link to="/signup"> Sign Up</Link>
+               
                 <form className="session-form" onSubmit={this.handleSubmit}>
-                    
+                    <Link className="session-form-nav" to="/signup"> Sign Up</Link>
                     {/* Render Errors if there are any */}
                     <span className="error-message">{Object.values(this.props.errors)}</span> 
                     
                     {/* Login Form */}
-                    <input type="text" placeholder="Email" onChange={this.handleChange("email")} />
+                    <input className="session-form-input" type="text" placeholder="Email" onChange={this.handleChange("email")} />
 
-                    <input type="password" placeholder="Password" onChange={this.handleChange("password")} />
+                    <input className="session-form-input" type="password" placeholder="Password" onChange={this.handleChange("password")} />
                     
                     
 
-                    <input type="submit" value="Log In" />
+                    <input className='submit' type="submit" value="Log In" />
 
                 </form>
             </div>

@@ -19,7 +19,7 @@
 export default function App (){
     return(
         <>
-            <header> 
+            <header className="nav-header"> 
                 <h1>RunMapper</h1>
                 <GreetingContainer/> 
             </header>
