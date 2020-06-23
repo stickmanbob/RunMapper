@@ -52,3 +52,7 @@ input {
 	border-style: none;
 	border: none; 
 }
+
+button {
+	border-style: none;
+}

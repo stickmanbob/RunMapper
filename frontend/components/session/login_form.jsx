@@ -32,7 +32,7 @@ export default class LoginForm extends React.Component {
 
     // After mounting, clear outstanding session errors
     componentDidMount () {
-        console.log("mounted"); 
+        
         this.props.clearErrors(); 
     }
 
