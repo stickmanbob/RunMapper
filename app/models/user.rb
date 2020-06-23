@@ -14,9 +14,9 @@
 class User < ApplicationRecord
 
 
- ############ Ensure Session Token on Creation ###############
+ ################ Ensure Session Token on Creation ##################
     after_initialize :ensure_session_token
- ############ VALIDATIONS####################
+ ########################## VALIDATIONS###############################
 
     validates :email, :fname, :lname, :password_digest, :session_token, presence: true
     validates :email, :session_token, uniqueness: true
@@ -26,8 +26,11 @@ class User < ApplicationRecord
         validates :password, length:{minimum: 6}, allow_nil: true 
         
         attr_reader :password #Need this so validation will work
+ 
 
- ############ AUTH METHODS ##################
+ ############################ Associations #############################
+    has_many :routes, foreign_key: :creator_id
+ ############################# AUTH METHODS #############################
     
    def self.find_by_credentials(email, pass)
         user = User.find_by(email: email)

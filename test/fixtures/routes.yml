@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: routes
+#
+#  id             :bigint           not null, primary key
+#  name           :string           not null
+#  description    :text             not null
+#  creator_id     :integer          not null
+#  distance       :float            not null
+#  route_metadata :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+one:
+  name: MyString
+  description: MyText
+  creator_id: 1
+  distance: 1.5
+  route_metadata: MyString
+
+two:
+  name: MyString
+  description: MyText
+  creator_id: 1
+  distance: 1.5
+  route_metadata: MyString
