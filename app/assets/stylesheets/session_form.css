@@ -33,6 +33,12 @@
     height: 25px; 
 }
 
+.session-form-input:focus{
+     border: 1px solid blue;
+     background-color: rgb(255, 255, 255);
+  
+}
+
 .submit {
     background-color: #16D374;
     height: 20px; 
@@ -59,6 +65,39 @@
     font-weight: bold;
     font-family: sans-serif;
    
+}
+
+.error-message {
+    font-size: 12px;
+    color: red; 
+    font-family: sans-serif;
+}
+
+.form-divider {
+   display: flex; 
+   align-items: center;
+   justify-content: center;
+   width: 30%;
+    margin: 0px;
+}
+
+.divider-line {
+    display: block;
+    height: 1px;
+    border-bottom: 1px solid #C8C7CC;
+    width: 200px; 
+   
+}
+
+.or-text{
+    font-size: 12px;
+    color: rgb(146, 151, 163);
+    font-family: 'Armour-Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+
+}
+
+.guest-user-button {
+    
 }
 
 

@@ -6,6 +6,7 @@
                     are present 
         action: (user) - action for submitting the form. Expects a pojo
                         with all user attributes 
+        clearErrors: () - action for clearing errors on mount
  */
 ///////////////////// Imports ///////////////////////////////////////
  /// Utilities
@@ -26,6 +27,13 @@ export default class LoginForm extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.loginDummyUser = this.loginDummyUser.bind(this);
+    }
+
+    // After mounting, clear outstanding session errors
+    componentDidMount () {
+        console.log("mounted"); 
+        this.props.clearErrors(); 
     }
 
     // handleChange(field): field is a name of a key in this.state (string).
@@ -43,6 +51,13 @@ export default class LoginForm extends React.Component {
         this.props.action(this.state);
     }
 
+    loginDummyUser() {
+        this.props.action({
+            email:"dummyUser@runmapper.com",
+            password:"testdummy"
+        }); 
+    }
+
     render() {
         return (
             <div className="session-form-container">
@@ -51,6 +66,14 @@ export default class LoginForm extends React.Component {
                     
                     <Link className="session-form-nav" to="/signup"> SIGN UP</Link>
                     
+                    <button className="guest-user-button" onClick={this.loginDummyUser}>LOG IN AS GUEST USER </button>
+                    
+                    <div className = "form-divider">
+                        <span className="divider-line"></span>
+                        <span className = "or-text">OR</span>
+                        <span className="divider-line"></span>
+                    </div>
+
                     {/* Render Errors if there are any */}
                     <span className="error-message">{Object.values(this.props.errors)}</span> 
                     

@@ -6,7 +6,7 @@
 
 import {connect} from 'react-redux';
 import SignUpForm from './signup_form';
-import {signup} from '../../actions/session_actions';
+import {signup, login, clearSessionErrors} from '../../actions/session_actions';
 /////////////////////// Main ////////////////////////////////////////////
 
  const mapStatetoProps = function (state) {
@@ -17,7 +17,9 @@ import {signup} from '../../actions/session_actions';
 
 const mapDispatchtoProps = function(dispatch) {
     return {
-        action: (user) => dispatch(signup(user))
+        action: (user) => dispatch(signup(user)),
+        clearErrors: () => dispatch(clearSessionErrors()),
+        login: (user) => dispatch(login(user))
     }
 }
 

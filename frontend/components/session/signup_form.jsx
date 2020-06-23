@@ -6,6 +6,9 @@
                     are present
         action: (user) - action for submitting the form. Expects a pojo
                         with all user attributes 
+        clearErrors: () - action for clearing errors on mount
+
+        login: (user) - action for logging in user (for user with dummy user button)
  */
 ///////////////////// Imports ///////////////////////////////////////
 
@@ -28,6 +31,12 @@ export default class SignUpForm extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.loginDummyUser = this.loginDummyUser.bind(this);
+    }
+
+    // After mounting, clear outstanding session errors
+    componentDidMount() {
+        this.props.clearErrors(); 
     }
 
     // handleChange(field): field is a name of a key in this.state (string).
@@ -45,11 +54,26 @@ export default class SignUpForm extends React.Component {
         this.props.action(this.state);
     }
 
+    loginDummyUser() {
+        this.props.login({
+            email: "dummyUser@runmapper.com",
+            password: "testdummy"
+    }); 
+    }
+
     render() {
         return (
             <div className="session-form-container">
                 <form className="session-form" onSubmit={this.handleSubmit}>
                     <Link className="session-form-nav" to="/login"> LOG IN</Link>
+
+                    <button className="guest-user-button" onClick={this.loginDummyUser}>SIGN UP AS GUEST USER </button>
+
+                    <div className="form-divider">
+                        <span className="divider-line"></span>
+                        <span className="or-text">OR</span>
+                        <span className="divider-line"></span>
+                    </div>
 
                     <input className="session-form-input" type="text" placeholder="First Name" onChange={this.handleChange("fname")}/>
                     <ErrorMessage errors={this.props.errors} field="fname" />
