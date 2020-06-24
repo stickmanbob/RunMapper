@@ -80,7 +80,9 @@ export default class RouteMap extends React.Component {
             travelMode: "WALKING",
             provideRouteAlternatives: false
         }
-       this.dirService.route(routeOpts ,this.renderRoute);
+        if(this.waypoints.length > 1){
+            this.dirService.route(routeOpts ,this.renderRoute);
+        }
        
     }
 
@@ -93,7 +95,8 @@ export default class RouteMap extends React.Component {
                 geodesic: true,
                 strokeColor: '#FF0000',
                 strokeOpacity: 1.0,
-                strokeWeight: 2}
+                strokeWeight: 2},
+            preserveViewport:true
 
         })
 
