@@ -7,9 +7,9 @@
 
 /// Utilities
     import React from 'react';
-import { render } from 'react-dom';
+    
 /// Components 
-
+    import ToolWidget from "./tool_widget"
 
 
 /////////////////////// Main ////////////////////////////////////////////
@@ -167,9 +167,7 @@ export default class RouteCreator extends React.Component {
                     
                     <div id="map" ref={map => this.mapNode = map}> </div>
 
-                        <dialog className="distance-box" open="true">
-                            Distance: {this.state.distance} Miles
-                        </dialog>
+                    <ToolWidget distance={this.state.distance}/>
 
                 </div>
 

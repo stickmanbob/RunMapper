@@ -15,12 +15,12 @@
 
 /////////////////////// Main ////////////////////////////////////////////
 
-export default function ToolWidget(props) {
+export default function ToolWidget({distance}) {
 
     return (
         <div className="tool-widget">
             <header className="tool-header">
-                <DistanceCounter /> 
+                <DistanceCounter distance={distance}/> 
                 <div className="tool expand-trigger"></div>
             </header>
             <div className="tool-dropdown">
