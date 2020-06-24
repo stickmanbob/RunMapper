@@ -19,14 +19,15 @@ export default class RouteMap extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = {polyline: this.initPolyline()};
+        this.state = {};
         this.waypoints = [];
-
+        this.legs = []; 
         
      //// Function Bindings
-        this.initPolyline = this.initPolyline.bind(this);
+        
         this.addMarker = this.addMarker.bind(this); 
         this.updatePath = this.updatePath.bind(this); 
+        this.renderRoute = this.renderRoute.bind(this);
     }
 
     componentDidMount() {
@@ -42,23 +43,15 @@ export default class RouteMap extends React.Component {
         // Add event listener to map to add a waypoint on click
         this.map.addListener('click', this.addMarker); 
 
-        // Configure the polyline
-        this.state.polyline.setMap(this.map); 
+        // create the directions requester
+
+        this.dirService = new google.maps.DirectionsService();
+       
 
     }
 
-    // Initializes a polyline without a map
-    initPolyline() {
-        let routeLine =  new google.maps.Polyline({
-            path: this.waypoints,
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2,
-        });
+  
 
-        return routeLine; 
-    }
 
     // Adds a marker to the map on click and updates waypoints array and polyline
     addMarker(e){ 
@@ -78,11 +71,34 @@ export default class RouteMap extends React.Component {
         
     }
 
-    // Updates the polyline 
+    // Requests new directions and renders them
     updatePath() {
-     
-       this.state.polyline.setPath(this.waypoints);
+        
+        let routeOpts = {
+            origin: this.waypoints[this.waypoints.length - 2],
+            destination: this.waypoints[this.waypoints.length -1],
+            travelMode: "WALKING",
+            provideRouteAlternatives: false
+        }
+       this.dirService.route(routeOpts ,this.renderRoute);
        
+    }
+
+    renderRoute(route) {
+        let renderLeg = new google.maps.DirectionsRenderer({
+            directions: route,
+            hideRouteList: true,
+            map: this.map,
+            polyline: {
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2}
+
+        })
+
+        this.legs.push(renderLeg); 
+
     }
 
     render() {
