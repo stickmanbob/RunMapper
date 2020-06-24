@@ -27,7 +27,7 @@ export default class UserDropdown extends React.Component {
     }
     render() {
         return (
-            <div className="user-dropdown">
+            <div className="dropdown-container">
                 <h1 className="temp-dropdown-banner">{this.props.currentUser.fname} {this.props.currentUser.lname}</h1>
                 <ul className="dropdown-menu">
                     <li className="dropdown-menu-item"> Friends </li>

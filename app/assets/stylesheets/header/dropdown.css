@@ -1,20 +1,8 @@
-/* USER DROPDOWN */
-
-/* temporary button for dropdown until prof pics added */
-.temp-dropdown-banner{
-    font-size: 16px;
-    padding: 10px 23px; 
-    margin: 5px 4px;
-    display: inline-block; 
-    border-radius: 2px;
-    font-family: sans-serif;
-    font-weight: bold;
-    background-color: lightgrey;
-    cursor: default;
-}
+/* DROPDOWN Menus */
 
 
-.user-dropdown{
+
+.dropdown-container{
     display: block;
     position: relative;
 }
@@ -28,7 +16,7 @@
 }
 
 
-.user-dropdown:hover .dropdown-menu{
+.dropdown-container:hover .dropdown-menu{
     display: block;
     z-index: 1;
     
@@ -37,24 +25,42 @@
 
 .dropdown-menu-item{
     font-size: 16px;
-    padding: 8px 15px; 
-    display: block; 
+    /* padding: 8px 15px;  */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
     font-family: sans-serif;
     font-weight: bold;
     background-color: white;
-    border: 1px solid #9297a3;
+    border: 1px solid #d3d6dc;
     border-bottom: 0px;
-    color: #9297a3;
-
-    width: 65px; 
+    box-shadow: 1px 1px;
+    color: #9ea2ad;
+    height: 42px;
+    width: 94px; 
 
 }
 
 .dropdown-menu:last-child {
-    border-bottom: 1px solid #9297a3;
+    border-bottom: 1px solid #d3d6dc;
+    border-radius: 5px;
 }
 
 .dropdown-menu-item:hover{
     color:black;
+    cursor: default;
+}
+
+
+/* temporary button for user dropdown until prof pics added */
+.temp-dropdown-banner{
+    font-size: 16px;
+    padding: 10px 23px; 
+    margin: 5px 4px;
+    display: inline-block; 
+    border-radius: 2px;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: lightgrey;
     cursor: default;
 }
