@@ -56,7 +56,8 @@ export default class RouteMap extends React.Component {
                 strokeOpacity: 1.0,
                 strokeWeight: 2
             },
-            preserveViewport: true
+            preserveViewport: true,
+            draggable: true 
 
         });
        
@@ -74,10 +75,10 @@ export default class RouteMap extends React.Component {
         let coords = {lat:lat, lng:lng}; 
         
         // Add a marker to the map
-        let marker = new google.maps.Marker({position:coords, map:this.map});
-        
+        let marker = new google.maps.Marker({position:coords});
+        marker.setMap(null); 
         // Add coordinates to waypoints array
-        this.waypoints.push(coords); 
+        this.waypoints.push(marker); 
         
         //Update the polyline
         this.updatePath(); 
@@ -87,20 +88,19 @@ export default class RouteMap extends React.Component {
     // Requests new directions and renders them
     updatePath() {
 
-        let waypoints = this.waypoints.map((point)=> {
+        let waypoints = this.waypoints.map((marker)=> {
             return {
-                location: point,
+                location: marker.position,
+                stopover: false 
                
             }
-        }).slice(1, this.waypoints.length -2); 
+        }).slice(1, this.waypoints.length -1); 
         
         let routeOpts = {
-            origin: this.waypoints[0],
-            destination: this.waypoints[this.waypoints.length -1],
-            travelMode: "WALKING",
-            provideRouteAlternatives: false,
+            origin: this.waypoints[0].position,
+            destination: this.waypoints[this.waypoints.length -1].position,
+            travelMode: google.maps.DirectionsTravelMode.WALKING,
             waypoints: waypoints,
-            optimizeWaypoints: false, 
         }
         if(this.waypoints.length > 1){
             this.dirService.route(routeOpts ,this.renderRoute);
