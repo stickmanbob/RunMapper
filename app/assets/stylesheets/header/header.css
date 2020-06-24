@@ -1,0 +1,60 @@
+/* Stylesheet for the Header and Nav Bar 
+
+    Class list:
+        - .main-header: outermost component. Wraps nav-header and takes up whole page width
+        - .nav-header: main header component. Is narrower than the whole page
+        - .nav-links: contains nav links to routes, Training, Challenges, Blog (on original site)
+        - .nav-link: individual nav link  
+        - .nav-auth-button
+
+*/
+
+
+.nav-header {
+    display:flex;
+    width: 935px; 
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto; 
+    
+
+
+}
+
+.nav-link{
+    color: rgb(114,125,142);
+    font-family: Armour,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 13px;
+    font-weight: bold;
+    
+}
+
+.nav-link:hover{
+    color:#212121;
+}
+
+/* .nav-auth-button pertains to login and signup links in greeting.jsx 
+    subclasses .signup and .login correspond to respective buttons
+*/
+.nav-auth-button { 
+    font-size: 12px;
+    
+    padding: 10px 23px; 
+    margin: 5px 4px;
+    display: inline-block; 
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: black; 
+}
+
+.nav-auth-button.signup {
+    background-color: #16D374;
+    color: white;
+}
+
+.nav-auth-button.login:hover {
+    background-color: lightgrey;
+}
+

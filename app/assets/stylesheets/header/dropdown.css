@@ -1,36 +1,6 @@
-/* Stylesheet for the Header and Nav Bar */
-
-.nav-header {
-    display:flex;
-
-    justify-content: space-between;
-
-
-}
-
-/* .nav-auth-button pertains to login and signup links in greeting.jsx */
-.nav-auth-button { 
-    font-size: 12px;
-    
-    padding: 10px 23px; 
-    margin: 5px 4px;
-    display: inline-block; 
-    border-radius: 5px;
-    font-family: sans-serif;
-    font-weight: bold;
-    color: black; 
-}
-
-.nav-auth-button.signup {
-    background-color: #16D374;
-    color: white;
-}
-
-.nav-auth-button.login:hover {
-    background-color: lightgrey;
-}
-
 /* USER DROPDOWN */
+
+/* temporary button for dropdown until prof pics added */
 .temp-dropdown-banner{
     font-size: 16px;
     padding: 10px 23px; 
@@ -42,6 +12,8 @@
     background-color: lightgrey;
     cursor: default;
 }
+
+
 .user-dropdown{
     display: block;
     position: relative;
