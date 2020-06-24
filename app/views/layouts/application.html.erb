@@ -4,7 +4,15 @@
     <title>RunMapper</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <!-- Add google maps API key and add to window -->
      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
+
+     <script type="text/javascript">
+            window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"
+    </script>
+    
+     <!-- CSS files -->
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
