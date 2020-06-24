@@ -19,8 +19,8 @@ export default class RouteMap extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = {};
-        this.waypoints = [];
+        this.state = {distance: 0};
+        this.routeCoordinates = [];
         this.legs = []; 
         
      //// Function Bindings
@@ -28,6 +28,7 @@ export default class RouteMap extends React.Component {
         this.addMarker = this.addMarker.bind(this); 
         this.updatePath = this.updatePath.bind(this); 
         this.renderRoute = this.renderRoute.bind(this);
+        this.updateDistance = this.updateDistance.bind(this); 
     }
 
     componentDidMount() {
@@ -46,6 +47,8 @@ export default class RouteMap extends React.Component {
         // create the directions requester
 
         this.dirService = new google.maps.DirectionsService();
+
+        // Create Route Renderer
         this.routeRenderer = new google.maps.DirectionsRenderer({
             
             hideRouteList: true,
@@ -60,6 +63,8 @@ export default class RouteMap extends React.Component {
             draggable: true 
 
         });
+
+        // this.routeRenderer.addListener("directions_changed", this.updateDistance(this.routeRenderer.getDirections()))
        
 
     }
@@ -72,13 +77,17 @@ export default class RouteMap extends React.Component {
         
         let lat = e.latLng.lat();
         let lng = e.latLng.lng();
+
         let coords = {lat:lat, lng:lng}; 
         
-        // Add a marker to the map
-        let marker = new google.maps.Marker({position:coords});
-        marker.setMap(null); 
+        // // Create a 
+        // let marker = new google.maps.Marker({position:coords});
+        
+        // Remove it from the map to reduce clutter
+        // marker.setMap(null);
+        
         // Add coordinates to waypoints array
-        this.waypoints.push(marker); 
+        this.routeCoordinates.push(coords); 
         
         //Update the polyline
         this.updatePath(); 
@@ -88,23 +97,38 @@ export default class RouteMap extends React.Component {
     // Requests new directions and renders them
     updatePath() {
 
-        let waypoints = this.waypoints.map((marker)=> {
+        // First, map the route coordinates into google maps Waypoint literals
+
+        let waypoints = this.routeCoordinates.map((waypoint)=> {
             return {
-                location: marker.position,
+                location: waypoint,
                 stopover: false 
                
             }
-        }).slice(1, this.waypoints.length -1); 
+        }).slice(1, this.routeCoordinates.length -1); 
         
+
+        // Define the route options for the new path
+
         let routeOpts = {
-            origin: this.waypoints[0].position,
-            destination: this.waypoints[this.waypoints.length -1].position,
+            origin: this.routeCoordinates[0],
+            destination: this.routeCoordinates[this.routeCoordinates.length -1],
             travelMode: google.maps.DirectionsTravelMode.WALKING,
             waypoints: waypoints,
         }
-        if(this.waypoints.length > 1){
+
+        // Prevent rendering a route with only one waypoint
+        // Render a start marker instead 
+        if(this.routeCoordinates.length > 1){
             this.dirService.route(routeOpts ,this.renderRoute);
+        } else if (this.routeCoordinates.length === 1){
+            var start = new google.maps.Marker({
+                position: this.routeCoordinates[0],
+                map: this.map 
+            })
         }
+
+      
        
     }
 
@@ -112,9 +136,19 @@ export default class RouteMap extends React.Component {
         this.routeRenderer.setDirections(route); 
 
         let dirs = this.routeRenderer.getDirections();
-        console.log(dirs);
+        
+        this.updateDistance(dirs); 
 
+    }
 
+    updateDistance(dirs){
+        let dist = 0;
+        dirs.routes[0].legs.forEach((leg)=>{
+            dist += leg.distance.value;
+        })
+
+        console.log(dist); 
+        this.setState({distance:dist}); 
     }
 
 
