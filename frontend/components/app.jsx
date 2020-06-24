@@ -15,7 +15,7 @@
     import Header from './header/header';
 
     // Route Creator
-    import RouteMap from './routes/route_creator/route_map'
+    import RouteCreator from './routes/route_creator/route_creator'
 /////////////////////////////////////////
 
 
@@ -28,7 +28,7 @@ export default function App (){
 
                 <Route exact path="/signup" component={SignUpFormContainer}/>
                 <Route exact path="/login" component={LoginFormContainer} />
-                <Route exact path="/routes/create" component={RouteMap}/>
+                <Route exact path="/routes/create" component={RouteCreator}/>
 
             </Switch>
         </>

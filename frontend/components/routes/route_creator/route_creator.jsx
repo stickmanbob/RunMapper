@@ -14,7 +14,7 @@ import { render } from 'react-dom';
 
 /////////////////////// Main ////////////////////////////////////////////
 
-export default class RouteMap extends React.Component {
+export default class RouteCreator extends React.Component {
 
     constructor(props) {
         super(props);
@@ -148,7 +148,9 @@ export default class RouteMap extends React.Component {
         })
 
         console.log(dist); 
-        this.setState({distance:dist}); 
+
+        let milesDist = 0.000621371 * dist
+        this.setState({distance: milesDist.toFixed(2)}); 
     }
 
 
@@ -156,9 +158,22 @@ export default class RouteMap extends React.Component {
     render() {
         
         return(
-            <div id="map-container">
-                
-                <div id="map" ref={map => this.mapNode = map}> </div>
+            <div className="Mapper-Widget">
+
+                <section className="map-sidebar">
+
+                </section>
+                <div id="map-container">
+                    
+                    <div id="map" ref={map => this.mapNode = map}> </div>
+
+                        <dialog className="distance-box" open="true">
+                            Distance: {this.state.distance} Miles
+                        </dialog>
+
+                </div>
+
+           
             </div>
             
 
