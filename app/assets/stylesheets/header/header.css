@@ -22,6 +22,7 @@
 
 }
 
+
 .nav-link{
     color: rgb(114,125,142);
     font-family: Armour,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -33,6 +34,25 @@
 .nav-link:hover{
     color:#212121;
 }
+
+/* Styling for dropdown menus in nav bar elements */
+.nav-bar.dropdown-menu-item{
+    width: 121px;
+    height: 42px;
+}
+
+.nav-bar.dropdown-menu{
+    bottom: -40px;
+    left: 0px; 
+}
+
+.nav-bar.dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 69px;
+}
+
 
 /* .nav-auth-button pertains to login and signup links in greeting.jsx 
     subclasses .signup and .login correspond to respective buttons

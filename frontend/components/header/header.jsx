@@ -21,7 +21,14 @@ export default function Header () {
             <header className="nav-header">
                 <h1>RunMapper</h1>
                 <nav className="nav-links">
-                    <Link className="nav-link" to="/routes/create">Create Route</Link>
+                    <div className="nav-bar dropdown-container">
+                        <Link className="nav-link" to="/routes/">Routes</Link>
+                        <ul className="dropdown-menu nav-bar">
+        
+                            <Link className="dropdown-menu-item nav-bar" to="/routes/create"> Create Route</Link>
+                            
+                        </ul>
+                    </div>
                 </nav>
                 <GreetingContainer />
             </header>
