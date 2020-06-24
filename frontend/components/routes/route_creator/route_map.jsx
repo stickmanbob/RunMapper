@@ -46,6 +46,19 @@ export default class RouteMap extends React.Component {
         // create the directions requester
 
         this.dirService = new google.maps.DirectionsService();
+        this.routeRenderer = new google.maps.DirectionsRenderer({
+            
+            hideRouteList: true,
+            map: this.map,
+            polyline: {
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            },
+            preserveViewport: true
+
+        });
        
 
     }
@@ -73,12 +86,21 @@ export default class RouteMap extends React.Component {
 
     // Requests new directions and renders them
     updatePath() {
+
+        let waypoints = this.waypoints.map((point)=> {
+            return {
+                location: point,
+               
+            }
+        }).slice(1, this.waypoints.length -2); 
         
         let routeOpts = {
-            origin: this.waypoints[this.waypoints.length - 2],
+            origin: this.waypoints[0],
             destination: this.waypoints[this.waypoints.length -1],
             travelMode: "WALKING",
-            provideRouteAlternatives: false
+            provideRouteAlternatives: false,
+            waypoints: waypoints,
+            optimizeWaypoints: false, 
         }
         if(this.waypoints.length > 1){
             this.dirService.route(routeOpts ,this.renderRoute);
@@ -87,22 +109,15 @@ export default class RouteMap extends React.Component {
     }
 
     renderRoute(route) {
-        let renderLeg = new google.maps.DirectionsRenderer({
-            directions: route,
-            hideRouteList: true,
-            map: this.map,
-            polyline: {
-                geodesic: true,
-                strokeColor: '#FF0000',
-                strokeOpacity: 1.0,
-                strokeWeight: 2},
-            preserveViewport:true
+        this.routeRenderer.setDirections(route); 
 
-        })
+        let dirs = this.routeRenderer.getDirections();
+        console.log(dirs);
 
-        this.legs.push(renderLeg); 
 
     }
+
+
 
     render() {
         
