@@ -10,6 +10,7 @@
     import React from 'react';
     import {Route, Switch} from 'react-router-dom'; 
   /// Components
+    import {AuthRoute,ProtectedRoute} from "../util/route_protection_util.jsx";
     import SignUpFormContainer from './session/signup_container';
     import LoginFormContainer from './session/Login_container';
     import Header from './header/header';
@@ -26,10 +27,10 @@ export default function App (){
            
             <Switch>
 
-                <Route exact path="/signup" component={SignUpFormContainer}/>
-                <Route exact path="/login" component={LoginFormContainer} />
-                <Route exact path="/routes/create" component={RouteCreator}/>
-                <Route path="/routes/my_routes" component={RouteIndex}/>
+                <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
+                <AuthRoute exact path="/login" component={LoginFormContainer} />
+                <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
+                <ProtectedRoute path="/routes/my_routes" component={RouteIndex}/>
 
             </Switch>
         </>
