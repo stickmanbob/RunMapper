@@ -9,9 +9,8 @@
     import React from 'react';
     
 /// Components 
-    import ToolWidget from "./tool_widget"
-
-
+    import ToolWidget from "./tool_widget";
+    import SideBar from "./route_creator_sidebar";
 /////////////////////// Main ////////////////////////////////////////////
 
 export default class RouteCreator extends React.Component {
@@ -19,9 +18,13 @@ export default class RouteCreator extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = {distance: 0};
+     //// Instance variables and State
+        this.state = {
+            distance: 0,
+            routeData: ""
+        };
         this.routeCoordinates = [];
-        this.legs = []; 
+        
         
      //// Function Bindings
         
@@ -29,6 +32,7 @@ export default class RouteCreator extends React.Component {
         this.updatePath = this.updatePath.bind(this); 
         this.renderRoute = this.renderRoute.bind(this);
         this.updateDistance = this.updateDistance.bind(this); 
+        
     }
 
     componentDidMount() {
@@ -63,9 +67,6 @@ export default class RouteCreator extends React.Component {
             draggable: true 
 
         });
-
-        // this.routeRenderer.addListener("directions_changed", this.updateDistance(this.routeRenderer.getDirections()))
-       
 
     }
 
@@ -117,11 +118,14 @@ export default class RouteCreator extends React.Component {
             waypoints: waypoints,
         }
 
-        // Prevent rendering a route with only one waypoint
-        // Render a start marker instead 
+      // Prevent rendering a route with only one waypoint
+      // Render a start marker instead 
         if(this.routeCoordinates.length > 1){
+
             this.dirService.route(routeOpts ,this.renderRoute);
+
         } else if (this.routeCoordinates.length === 1){
+
             var start = new google.maps.Marker({
                 position: this.routeCoordinates[0],
                 map: this.map 
@@ -148,11 +152,16 @@ export default class RouteCreator extends React.Component {
         })
 
         console.log(dist); 
+     
+        
+        let milesDist = (0.000621371 * dist);
+        let routeData = JSON.stringify(this.routeCoordinates);
+        
+        this.setState({
+            distance: milesDist,
 
-        let milesDist = 0.000621371 * dist
-        this.setState({distance: milesDist.toFixed(2)}); 
+        }); 
     }
-
 
 
     render() {
@@ -160,9 +169,12 @@ export default class RouteCreator extends React.Component {
         return(
             <div className="Mapper-Widget">
 
-                <section className="map-sidebar">
+                <SideBar distance={this.state.distance} 
+                         routeData={this.state.routeData}
+                         finalizeState={this.finalizeState}
+                
+                    />
 
-                </section>
                 <div id="map-container">
                     
                     <div id="map" ref={map => this.mapNode = map}> </div>
