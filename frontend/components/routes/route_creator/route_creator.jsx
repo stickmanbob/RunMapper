@@ -32,6 +32,7 @@ export default class RouteCreator extends React.Component {
         this.updatePath = this.updatePath.bind(this); 
         this.renderRoute = this.renderRoute.bind(this);
         this.updateDistance = this.updateDistance.bind(this); 
+        this.getStaticMapUrl = this.getStaticMapUrl.bind(this); 
         
     }
 
@@ -68,7 +69,8 @@ export default class RouteCreator extends React.Component {
 
         });
 
-        this.routeRenderer.addListener("directions_changed", ()=> this.updateDistance(this.routeRenderer.getDirections()));  
+        this.routeRenderer.addListener("directions_changed", 
+            ()=> this.updateDistance(this.routeRenderer.getDirections()));  
 
     }
 
@@ -121,8 +123,9 @@ export default class RouteCreator extends React.Component {
             this.dirService.route(routeOpts ,this.renderRoute);
 
         } else if (this.routeCoordinates.length === 1){
-
-            var start = new google.maps.Marker({
+            
+            // Create a start marker, to be used in generating thumbnail later
+            this.start = new google.maps.Marker({
                 position: this.routeCoordinates[0],
                 map: this.map 
             })
@@ -133,11 +136,14 @@ export default class RouteCreator extends React.Component {
     }
 
     renderRoute(route) {
+        console.log(route);
         this.routeRenderer.setDirections(route); 
 
         let dirs = this.routeRenderer.getDirections();
         // console.log(dirs); 
         this.updateDistance(dirs); 
+        
+        this.getStaticMapUrl();
 
     }
 
@@ -153,6 +159,27 @@ export default class RouteCreator extends React.Component {
             distance: milesDist,
             routeData: routeData 
         }); 
+    }
+
+    //Generate a url that can be passed to an <img/> tag to display a route thumb
+    getStaticMapUrl() {
+
+      // Start with the basic url
+        let baseUrl = "https://maps.googleapis.com/maps/api/staticmap?"
+      // First extract the overall route polyline
+        let path = this.routeRenderer.getDirections()
+                                        .routes[0].overview_polyline;
+        path = "path=enc:".concat(path); 
+      //Set the size
+        let size = "size=100x100"
+      // Fetch the API key
+        let key = "key=".concat(window.googleAPIKey); 
+      // Finish the url
+        let url = [];
+        url.push(baseUrl,size,path,key);
+        url = url.join("&");
+        console.log(url); 
+
     }
 
 
