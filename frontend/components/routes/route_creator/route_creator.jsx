@@ -140,7 +140,7 @@ export default class RouteCreator extends React.Component {
         this.routeRenderer.setDirections(route); 
 
         let dirs = this.routeRenderer.getDirections();
-        console.log(dirs); 
+        // console.log(dirs); 
         this.updateDistance(dirs); 
 
     }
@@ -167,8 +167,6 @@ export default class RouteCreator extends React.Component {
 
                 <SideBar distance={this.state.distance} 
                          routeData={this.state.routeData}
-                         finalizeState={this.finalizeState}
-                
                     />
 
                 <div id="map-container">
