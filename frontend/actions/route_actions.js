@@ -37,6 +37,14 @@
         }
     }
 
+    export const DELETE_ROUTE = "DELETE_ROUTE";
+    export const removeRoute = (route) => {
+        return {
+            type: DELETE_ROUTE,
+            route: route 
+        }
+    }
+
 /////////////////////// Thunk Action Creators ////////////////////////////////
 
     export const createRoute = (route) => (dispatch) => {
@@ -59,7 +67,7 @@
 
     export const deleteRoute = (routeId) => (dispatch) => {
         routeAPIUtil.deleteRoute(routeId)
-        .then((res) => dispatch(receiveRoute(res)))
+        .then((res) => dispatch(removeRoute(res)))
         .fail((res) => dispatch(receiveRouteErrors(res)));
 }
 
