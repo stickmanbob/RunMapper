@@ -7,6 +7,7 @@
 //          - distance: from parent RouteMapper
 //          - routeData: serialized json of the route itself. From parent's 
 //                 route_coordinates array
+//          - imageUrl: imageUrl for route thumbnail
 //           - centerMap: function to modify parent component (map)
 
 /////////////////// Imports /////////////////////////////////////////
@@ -30,7 +31,8 @@ export default function Sidebar (props) {
         <section className='map-sidebar'>
             <LocationSearch centerMap={centerMap} /> 
             <RouteDetails distance={props.distance} 
-                        routeData={props.routeData}             
+                        routeData={props.routeData}
+                        imageUrl={props.imageUrl}            
             />
         </section>
 

@@ -37,6 +37,7 @@ export default class RouteDetails extends React.Component {
         let route = Object.assign({},this.state);
         route["route_data"] = this.props.routeData;
         route["distance"] = this.props.distance; 
+        route["image_url"] = this.props.imageUrl;
         this.props.createRoute(route); 
      
     }

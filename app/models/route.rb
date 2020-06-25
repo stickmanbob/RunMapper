@@ -18,7 +18,7 @@ class Route < ApplicationRecord
 
  ################ Validations ########################
 
-    validates :name, :creator_id, :distance, :route_data, presence: true
+    validates :name, :creator_id, :distance, :image_url, :route_data, presence: true
     
   ############### Associations #########################
     

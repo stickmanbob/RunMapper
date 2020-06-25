@@ -16,7 +16,7 @@
 /////////////////////// Main ////////////////////////////////////////////
 
 export default function ToolWidget({distance}) {
-    distance = distance.toFixed(2); 
+     
     return (
         <div className="tool-widget">
             <header className="tool-header">

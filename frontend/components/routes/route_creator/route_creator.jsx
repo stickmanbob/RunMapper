@@ -21,7 +21,8 @@ export default class RouteCreator extends React.Component {
      //// Instance variables and State
         this.state = {
             distance: 0,
-            routeData: ""
+            routeData: "",
+            imageUrl: "" 
         };
         this.routeCoordinates = [];
         
@@ -135,40 +136,38 @@ export default class RouteCreator extends React.Component {
        
     }
 
-    renderRoute(route) {
-        console.log(route);
-        this.routeRenderer.setDirections(route); 
-
-        let dirs = this.routeRenderer.getDirections();
-        // console.log(dirs); 
+    renderRoute(dirs) {
+        this.routeRenderer.setDirections(dirs); 
         this.updateDistance(dirs); 
-        
-        this.getStaticMapUrl();
-
     }
 
     updateDistance(dirs){
+
+        //Calculate distance by adding up length of each leg
         let dist = 0;
+
         dirs.routes[0].legs.forEach((leg)=>{
             dist += leg.distance.value;
         })
-        
-        let milesDist = (0.000621371 * dist);
-        let routeData = JSON.stringify(this.routeCoordinates); 
+
+        let routeData = JSON.stringify(this.routeCoordinates);
+
+        let imageUrl = this.getStaticMapUrl(dirs);
+
         this.setState({
-            distance: milesDist,
-            routeData: routeData 
+            distance: dist,
+            routeData: routeData,
+            imageUrl: imageUrl
         }); 
     }
 
     //Generate a url that can be passed to an <img/> tag to display a route thumb
-    getStaticMapUrl() {
+    getStaticMapUrl(dirs) {
 
       // Start with the basic url
         let baseUrl = "https://maps.googleapis.com/maps/api/staticmap?"
       // First extract the overall route polyline
-        let path = this.routeRenderer.getDirections()
-                                        .routes[0].overview_polyline;
+        let path = dirs.routes[0].overview_polyline;
         path = "path=enc:".concat(path); 
       //Set the size
         let size = "size=100x100"
@@ -178,7 +177,7 @@ export default class RouteCreator extends React.Component {
         let url = [];
         url.push(baseUrl,size,path,key);
         url = url.join("&");
-        console.log(url); 
+        return url; 
 
     }
 
@@ -190,6 +189,7 @@ export default class RouteCreator extends React.Component {
 
                 <SideBar distance={this.state.distance} 
                          routeData={this.state.routeData}
+                         imageUrl={this.state.imageUrl}
                     />
 
                 <div id="map-container">
