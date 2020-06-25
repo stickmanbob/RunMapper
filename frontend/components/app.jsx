@@ -13,7 +13,7 @@
     import SignUpFormContainer from './session/signup_container';
     import LoginFormContainer from './session/Login_container';
     import Header from './header/header';
-
+    import RouteIndex from './routes/route_index_container'
     // Route Creator
     import RouteCreator from './routes/route_creator/route_creator'
 /////////////////////////////////////////
@@ -29,6 +29,7 @@ export default function App (){
                 <Route exact path="/signup" component={SignUpFormContainer}/>
                 <Route exact path="/login" component={LoginFormContainer} />
                 <Route exact path="/routes/create" component={RouteCreator}/>
+                <Route path="/routes/my_routes" component={RouteIndex}/>
 
             </Switch>
         </>
