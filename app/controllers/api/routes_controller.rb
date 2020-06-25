@@ -1,7 +1,7 @@
 class Api::RoutesController < ApplicationController
 
     def index
-        @routes = Route.where(creator_id: params[:user_id])
+        @routes = Route.where(creator_id: params[:user_id]).order(created_at: :desc)
         render :index
     end
 

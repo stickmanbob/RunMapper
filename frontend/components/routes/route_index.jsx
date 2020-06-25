@@ -41,11 +41,43 @@ export default class RouteIndex extends React.Component{
         return newurl;
     }
 
+    convertDateTime(dateTime){
+
+    }
+
+    renderTableRows() {
+           return this.props.routes.map((route,i) => {
+                return (
+                    <tr key={i}>
+                        <td>
+                            <img className="route-thumb" src={route.imageUrl} alt="" />
+                        </td>
+                        <td>
+                            {route.createdAt}
+                        </td>
+                        <td>
+                            {route.distance}
+                        </td>
+                        <td>
+                            {route.name}
+                        </td>
+                        <td>
+                            <a className="options-button" 
+                                onClick={this.handleDelete(route.id)}>
+                                
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                )
+            }); 
+    }
+
     render() {
 
         return(
             <div className="route-index-container">
-                <table className="route-index">
+                <table className="route-index" >
                     <thead>
                         <tr >
                             <th>Route</th> <th>Created</th> <th>Distance</th> <th>Name</th> <th>Description</th> <th>Options</th>
@@ -53,29 +85,7 @@ export default class RouteIndex extends React.Component{
                     </thead>
 
                     <tbody>
-                        {this.props.routes.map((route)=>{
-                            return (
-                            <tr>
-                                <td>
-                                    <img src={route.imageUrl} alt=""/>
-                                </td>
-                                <td>
-                                    {route.createdAt}
-                                </td>
-                                <td>
-                                    {route.distance}
-                                </td>
-                                <td>
-                                    {route.name}
-                                </td>
-                                <td>
-                                    <a onClick={this.handleDelete(route.id)}>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            )
-                        })}
+                        {this.renderTableRows()} 
                     </tbody>
 
                 </table>

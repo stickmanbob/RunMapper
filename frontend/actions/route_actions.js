@@ -8,6 +8,12 @@
 
     export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
     export const receiveRoutes = (routes) =>{
+        
+        // Convert date strings to actual dates
+
+        for (let key in routes){
+            routes[key].createdAt = new Date(routes[key].createdAt); 
+        }
         return {
             type: RECEIVE_ROUTES,
             routes: routes
@@ -16,6 +22,7 @@
 
     export const RECEIVE_ROUTE = "RECEIVE_ROUTE";
     export const receiveRoute = (route) => {
+        route.createdAt = new Date(route.createdAt); 
         return {
             type: RECEIVE_ROUTE,
             route: route
