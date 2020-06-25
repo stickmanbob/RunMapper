@@ -21,4 +21,37 @@
             route: route
         }
     }
-}
+
+    export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
+    export const receiveRouteErrors = (errors) => {
+        return {
+            type: RECEIVE_ROUTE_ERRORS,
+            errors: errors.responseJSON
+        }
+    }
+
+/////////////////////// Thunk Action Creators ////////////////////////////////
+
+    export const createRoute = (route) => (dispatch) => {
+        routeAPIUtil.createRoute(route)
+        .then((res)=> dispatch(receiveRoute(res)))
+        .fail((res)=> dispatch(receiveRouteErrors(res)));
+    }
+
+    export const fetchRoute = (routeId) => (dispatch) => {
+        routeAPIUtil.fetchRoute(routeId)
+        .then((res)=> dispatch(receiveRoute(res)))
+        .fail((res)=> dispatch(receiveRouteErrors(res)));
+    }
+    
+    export const fetchUserRoutes = (userId) => (dispatch) => {
+        routeAPIUtil.fetchUserRoutes(userId)
+        .then((res)=> dispatch(receiveRoutes(res)))
+        .fail((res)=> dispatch(receiveRouteErrors(res)));
+    }
+
+
+
+
+
+
