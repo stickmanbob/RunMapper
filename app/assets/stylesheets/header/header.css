@@ -57,12 +57,19 @@
 /* .nav-auth-button pertains to login and signup links in greeting.jsx 
     subclasses .signup and .login correspond to respective buttons
 */
+
+.greeting{
+    display: flex;
+}
 .nav-auth-button { 
     font-size: 12px;
-    
-    padding: 10px 23px; 
+    height: 33px;
+    width: 100px;
+    box-sizing: border-box;
     margin: 5px 4px;
-    display: inline-block; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
     border-radius: 5px;
     font-family: sans-serif;
     font-weight: bold;

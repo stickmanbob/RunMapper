@@ -11,6 +11,7 @@ import {createStore} from 'redux';
 import React from 'react'; 
 import Root from './components/root'
 import configureStore from './store/store'
+import {receiveCurrentUser} from "./actions/session_actions";
 //////////////////////////////////////////////////////////////
 
 
@@ -25,7 +26,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     //////////////////////////////////
-
+    if (window.currentUser){
+        store.dispatch(receiveCurrentUser(window.currentUser)); 
+    }
     ReactDOM.render(<Root store={store}/> ,root)
 });
 
