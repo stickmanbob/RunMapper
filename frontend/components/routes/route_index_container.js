@@ -18,9 +18,10 @@ const mapStatetoProps = function (state) {
     // let userRoutes = routes.filter((route)=>{
     //     return route.creatorId === state.session.currentUser
     // })  
-    let routes = Object.values(state.entities.routes); 
+    let routes = Object.values(state.entities.routes);
+    routes.sort((a,b)=> b.createdAt - a.createdAt); 
     return{
-        routes: Object.values(state.entities.routes),
+        routes: routes,
         user: state.session.currentUser
     }
 }

@@ -41,8 +41,8 @@ export default class RouteIndex extends React.Component{
         return newurl;
     }
 
-    convertDateTime(dateTime){
-
+    convertDateTime(date){
+        return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
     }
 
     renderTableRows() {
@@ -53,7 +53,7 @@ export default class RouteIndex extends React.Component{
                             <img className="route-thumb" src={route.imageUrl} alt="" />
                         </td>
                         <td>
-                            {route.createdAt}
+                            {this.convertDateTime(route.createdAt)}
                         </td>
                         <td>
                             {route.distance}
