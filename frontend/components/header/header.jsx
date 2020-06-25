@@ -26,6 +26,7 @@ export default function Header () {
                         <ul className="dropdown-menu nav-bar">
         
                             <Link className="dropdown-menu-item nav-bar" to="/routes/create"> Create Route</Link>
+                            <Link className="dropdown-menu-item nav-bar" to="/routes/my_routes">My Routes</Link>
                             
                         </ul>
                     </div>
