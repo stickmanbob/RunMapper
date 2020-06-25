@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_225417) do
+ActiveRecord::Schema.define(version: 2020_06_25_023527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "routes", force: :cascade do |t|
     t.string "name", null: false
-    t.text "description", null: false
+    t.text "description"
     t.integer "creator_id", null: false
     t.float "distance", null: false
-    t.string "route_metadata", null: false
+    t.string "route_data", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
     t.index ["name"], name: "index_routes_on_name"
   end
 

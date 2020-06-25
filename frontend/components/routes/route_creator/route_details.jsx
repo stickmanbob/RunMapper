@@ -16,19 +16,25 @@ import React from "react";
 export default class RouteDetails extends React.Component {
     constructor(props) {
         super(props);
+        this.inputs = {
+            name: "",
+            description: ""
+        }
 
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
-        this.props.finalizeState();
-        console.log(this.props.distance, this.props.routeData) 
+     
+    }
+
+    handleChange(field) {
+
     }
 
 
     render() {
-        console.log("rendered");
         return(
             <div>
                 <header>

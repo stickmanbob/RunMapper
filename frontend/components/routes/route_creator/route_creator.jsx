@@ -140,7 +140,7 @@ export default class RouteCreator extends React.Component {
         this.routeRenderer.setDirections(route); 
 
         let dirs = this.routeRenderer.getDirections();
-        
+        console.log(dirs); 
         this.updateDistance(dirs); 
 
     }
@@ -150,16 +150,12 @@ export default class RouteCreator extends React.Component {
         dirs.routes[0].legs.forEach((leg)=>{
             dist += leg.distance.value;
         })
-
-        console.log(dist); 
-     
         
         let milesDist = (0.000621371 * dist);
-        let routeData = JSON.stringify(this.routeCoordinates);
-        
+        let routeData = JSON.stringify(this.routeCoordinates); 
         this.setState({
             distance: milesDist,
-
+            routeData: routeData 
         }); 
     }
 
