@@ -22,13 +22,15 @@ class Api::RoutesController < ApplicationController
     end
 
     def destroy
-        @route = route.find(params[:id])
+        @route = Route.find(params[:id])
 
-        if route.creator_id == current_user.id 
+        if @route and @route.creator_id == current_user.id 
             @route.destroy
             render :show 
-        else
+        elsif @route.creator_id != current_user.id 
             render json: ["Only the creator can delete this route"], status:401
+        else
+            render json: ["Route not found!"], status:404 
         end
     end
 

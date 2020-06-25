@@ -33,6 +33,7 @@ export const deleteRoute = (id) => {
 export const createRoute = (route) => {
     return $.ajax({
         url: `/api/routes/`,
-        method: "POST"
+        method: "POST",
+        data: {route:route} 
     });
 }
