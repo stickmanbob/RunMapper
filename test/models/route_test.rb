@@ -7,10 +7,10 @@
 #  description :text
 #  creator_id  :integer          not null
 #  distance    :float            not null
-#  route_data  :string           not null
+#  route_data  :text             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  image_url   :string
+#  image_url   :text
 #
 require 'test_helper'
 
