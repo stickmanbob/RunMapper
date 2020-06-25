@@ -56,10 +56,14 @@ export default class RouteDetails extends React.Component {
                 </header>
 
                 <form onSubmit = {this.handleSubmit}>
-                    <input onChange={this.handleChange("name")} type="text" placeholder="Name this Map" value={this.state.name}/>
+                    <input onChange={this.handleChange("name")} 
+                            type="text" placeholder="Name this Map" 
+                            value={this.state.name}/>
+
                     <input type="submit" value="Save Route"/>
 
-                    <input onChange={this.handleChange("description")} type="text" placeholder="Describe this Map"/>
+                    <input onChange={this.handleChange("description")} 
+                            type="text" placeholder="Describe this Map"/>
                 </form>
             </div>
         )

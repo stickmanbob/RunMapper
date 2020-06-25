@@ -68,6 +68,8 @@ export default class RouteCreator extends React.Component {
 
         });
 
+        this.routeRenderer.addListener("directions_changed", ()=> this.updateDistance(this.routeRenderer.getDirections()));  
+
     }
 
   
@@ -80,12 +82,6 @@ export default class RouteCreator extends React.Component {
         let lng = e.latLng.lng();
 
         let coords = {lat:lat, lng:lng}; 
-        
-        // // Create a 
-        // let marker = new google.maps.Marker({position:coords});
-        
-        // Remove it from the map to reduce clutter
-        // marker.setMap(null);
         
         // Add coordinates to waypoints array
         this.routeCoordinates.push(coords); 
