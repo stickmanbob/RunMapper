@@ -7,9 +7,11 @@
     import {combineReducers} from "redux";
   /// Reducers
     import {usersReducer} from "./users_reducer";
+    import routesReducer from "./routes_reducer";
 
 ///////////////////// Main ///////////////////////////////////////////
 
     export default combineReducers({
-        users: usersReducer
+        users: usersReducer,
+        routes: routesReducer
     }); 

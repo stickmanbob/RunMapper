@@ -50,6 +50,13 @@
         .fail((res)=> dispatch(receiveRouteErrors(res)));
     }
 
+    export const deleteRoute = (routeId) => (dispatch) => {
+        routeAPIUtil.deleteRoute(routeId)
+        .then((res) => dispatch(receiveRoute(res)))
+        .fail((res) => dispatch(receiveRouteErrors(res)));
+}
+
+
 
 
 

@@ -35,3 +35,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 // window.createRoute = (route) => util.createRoute(route).then((res) => console.log(res)).fail((res)=>console.log(res.responseText));
 // window.deleteRoute = (routeId) => util.deleteRoute(routeId).then((res) => console.log(res)).fail((res) => console.log(res.responseText));
 // window.fetchRoute = (routeId) => util.fetchRoute(routeId).then((res) => console.log(res));
+
+import * as actions from "./actions/route_actions";
+window.actions = actions;

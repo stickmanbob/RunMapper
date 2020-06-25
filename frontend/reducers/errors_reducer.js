@@ -8,11 +8,11 @@
     import {combineReducers} from "redux";
   /// Reducers
     import sessionErrorsReducer from "./session_errors_reducer";
-
+    import routesErrorsReducer from "./routes_errors_reducer"
 /////////////////// Main //////////////////////////////////////
 
 export default combineReducers({
     session: sessionErrorsReducer,
-
+    routes: routesErrorsReducer
 });
 
