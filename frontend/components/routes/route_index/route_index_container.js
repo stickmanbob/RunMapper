@@ -5,7 +5,7 @@
 //////////////////// Imports ////////////////////////////////////////////
   /// Util
     import { connect } from 'react-redux';
-    import {fetchUserRoutes, deleteRoute} from "../../actions/route_actions"
+    import {fetchUserRoutes, deleteRoute} from "../../../actions/route_actions"
   /// Components
     import RouteIndex from "./route_index";
 
