@@ -34,7 +34,7 @@
     background-color: white;
     border: 1px solid #d3d6dc;
     border-bottom: 0px;
-    box-shadow: 1px 1px;
+    box-shadow: 1px 1px  #9ea2ad;
     color: #9ea2ad;
     height: 42px;
     width: 94px; 
@@ -49,6 +49,7 @@
 .dropdown-menu-item:hover{
     color:black;
     cursor: default;
+    
 }
 
 
