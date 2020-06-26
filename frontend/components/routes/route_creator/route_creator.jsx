@@ -34,7 +34,8 @@ export default class RouteCreator extends React.Component {
         this.renderRoute = this.renderRoute.bind(this);
         this.updateDistance = this.updateDistance.bind(this); 
         this.getStaticMapUrl = this.getStaticMapUrl.bind(this); 
-        this.undoLastWaypoint = this.undoLastWaypoint.bind(this); 
+        this.undoLastWaypoint = this.undoLastWaypoint.bind(this);
+        this.resetRouteRenderer = this.resetRouteRenderer.bind(this);  
         
     }
 
@@ -42,7 +43,8 @@ export default class RouteCreator extends React.Component {
         // set the map to show SF
         const mapOptions = {
             center: { lat: 37.7758, lng: -122.435 }, // this is SF
-            zoom: 13
+            zoom: 13,
+            clickableIcons:false 
         };
 
         // wrap this.mapNode in a Google Map
@@ -56,8 +58,14 @@ export default class RouteCreator extends React.Component {
         this.dirService = new google.maps.DirectionsService();
 
         // Create Route Renderer
+         
+        this.resetRouteRenderer();
+    }
+
+  
+    resetRouteRenderer () {
         this.routeRenderer = new google.maps.DirectionsRenderer({
-            
+
             hideRouteList: true,
             map: this.map,
             polyline: {
@@ -67,17 +75,13 @@ export default class RouteCreator extends React.Component {
                 strokeWeight: 2
             },
             preserveViewport: true,
-            draggable: true 
+            draggable: true
 
         });
 
-        this.routeRenderer.addListener("directions_changed", 
-            ()=> this.updateDistance(this.routeRenderer.getDirections()));  
-
+        this.routeRenderer.addListener("directions_changed",
+            () => this.updateDistance(this.routeRenderer.getDirections())); 
     }
-
-  
-
 
     // Adds a marker to the map on click and updates waypoints array and polyline
     addWaypoint(e){ 
@@ -96,10 +100,13 @@ export default class RouteCreator extends React.Component {
     }
 
     undoLastWaypoint() {
+
+        // Remove the last waypoint
         this.routeCoordinates.pop(); 
-      
-        this.updatePath();
         
+        // Update route and re-render unless there are no more waypoints
+        // In that case, clear the map 
+            this.updatePath();
     }
 
     // Requests new directions and renders them
