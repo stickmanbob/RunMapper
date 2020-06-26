@@ -21,11 +21,12 @@
     }
 
     export const RECEIVE_ROUTE = "RECEIVE_ROUTE";
-    export const receiveRoute = (route) => {
-        route.createdAt = new Date(route.createdAt); 
+    export const receiveRoute = (data) => {
+        data.route.createdAt = new Date(data.route.createdAt); 
         return {
             type: RECEIVE_ROUTE,
-            route: route
+            route: data.route,
+            creator: data.creator 
         }
     }
 
