@@ -57,20 +57,20 @@ class RouteDetails extends React.Component {
 
     render() {
         return(
-            <div>
-                <header>
-                    Route Details
+            <div className="route-details">
+                <header className="sidebar-divider">
+                    <h3>Route Details</h3>
                 </header>
 
-                <form onSubmit = {this.handleSubmit}>
-                    <input onChange={this.handleChange("name")} 
+                <form className="detail-form" onSubmit = {this.handleSubmit}>
+                    <input className="name-input" onChange={this.handleChange("name")} 
                             type="text" placeholder="Name this Map" 
                             value={this.state.name}/>
 
-                    <input type="submit" value="Save Route"/>
+                    <input className="submit-route" type="submit" value="Save Route"/>
 
-                    <input onChange={this.handleChange("description")} 
-                            type="text" placeholder="Describe this Map"/>
+                    <textarea onChange={this.handleChange("description")} placeholder="Describe this Map" cols="30" rows="10"></textarea>
+
                 </form>
             </div>
         )

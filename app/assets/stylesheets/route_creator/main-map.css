@@ -1,10 +1,11 @@
-/* This sheet is for the route_map.jsx */
+/* This sheet is for the route_creator.jsx */
 
 .Mapper-Widget{
     display: flex;
 }
 
 #map-container{
+    margin-top: 2px;
     display: block;
     position: relative;
    width: 100%;
@@ -18,7 +19,4 @@
     width: 100%; 
 }
 
-.map-sidebar{
-    width: 339px 
-    
-}
+

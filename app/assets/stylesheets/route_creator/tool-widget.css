@@ -1,0 +1,104 @@
+/* Styling for tool widget
+    contains tool header(containing distance counter) and button panel
+*/
+
+
+.tool-widget{
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    height: 270px; 
+    border: 1px solid black;
+    border-radius: 3px; 
+    
+    /* must be position absoulte to float on map
+        relies on map-container being position:relative */
+    position: absolute;
+    top: 110px;
+    right: 10px; 
+
+}
+
+/* Header */
+
+.tool-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 44px;
+    padding: 5px;
+    padding-top: 3px;
+    background-color: #525252;
+    box-sizing: border-box;
+    opacity: 93%;
+}
+
+.distance-counter {
+    opacity:100%;
+    font-family:"Open Sans", sans-serif;
+    color:white;
+}
+
+.distance-counter h3{
+    font-size: 11px;
+    font-weight: 400;
+    text-shadow:rgb(0, 0, 0) 1px 1px 2px;
+    line-height: 12px;
+
+}
+
+.distance-counter h1{
+    font-size: 24px;
+    font-weight: 900;
+    text-shadow:rgb(0, 0, 0) 1px 1px 2px;
+}
+
+/* buttons */
+
+.tool-dropdown{
+    background-color: #f9f9f9;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    height:226px;
+    width: 100%;
+    padding: 10px 0px; 
+
+}
+.tool-button{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 30px;
+    background-color: #f3f3f3;
+    padding: 16px 10px;
+    width: 180px;
+    height: 47px;
+    box-sizing: border-box; 
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 8px ;
+    
+}
+
+.tool-button:hover{
+    background-color: #98bcdf;
+}
+
+.tool-button i{
+    color: blue;
+    vertical-align: middle;
+}
+
+.tool-button span {
+    font-size: 12px;
+    font-family: Armour,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 400;
+    vertical-align: middle; 
+}

@@ -32,7 +32,13 @@ export default class ToolWidget extends React.Component{
                 </header>
                 <div className="tool-dropdown">
                     <nav className="buttons">
-                        <button onClick={this.handleButton(this.props.undo)} className="tool-button undo">UNDO</button>
+                        <button onClick={this.handleButton(this.props.undo)}
+                                                 className="tool-button undo">
+
+                            <i className="fa fa-undo" aria-hidden="true"> </i>
+                            <span>UNDO</span>
+                        </button>
+
                         <button className="tool-button clear"></button>
                         <button className="tool-button center"></button>
                     </nav>

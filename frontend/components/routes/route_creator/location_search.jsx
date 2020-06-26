@@ -23,13 +23,15 @@ export default class LocationSearch extends React.Component {
     render(){
         return (
             
-                <div className="location-search-container">
-                    <label> Choose Map Location</label>
-                    <form onSubmit={this.centerMap} className="location-search">
-                        <input type="text" className="search-bar" />
-                        <input type="submit" value="Search" />
-                    </form>
-                </div>
+                <section className="location-search-container">
+                    <div>
+                        <label> Choose Map Location</label>
+                        <form onSubmit={this.centerMap} className="location-search">
+                            <input type="text" className="search-bar" />
+                            <input className="search-button" type="submit" value="Search" />
+                        </form>
+                    </div>
+                </section>
         
         )
     }

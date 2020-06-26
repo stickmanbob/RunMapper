@@ -15,8 +15,8 @@ export default function DistanceCounter ({distance}) {
 
     return (
         <div className="distance-counter">
-            <h3 >Distance: </h3>
-            <h1>{milesDist} Miles </h1>
+            <h3 >DISTANCE: </h3>
+            <h1>{milesDist} MI </h1>
         </div>
     )
 }

@@ -1,0 +1,131 @@
+
+
+.map-sidebar{
+    min-width: 340px 
+      
+}
+
+.route-details{
+    display: flex;
+    flex-direction: column;
+    height: 304px;
+    background-color: #fefefe;
+    align-items: baseline;
+}
+
+.route-details header {
+    align-self: flex-start;
+}
+
+.sidebar-divider{
+    width: 100%;
+}
+
+.sidebar-divider h3{
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 550;
+    color: rgb(68, 68, 68);
+    background-color: #efefef;
+    width: 100%;
+    padding: 5px 15px; 
+    border-top: 1px solid gray;
+
+}
+.detail-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+}
+
+.name-input{
+    font-size: 14px;
+    font-family:"Open Sans", sans-serif;
+    height:34px;
+    min-width:40px;
+    box-shadow:rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset, rgba(82, 168, 236, 0.4) 0px 0px 5.33344px 0px;
+    color:rgb(85, 85, 85);
+    border-radius: 4px;
+    color:rgb(85, 85, 85);
+    border: 1px solid gray;
+
+}
+
+.detail-form textarea{
+    height: 40px;
+    box-shadow:rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset;
+    color:rgb(85, 85, 85); 
+    border-radius: 4px;
+    font-family:"Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+.submit-route{
+    margin: 15px 0px;
+    background-image: linear-gradient(rgb(255, 150, 40) 5%, rgb(255, 135, 20) 100%);
+    height: 20px;
+    box-sizing: content-box;
+    font-size: 16px;
+    width: 150px;
+    padding: 5px 25px;
+    margin: 10px 0px;
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: whitesmoke;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+    align-self: center;
+}
+
+.submit-route:hover{
+    background: linear-gradient(to bottom, #f08a15 5%, #e56e06 100%);
+}
+
+/* Search Bar */
+
+.search-bar{
+    font-size: 14px;
+    font-family:"Open Sans", sans-serif;
+    height:24px;
+    min-width:40px;
+    box-shadow:rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset, rgba(82, 168, 236, 0.4) 0px 0px 5.33344px 0px;
+    color:rgb(85, 85, 85);
+    border-radius: 4px;
+    color:rgb(85, 85, 85);
+    border: 1px solid gray;
+    margin-right: 5px;
+}
+
+.location-search-container > div {
+    padding: 8px 12px;
+}
+.location-search-container > div >label {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    margin-bottom: 5px;
+    display: block;
+    color: rgb(153, 153, 153);
+}
+
+.search-button{
+    background-color:rgba(0, 0, 0, 0);
+    background-image:linear-gradient(rgb(182, 182, 182) 5%, rgb(169, 166, 166) 100%);
+    border-radius: 4px;
+    box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 2px 0px;
+    color:rgb(255, 255, 255);
+    cursor:pointer;
+    display:inline-block;
+
+    font-family:"Open Sans", sans-serif;
+
+    font-weight:700;
+    height:30px;
+    width: 90px;
+}
+
+.search-button:hover{
+    background: linear-gradient(to bottom, #878585 5%, #5e5e5e 100%);
+    
+}
