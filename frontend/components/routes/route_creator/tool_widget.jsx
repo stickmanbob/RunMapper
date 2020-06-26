@@ -15,21 +15,29 @@
 
 /////////////////////// Main ////////////////////////////////////////////
 
-export default function ToolWidget({distance}) {
+export default class ToolWidget extends React.Component{
      
-    return (
-        <div className="tool-widget">
-            <header className="tool-header">
-                <DistanceCounter distance={distance}/> 
-                <div className="tool expand-trigger"></div>
-            </header>
-            <div className="tool-dropdown">
-                <nav className="buttons">
-                    <button className="tool-button undo"></button>
-                    <button className="tool-button clear"></button>
-                    <button className="tool-button center"></button>
-                </nav>
+    handleButton(action) {
+        return (e) => { 
+            e.preventDefault();
+            action();
+        }
+    }
+    render() {
+        return (
+            <div className="tool-widget">
+                <header className="tool-header">
+                    <DistanceCounter distance={this.props.distance}/> 
+                    <div className="tool expand-trigger"></div>
+                </header>
+                <div className="tool-dropdown">
+                    <nav className="buttons">
+                        <button onClick={this.handleButton(this.props.undo)} className="tool-button undo">UNDO</button>
+                        <button className="tool-button clear"></button>
+                        <button className="tool-button center"></button>
+                    </nav>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }

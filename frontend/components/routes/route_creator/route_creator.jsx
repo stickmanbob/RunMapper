@@ -29,11 +29,12 @@ export default class RouteCreator extends React.Component {
         
      //// Function Bindings
         
-        this.addMarker = this.addMarker.bind(this); 
+        this.addWaypoint = this.addWaypoint.bind(this); 
         this.updatePath = this.updatePath.bind(this); 
         this.renderRoute = this.renderRoute.bind(this);
         this.updateDistance = this.updateDistance.bind(this); 
         this.getStaticMapUrl = this.getStaticMapUrl.bind(this); 
+        this.undoLastWaypoint = this.undoLastWaypoint.bind(this); 
         
     }
 
@@ -48,7 +49,7 @@ export default class RouteCreator extends React.Component {
         this.map = new google.maps.Map(this.mapNode, mapOptions);
 
         // Add event listener to map to add a waypoint on click
-        this.map.addListener('click', this.addMarker); 
+        this.map.addListener('click', this.addWaypoint); 
 
         // create the directions requester
 
@@ -79,7 +80,7 @@ export default class RouteCreator extends React.Component {
 
 
     // Adds a marker to the map on click and updates waypoints array and polyline
-    addMarker(e){ 
+    addWaypoint(e){ 
         
         let lat = e.latLng.lat();
         let lng = e.latLng.lng();
@@ -91,6 +92,13 @@ export default class RouteCreator extends React.Component {
         
         //Update the polyline
         this.updatePath(); 
+        
+    }
+
+    undoLastWaypoint() {
+        this.routeCoordinates.pop(); 
+      
+        this.updatePath();
         
     }
 
@@ -114,23 +122,26 @@ export default class RouteCreator extends React.Component {
             origin: this.routeCoordinates[0],
             destination: this.routeCoordinates[this.routeCoordinates.length -1],
             travelMode: google.maps.DirectionsTravelMode.WALKING,
-            waypoints: waypoints,
+            waypoints: waypoints, 
         }
 
-      // Prevent rendering a route with only one waypoint
-      // Render a start marker instead 
-        if(this.routeCoordinates.length > 1){
+      // Prevent rendering a route with no waypoints
+      
+        if(this.routeCoordinates.length > 0){
 
             this.dirService.route(routeOpts ,this.renderRoute);
 
-        } else if (this.routeCoordinates.length === 1){
+        } 
+
+        // Render a start marker instead 
+        // else if (this.routeCoordinates.length === 1){
             
-            // Create a start marker, to be used in generating thumbnail later
-            this.start = new google.maps.Marker({
-                position: this.routeCoordinates[0],
-                map: this.map 
-            })
-        }
+        //     // Create a start marker, to be used in generating thumbnail later
+        //     this.start = new google.maps.Marker({
+        //         position: this.routeCoordinates[0],
+        //         map: this.map 
+        //     })
+        // }
 
       
        
@@ -196,7 +207,7 @@ export default class RouteCreator extends React.Component {
                     
                     <div id="map" ref={map => this.mapNode = map}> </div>
 
-                    <ToolWidget distance={this.state.distance}/>
+                    <ToolWidget distance={this.state.distance} undo={this.undoLastWaypoint}/>
 
                 </div>
 
