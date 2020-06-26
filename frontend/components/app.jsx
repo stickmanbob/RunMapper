@@ -19,6 +19,8 @@
     import MyRoutes from './routes/route_index/my_routes';
     // Route Creator
     import RouteCreator from './routes/route_creator/route_creator';
+    //Show Route
+    import ShowRoute from "./routes/route_show/route_show_container"; 
 /////////////////////////////////////////
 
 
@@ -33,6 +35,7 @@ export default function App (){
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
                 <ProtectedRoute path="/routes/my_routes" component={MyRoutes}/>
+                <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
 
             </Switch>
         </>
