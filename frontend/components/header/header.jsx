@@ -19,10 +19,10 @@ export default function Header () {
 
         <div className="main-header"> 
             <header className="nav-header">
-                <h1>RunMapper</h1>
+                <img src={window.logo} alt=""/>
                 <nav className="nav-links">
                     <div className="nav-bar dropdown-container">
-                        <Link className="nav-link" to="/routes/">Routes</Link>
+                        <Link className="nav-link" to="/routes/">ROUTES</Link>
                         <ul className="dropdown-menu nav-bar">
         
                             <Link className="dropdown-menu-item nav-bar" to="/routes/create"> Create Route</Link>
