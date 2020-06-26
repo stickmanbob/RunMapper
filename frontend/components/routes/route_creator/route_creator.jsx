@@ -104,9 +104,7 @@ export default class RouteCreator extends React.Component {
         // Remove the last waypoint
         this.routeCoordinates.pop(); 
         
-        // Update route and re-render unless there are no more waypoints
-        // In that case, clear the map 
-            this.updatePath();
+        this.updatePath();
     }
 
     // Requests new directions and renders them

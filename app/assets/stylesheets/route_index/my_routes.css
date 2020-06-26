@@ -1,0 +1,50 @@
+/* Styles for overall myroutes component 
+    
+    Classes: 
+        .my-routes: overall container
+        .banner: contains the main header and create route button
+        .create-button: create route button
+    Colors:
+        create button: rgb(242,122,13)
+        div border: rgb(146, 151, 163)
+
+*/
+
+.my-routes{
+    margin: 0 auto;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid rgb(146, 151, 163);
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 708px;
+    /* remove border and margin/padding once  search bar is ready*/
+    padding: 20px 0px;
+    border-bottom: 1px solid rgb(146,151,163);
+    margin-bottom: 20px;
+}
+
+.banner h1{
+    font-size: 30px; 
+    font-family:Armour, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+.create-button{
+    font-family:Armour, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(242,122,13);
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 139px;
+    height: 44px;
+}

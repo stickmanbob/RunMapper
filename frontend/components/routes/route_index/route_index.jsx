@@ -11,8 +11,8 @@
 /// Utilities
     import React from "react";
 /// Components
-    
 
+    import {Link} from "react-router-dom"; 
 
 /////////////////////// Main ////////////////////////////////////////////
 
@@ -45,21 +45,36 @@ export default class RouteIndex extends React.Component{
         return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
     }
 
+    convertDistance(dist) {
+        return (dist * 0.000621371).toFixed(2) 
+    }
+
     renderTableRows() {
            return this.props.routes.map((route,i) => {
                 return (
                     <tr key={i}>
                         <td>
-                            <img className="route-thumb" src={route.imageUrl} alt="" />
+                            <Link className="options-button" to={`/routes/${route.id}`}>
+                                <img className="route-thumb" src={route.imageUrl} alt="" />
+                            </Link>
+                            
                         </td>
                         <td>
-                            {this.convertDateTime(route.createdAt)}
+                            <Link className="options-button" to={`/routes/${route.id}`}>
+                                {this.convertDateTime(route.createdAt)}
+                            </Link>
                         </td>
                         <td>
-                            {route.distance}
+                            {this.convertDistance(route.distance)} Miles
                         </td>
                         <td>
-                            {route.name}
+                            <Link className="options-button" to={`/routes/${route.id}`}>
+                                {route.name}
+                            </Link>
+                            
+                        </td>
+                        <td>
+                            {route.description}
                         </td>
                         <td>
                             <a className="options-button" 

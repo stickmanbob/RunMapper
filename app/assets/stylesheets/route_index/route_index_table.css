@@ -1,0 +1,56 @@
+/* Styling for the route index component (just the table) */
+/* Classes:
+    .route-index-container: containing div
+    .route-index: table of route data
+        - children: thead, tbody => tr => th, td
+    .options-button: an options button (actually an <a> tag)
+    .route-thumb: route image
+    Colors:
+        border color: rgb(211, 214, 220)
+        Blue text: #0076C0
+        Stripe background: #f6f7f8
+        Row hover BG: #ECECEC
+*/
+
+.route-index {
+    
+}
+
+.route-index tr:nth-child(even){
+    background-color: #f6f7f8;
+}
+
+.route-index thead tr {
+    background-color: #f6f7f8;
+}
+
+.route-index tr:hover {
+    background-color: #ECECEC;
+}
+
+.route-index tr, .route-index th, .route-index td{
+    border: 1px solid rgb(211, 214, 220);
+    text-align: left; 
+    padding: 15px 10px;
+    vertical-align: middle;
+}   
+
+.route-index th{
+    font-family: Armour, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #000000; 
+}
+
+.route-thumb{
+    height: 75px;
+    width: 77px; 
+    padding: 15px 10px; 
+}
+
+/* used to select options buttons and table links */
+.route-index a{
+    color: #0076C0;
+    cursor: pointer;  
+}
+
