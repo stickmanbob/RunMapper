@@ -47,9 +47,13 @@
 
 /////////////////////// Thunk Action Creators ////////////////////////////////
 
-    export const createRoute = (route) => (dispatch) => {
-        routeAPIUtil.createRoute(route)
+    //createRoute expects a history arguement corresponding to the 
+    // history prop of a withRouter connected React element
+    // On a succesful save, redirects user to their routes index
+    export const createRoute = (route, history) => (dispatch) => {
+        return routeAPIUtil.createRoute(route)
         .then((res)=> dispatch(receiveRoute(res)))
+        .then((res)=> history.push("/routes/my_routes"))
         .fail((res)=> dispatch(receiveRouteErrors(res)));
     }
 

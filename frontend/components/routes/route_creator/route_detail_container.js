@@ -19,9 +19,11 @@ function mSTP (state) {
     return {};
 };
 
+// createRoute maps the createRoute action to props. Expects the route and 
+// the component's history prop (from withRouter) 
 function mDTP (dispatch) {
     return {
-        createRoute: (route) => dispatch(createRoute(route))
+        createRoute: (route,hist) => dispatch(createRoute(route,hist))
     };
 };
 

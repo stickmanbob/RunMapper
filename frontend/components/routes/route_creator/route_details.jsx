@@ -10,13 +10,14 @@
 
 /// Utilities
     import React from "react";
+    import {withRouter} from "react-router-dom"; 
 /// Components
 
 
 
 /////////////////////// Main ////////////////////////////////////////////
 
-export default class RouteDetails extends React.Component {
+class RouteDetails extends React.Component {
     constructor(props) {
         super(props);
 
@@ -34,11 +35,16 @@ export default class RouteDetails extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        // build out the route with all our data
         let route = Object.assign({},this.state);
+
+        // add data passed in from map
         route["route_data"] = this.props.routeData;
         route["distance"] = this.props.distance; 
-        route["image_url"] = this.props.imageUrl;
-        this.props.createRoute(route); 
+        route["image_url"] = this.props.imageUrl; 
+
+        // Submit route and pass withRouter history prop
+        this.props.createRoute(route,this.props.history); 
      
     }
 
@@ -70,3 +76,5 @@ export default class RouteDetails extends React.Component {
         )
     }
 }
+
+export default withRouter(RouteDetails); 
