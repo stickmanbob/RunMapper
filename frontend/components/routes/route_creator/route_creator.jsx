@@ -35,7 +35,8 @@ export default class RouteCreator extends React.Component {
         this.updateDistance = this.updateDistance.bind(this); 
         this.getStaticMapUrl = this.getStaticMapUrl.bind(this); 
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this);
-        this.resetRouteRenderer = this.resetRouteRenderer.bind(this);  
+        this.resetRouteRenderer = this.resetRouteRenderer.bind(this);
+        this.setCenter=this.setCenter.bind(this);   
         
     }
 
@@ -137,18 +138,6 @@ export default class RouteCreator extends React.Component {
             this.dirService.route(routeOpts ,this.renderRoute);
 
         } 
-
-        // Render a start marker instead 
-        // else if (this.routeCoordinates.length === 1){
-            
-        //     // Create a start marker, to be used in generating thumbnail later
-        //     this.start = new google.maps.Marker({
-        //         position: this.routeCoordinates[0],
-        //         map: this.map 
-        //     })
-        // }
-
-      
        
     }
 
@@ -175,6 +164,10 @@ export default class RouteCreator extends React.Component {
             routeData: routeData,
             imageUrl: imageUrl
         }); 
+    }
+
+    setCenter(center){
+        this.map.setCenter(center);
     }
 
     //Generate a url that can be passed to an <img/> tag to display a route thumb
