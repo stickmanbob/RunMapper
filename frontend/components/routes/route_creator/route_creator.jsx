@@ -36,7 +36,7 @@ export default class RouteCreator extends React.Component {
         this.getStaticMapUrl = this.getStaticMapUrl.bind(this); 
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this);
         this.resetRouteRenderer = this.resetRouteRenderer.bind(this);
-        this.setCenter=this.setCenter.bind(this);   
+        this.centerMap=this.centerMap.bind(this);   
         
     }
 
@@ -166,7 +166,7 @@ export default class RouteCreator extends React.Component {
         }); 
     }
 
-    setCenter(center){
+    centerMap(center){
         this.map.setCenter(center);
     }
 
@@ -199,6 +199,7 @@ export default class RouteCreator extends React.Component {
                 <SideBar distance={this.state.distance} 
                          routeData={this.state.routeData}
                          imageUrl={this.state.imageUrl}
+                         centerMap={this.centerMap} 
                     />
 
                 <div id="map-container">

@@ -29,8 +29,9 @@
     margin: 10px 0px ;
     border: 1px solid lightgrey;
     background-color: inherit;
-    width: 30%;
-    height: 25px; 
+    width: 418px;
+    height: 44px;
+    box-sizing: border-box; 
 }
 
 .session-form-input:focus{
@@ -42,10 +43,10 @@
 .submit {
     background-color: #16D374;
     height: 20px; 
-    box-sizing: content-box;
-    
+    box-sizing: border-box;
+    height: 44px;
     font-size: 16px;
-    width: 30%; 
+    width: 418px; 
     padding: 12px 22px; 
     margin: 10px;
     display: inline-block; 
@@ -102,11 +103,11 @@
 
 .guest-user-button {
       background-color: #3b5998;
-    height: 20px; 
-    box-sizing: content-box;
+    height: 44px; 
+    box-sizing: border-box;
     
     font-size: 16px;
-    width: 30%; 
+    width: 418px; 
     padding: 12px 22px; 
     margin: 10px;
     display: inline-block; 

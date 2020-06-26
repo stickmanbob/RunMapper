@@ -129,3 +129,7 @@
     background: linear-gradient(to bottom, #878585 5%, #5e5e5e 100%);
     
 }
+
+#dummymap {
+    display: none;
+}

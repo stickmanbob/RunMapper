@@ -29,7 +29,7 @@ export default function Sidebar (props) {
     return (
     
         <section className='map-sidebar'>
-            <LocationSearch centerMap={centerMap} /> 
+            <LocationSearch centerMap={props.centerMap} /> 
             <RouteDetails distance={props.distance} 
                         routeData={props.routeData}
                         imageUrl={props.imageUrl}            

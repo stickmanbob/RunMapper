@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
     
     <!-- Add google maps API key and add to window -->
-     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
+     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&libraries=places" %>
 
      <script type="text/javascript">
             window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"
