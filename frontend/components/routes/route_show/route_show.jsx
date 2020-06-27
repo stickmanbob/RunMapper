@@ -9,7 +9,7 @@
 /// Utilities
     import React from "react";
 /// Components
-    // import RouteInfo from "./route_info"; 
+    import RouteInfo from "./route_info"; 
 
 
 /////////////////////// Main ////////////////////////////////////////////
@@ -46,6 +46,7 @@
         }
 
         initRouteRenderer() {
+            //add panel: this.dirNode to display directions 
             this.routeRenderer = new google.maps.DirectionsRenderer({
 
                 hideRouteList: true,
@@ -62,7 +63,7 @@
             });
         }
 
-        componentWillReceiveProps(newProps) {
+        componentWillUpdate(newProps) {
 
             if(newProps.route && newProps.route.routeData) {
                 let data = JSON.parse(newProps.route.routeData)
@@ -98,15 +99,19 @@
         }
 
         render () {
-            return(
-                <section className="route-show">
-                    <h1>Hi im a route!</h1>
-                    <div className= 'show-map-container'>
-                        
-                        <div id="map" ref={map => this.mapNode = map}> </div>
+                let route = this.props.route || {creatorId: null} 
+                return(
+                    <section className="route-show">
+                        <h1>Hi im a route!</h1>
+                        <div className= 'show-map-container'>
+                            
+                            <div id="map" ref={map => this.mapNode = map}> </div>
+                        </div>
+                        <RouteInfo route={route} />
+                        <div id="directions" ref={dirs => this.dirNode = dirs}></div>
 
-                    </div>
-                </section>
-            )
-        }
+
+                    </section>
+                )
+            }
     }

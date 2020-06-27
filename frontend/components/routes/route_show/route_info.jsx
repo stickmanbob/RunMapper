@@ -18,28 +18,21 @@ import { connect } from "react-redux";
 
 function mSTP(state,ownProps){
     return {
-        creator: state.users[ownProps.route.creatorId]
+        creator: state.entities.users[ownProps.route.creatorId]
     }
 }
 
-function mDTP(dispatch){
-    return{
-        fetchCreator: (id) => dispatch(fetchUser(id))
-    }
-}
-
-class RouteInfo extends React.Component() {
+class RouteInfo extends React.Component {
 
     constructor(props){
         super(props);
     }
 
-    componentDidMount(){
-        this.props.fetchCreator(this.props.route.creatorId); 
-    }
 
     render(){
         if (this.props.route && this.props.creator){
+            let route = this.props.route;
+            let creator = this.props.creator; 
             return(
                 <section className="route-info">
 
@@ -65,4 +58,4 @@ class RouteInfo extends React.Component() {
     }
 }
 
-export default connect(mSTP,mDTP)(RouteInfo);
+export default connect(mSTP)(RouteInfo);
