@@ -25,8 +25,10 @@ export default function routesReducer(state = {}, action) {
         case RECEIVE_ROUTE:
             return Object.assign({},state, {[action.route.id]: action.route});
         case DELETE_ROUTE:
+            debugger
             let newState = Object.assign({},state);
             delete newState[action.route.id];
+            debugger 
             return newState; 
         default:
             return state; 

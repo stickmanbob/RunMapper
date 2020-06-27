@@ -39,10 +39,10 @@
     }
 
     export const DELETE_ROUTE = "DELETE_ROUTE";
-    export const removeRoute = (route) => {
+    export const removeRoute = (data) => {
         return {
             type: DELETE_ROUTE,
-            route: route 
+            route: data.route 
         }
     }
 
