@@ -123,24 +123,41 @@
 
         render () {
                 this.checkProps(); 
+
+                // Must pass an empty route and creator to the render 
                 let route = this.props.route || {name: "", creatorId: null} ;
-            // if (this.props_fetched){
+                let creator = this.props.creator || {fname: "", lname:""}
+                console.log(this.props.route, this.props.creator); 
                 return(
                     <section className="route-show">
-                        <h1>{route.name}</h1>
-                        <div className= 'show-map-container'>
-                            
+                        <header>
+                            <h1>{route.name}</h1>
+                            <h3>Created By: {creator.fname} {creator.lname}</h3>
+                        </header>
+
+                        <section className= 'show-map-container'>
                             <div id="map" ref={map => this.mapNode = map}> </div>
-                        </div>
-                        <div id="directions" ref={dirs => this.dirNode = dirs}></div>
+                            <div id="directions" ref={dirs => this.dirNode = dirs}></div>
+                        </section>
+
+                        <section>
+                            <ul>
+                                <li> <span>Distance:</span> <span>{route.distance}</span>  </li>
+    
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h2>Description</h2>
+                            <p>{route.description}</p>
+                        </section>
+
+
+                        
 
 
                     </section>
                 )
-            // } else {
-            //     return (
-            //         <div>Loading...</div>
-            //     )
-            // }
+      
         }
     }
