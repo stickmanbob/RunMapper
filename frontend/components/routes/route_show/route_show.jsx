@@ -134,11 +134,10 @@
             e.preventDefault(); 
             
             if (this.routeRenderer.panel){
-                this.routeRenderer.setPanel(null);
-                this.setState({ showDirections: false }); 
+                this.setState({ showDirections: false }, () => this.routeRenderer.setPanel(null)); 
             } else {
-                this.routeRenderer.setPanel(this.dirNode); 
-                this.setState({showDirections: true}); 
+                 
+                this.setState({ showDirections: true }, () => this.routeRenderer.setPanel(this.dirNode)); 
             }
              
             
