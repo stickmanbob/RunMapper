@@ -143,6 +143,10 @@
             
         }
 
+        convertDistance(dist){
+            return (0.000621371*dist).toFixed(2);  
+        }
+
         render () {
                 this.checkProps(); 
 
@@ -184,7 +188,7 @@
                                     </span> 
                                     
                                     <span className="info-item-value">
-                                        {route.distance}
+                                        {this.convertDistance(route.distance)} Miles
                                     </span>  
                                 </li>
     

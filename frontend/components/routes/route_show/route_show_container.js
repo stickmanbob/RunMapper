@@ -17,6 +17,10 @@ const mapStatetoProps = function (state, ownProps) {
             route: route,
             creator: state.entities.users[route.creatorId]
         }
+    }else {
+        return {
+            route:route 
+        }
     }
 
 }
