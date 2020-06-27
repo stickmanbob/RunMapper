@@ -138,6 +138,7 @@
         render () {
                 this.checkProps(); 
 
+
                 // Must pass an empty route and creator to the render 
                 let route = this.props.route || {name: "", creatorId: null} ;
                 let creator = this.props.creator || {fname: "", lname:""}
@@ -147,14 +148,18 @@
                         <header className = "banner">
                             <h1>{route.name}</h1>
                             <h3>Created By: {creator.fname} {creator.lname}</h3>
+                            <button className="directions-button" onClick={this.toggleDirections}> DIRECTIONS </button>
                         </header>
 
                         <section className= 'show-map-container'>
+                            
                             <div id="map" className="show-map" ref={map => this.mapNode = map}> </div>
-                            <section className="directions-panel">
-                                <button onClick={this.toggleDirections}> DIRECTIONS </button>
+
+                            <section className="directions-panel">    
                                 <div id="directions" ref={dirs => this.dirNode = dirs}></div>
                             </section>
+        
+
                         </section>
 
                         <section className="route-info">

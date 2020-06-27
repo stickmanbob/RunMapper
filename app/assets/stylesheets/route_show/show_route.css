@@ -59,16 +59,20 @@ section.show-map-container {
 .directions-panel {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    /* position: absolute; */
     height: 100%;
     width: 300px;
-    top: 0px;
+    /* top: 0px;
     right: 0px;
-  
+   */
 }
 /* table name in google directions
 its tr 's contain the steps */
 .adp-directions tr{
     border-radius: 5px;
+}
+
+.directions-button{
+    align-self: flex-end;
 }
 
