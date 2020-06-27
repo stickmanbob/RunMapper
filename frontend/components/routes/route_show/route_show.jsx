@@ -71,6 +71,7 @@
 
                 hideRouteList: true,
                 map: this.map,
+                panel: this.dirNode,
                 polyline: {
                     geodesic: true,
                     strokeColor: '#FF0000',
@@ -130,19 +131,27 @@
                 console.log(this.props.route, this.props.creator); 
                 return(
                     <section className="route-show">
-                        <header>
+                        <header className = "banner">
                             <h1>{route.name}</h1>
                             <h3>Created By: {creator.fname} {creator.lname}</h3>
                         </header>
 
                         <section className= 'show-map-container'>
-                            <div id="map" ref={map => this.mapNode = map}> </div>
+                            <div id="map" className="show-map" ref={map => this.mapNode = map}> </div>
                             <div id="directions" ref={dirs => this.dirNode = dirs}></div>
                         </section>
 
-                        <section>
+                        <section className="route-info">
                             <ul>
-                                <li> <span>Distance:</span> <span>{route.distance}</span>  </li>
+                                <li> 
+                                    <span className="info-item-name">
+                                        Distance:
+                                    </span> 
+                                    
+                                    <span className="info-item-value">
+                                        {route.distance}
+                                        </span>  
+                                </li>
     
                             </ul>
                         </section>
