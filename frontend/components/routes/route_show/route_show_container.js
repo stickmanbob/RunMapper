@@ -10,17 +10,15 @@ import ShowRoute from "./route_show";
 /////////////////////// Main ////////////////////////////////////////////
 
 const mapStatetoProps = function (state, ownProps) {
-
-    if (ownProps.route){
+    
+    let route = state.entities.routes[ownProps.match.params.routeId];
+    if(route){
         return {
-            route: state.entities.routes[ownProps.match.params.routeId],
-            creator: state.entities.users[ownProps.route.creatorId]
-        }
-    } else {
-        return {
-            route: state.entities.routes[ownProps.match.params.routeId]
+            route: route,
+            creator: state.entities.users[route.creatorId]
         }
     }
+
 }
 
 const mapDispatchtoProps = function (dispatch) {
