@@ -48,7 +48,7 @@
           // Initialize the map component
             
             const mapOptions = {
-                center: { lat: 37.7758, lng: -122.435 }, 
+                center: { lat: 0, lng: 0 }, 
                 zoom: 13,
                 clickableIcons: false
             };
@@ -91,7 +91,7 @@
                 let data = JSON.parse(this.props.route.routeData)
                 
                 this.renderRoute(data); 
-
+               
                 this.props_fetched = true 
              
             }
@@ -119,7 +119,13 @@
                 waypoints: waypoints,
             }
 
+            //Request google for a new route via the Directions API, then 
+            // pass the directions to the renderer
             this.dirService.route(routeOpts, (dirs)=> this.routeRenderer.setDirections(dirs))
+            console.log("rendered"); 
+
+            // Reset the map center to the rendered route 
+            this.map.setCenter(coordinates[0]); 
         }
 
         render () {
@@ -150,7 +156,7 @@
                                     
                                     <span className="info-item-value">
                                         {route.distance}
-                                        </span>  
+                                    </span>  
                                 </li>
     
                             </ul>
