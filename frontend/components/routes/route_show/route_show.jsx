@@ -18,7 +18,7 @@
 
         constructor(props) {
             super(props);
-            
+            this.props_fetched = false; 
             this.initRouteRenderer = this.initRouteRenderer.bind(this); 
 
         }
@@ -63,10 +63,10 @@
             });
         }
 
-        componentWillUpdate(newProps) {
+        checkProps() {
 
-            if(newProps.route && newProps.route.routeData) {
-                let data = JSON.parse(newProps.route.routeData)
+            if((this.props.route && this.props.route.routeData) && !this.props_fetched) {
+                let data = JSON.parse(this.props.route.routeData)
                 this.map.setCenter(data[0]); 
                 
                 this.renderRoute(data); 
@@ -99,10 +99,11 @@
         }
 
         render () {
-                let route = this.props.route || {creatorId: null} 
+                this.checkProps(); 
+                let route = this.props.route || {name: "", creatorId: null} ; 
                 return(
                     <section className="route-show">
-                        <h1>Hi im a route!</h1>
+                        <h1>{route.name}</h1>
                         <div className= 'show-map-container'>
                             
                             <div id="map" ref={map => this.mapNode = map}> </div>
