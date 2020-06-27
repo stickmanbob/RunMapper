@@ -25,6 +25,7 @@
             }
             this.initRouteRenderer = this.initRouteRenderer.bind(this); 
             this.initMap = this.initMap.bind(this);
+            this.toggleDirections = this.toggleDirections.bind(this); 
         }
 
         componentDidMount(){
@@ -128,6 +129,12 @@
             this.map.setCenter(coordinates[0]); 
         }
 
+        toggleDirections(e){
+            e.preventDefault(); 
+            this.routeRenderer.panel ? this.routeRenderer.setPanel(null) : this.routeRenderer.setPanel(this.dirNode);
+            
+        }
+
         render () {
                 this.checkProps(); 
 
@@ -144,7 +151,10 @@
 
                         <section className= 'show-map-container'>
                             <div id="map" className="show-map" ref={map => this.mapNode = map}> </div>
-                            <div id="directions" ref={dirs => this.dirNode = dirs}></div>
+                            <section className="directions-panel">
+                                <button onClick={this.toggleDirections}> DIRECTIONS </button>
+                                <div id="directions" ref={dirs => this.dirNode = dirs}></div>
+                            </section>
                         </section>
 
                         <section className="route-info">
