@@ -10,8 +10,16 @@ import ShowRoute from "./route_show";
 /////////////////////// Main ////////////////////////////////////////////
 
 const mapStatetoProps = function (state, ownProps) {
-    return {
-        route: state.entities.routes[ownProps.match.params.routeId]
+
+    if (ownProps.route){
+        return {
+            route: state.entities.routes[ownProps.match.params.routeId],
+            creator: state.entities.users[ownProps.route.creatorId]
+        }
+    } else {
+        return {
+            route: state.entities.routes[ownProps.match.params.routeId]
+        }
     }
 }
 

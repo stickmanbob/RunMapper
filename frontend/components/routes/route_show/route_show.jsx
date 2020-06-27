@@ -2,14 +2,15 @@
 // Renders the route google map and an overlay showing indfo (routeInfo)
 // Props:
 //  - route: route from state
-//  - fetchRoute: (id) => fetches route info from database
+//  - creator: route creator data (user)
+//  - fetchRoute: (id) => fetches route info from database (includes creator info)
 
 /////////////////// Imports /////////////////////////////////////////
 
 /// Utilities
     import React from "react";
 /// Components
-    import RouteInfo from "./route_info"; 
+    
 
 
 /////////////////////// Main ////////////////////////////////////////////
@@ -19,14 +20,31 @@
         constructor(props) {
             super(props);
             this.props_fetched = false; 
+            this.state = {
+                test: 0 
+            }
             this.initRouteRenderer = this.initRouteRenderer.bind(this); 
-
+            this.initMap = this.initMap.bind(this);
         }
 
-        componentDidMount () {
-          // Initialize state by fetching the route in question
+        componentDidMount(){
+            // Initialize state by fetching the route in question
             this.props.fetchRoute(this.props.match.params.routeId);
+            this.setState({
+                test:1 
+            })
 
+            this.initMap();
+        }
+
+        componentDidUpdate(){
+       
+            if (this.mapNode && !this.map) {
+                //init map?
+            }
+        }
+
+        initMap () {
           // Initialize the map component
             
             const mapOptions = {
@@ -44,6 +62,8 @@
             this.initRouteRenderer();
 
         }
+
+
 
         initRouteRenderer() {
             //add panel: this.dirNode to display directions 
@@ -65,11 +85,14 @@
 
         checkProps() {
 
-            if((this.props.route && this.props.route.routeData) && !this.props_fetched) {
+            if((this.props.route && this.props.route.routeData && this.map) && !this.props_fetched) {
+
                 let data = JSON.parse(this.props.route.routeData)
-                this.map.setCenter(data[0]); 
                 
                 this.renderRoute(data); 
+
+                this.props_fetched = true 
+             
             }
         }
 
@@ -100,7 +123,8 @@
 
         render () {
                 this.checkProps(); 
-                let route = this.props.route || {name: "", creatorId: null} ; 
+                let route = this.props.route || {name: "", creatorId: null} ;
+            // if (this.props_fetched){
                 return(
                     <section className="route-show">
                         <h1>{route.name}</h1>
@@ -108,11 +132,15 @@
                             
                             <div id="map" ref={map => this.mapNode = map}> </div>
                         </div>
-                        <RouteInfo route={route} />
                         <div id="directions" ref={dirs => this.dirNode = dirs}></div>
 
 
                     </section>
                 )
-            }
+            // } else {
+            //     return (
+            //         <div>Loading...</div>
+            //     )
+            // }
+        }
     }
