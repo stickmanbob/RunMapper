@@ -21,7 +21,8 @@
             super(props);
             this.props_fetched = false; 
             this.state = {
-                test: 0 
+                test: 0 ,
+                showDirections:false 
             }
             this.initRouteRenderer = this.initRouteRenderer.bind(this); 
             this.initMap = this.initMap.bind(this);
@@ -131,7 +132,15 @@
 
         toggleDirections(e){
             e.preventDefault(); 
-            this.routeRenderer.panel ? this.routeRenderer.setPanel(null) : this.routeRenderer.setPanel(this.dirNode);
+            
+            if (this.routeRenderer.panel){
+                this.routeRenderer.setPanel(null);
+                this.setState({ showDirections: false }); 
+            } else {
+                this.routeRenderer.setPanel(this.dirNode); 
+                this.setState({showDirections: true}); 
+            }
+             
             
         }
 
@@ -142,7 +151,11 @@
                 // Must pass an empty route and creator to the render 
                 let route = this.props.route || {name: "", creatorId: null} ;
                 let creator = this.props.creator || {fname: "", lname:""}
-                console.log(this.props.route, this.props.creator); 
+
+                if (this.routeRenderer){
+                    console.log(this.state.showDirections, this.routeRenderer.panel); 
+                }
+
                 return(
                     <section className="route-show">
                         <header className = "banner">
@@ -154,10 +167,12 @@
                         <section className= 'show-map-container'>
                             
                             <div id="map" className="show-map" ref={map => this.mapNode = map}> </div>
-
-                            <section className="directions-panel">    
-                                <div id="directions" ref={dirs => this.dirNode = dirs}></div>
-                            </section>
+                            
+                            { this.state.showDirections &&
+                                <section className="directions-panel">    
+                                    <div id="directions" ref={dirs => this.dirNode = dirs}></div>
+                                </section>
+                            }
         
 
                         </section>
