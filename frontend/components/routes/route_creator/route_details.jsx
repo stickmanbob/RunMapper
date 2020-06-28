@@ -24,7 +24,8 @@ class RouteDetails extends React.Component {
       /// Initalize state to empty field values
         this.state = {
             name: "",
-            description: ""
+            description: "",
+            activity: ""
         }
 
       /// Function bindings
@@ -63,10 +64,22 @@ class RouteDetails extends React.Component {
                 </header>
 
                 <form className="detail-form" onSubmit = {this.handleSubmit}>
+
+                    {/* Name Field */}
                     <input className="name-input" onChange={this.handleChange("name")} 
                             type="text" placeholder="Name this Map" 
                             value={this.state.name}/>
 
+                    {/* Activity Dropdown */}
+                    <select className="activity-dropdown" value={this.state.activity} onChange={this.handleChange("activity")} >
+                        <option value="">Choose an Activity</option>
+                        <option value="Run">Run</option>
+                        <option value="Bike Ride">Bike Ride</option>
+                        <option value="Walk">Walk</option>
+                        <option value="Hike">Hike</option>
+                    </select>
+
+                    {/* Submit button */}
                     <input className="submit-route" type="submit" value="Save Route"/>
 
                     <textarea onChange={this.handleChange("description")} placeholder="Describe this Map" cols="30" rows="10"></textarea>
