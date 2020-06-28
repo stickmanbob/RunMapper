@@ -29,14 +29,16 @@ export default class SignUpForm extends React.Component {
             lname: "",
             password:"",
         }
+        // Before mounting, clear outstanding session errors
+        this.props.clearErrors(); 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.loginDummyUser = this.loginDummyUser.bind(this);
     }
 
-    // After mounting, clear outstanding session errors
+    
     componentDidMount() {
-        this.props.clearErrors(); 
+        
     }
 
     // handleChange(field): field is a name of a key in this.state (string).
