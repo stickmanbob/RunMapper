@@ -77,6 +77,7 @@ class RouteDetails extends React.Component {
                         <option value="Bike Ride">Bike Ride</option>
                         <option value="Walk">Walk</option>
                         <option value="Hike">Hike</option>
+                        <option value="Other">Other Sport/Activity</option>
                     </select>
 
                     {/* Submit button */}

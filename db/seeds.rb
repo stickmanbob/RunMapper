@@ -21,6 +21,7 @@ Route.destroy_all
   description: "Ajay's daily bike ride",
   creator_id: dummy.id,
   distance: 19119.0,
+  activity: "Bike Ride",
   route_data:
    "[{\"lat\":37.3059687861259,\"lng\":-122.0486082199612},
    {\"lat\":37.30586638012952,\"lng\":-122.05043212209132},

@@ -11,6 +11,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  image_url   :text
+#  activity    :string           not null
 #
 
 class Route < ApplicationRecord
@@ -18,6 +19,8 @@ class Route < ApplicationRecord
  ################ Validations ########################
 
     validates :name, :creator_id, :distance, :image_url, :route_data, presence: true
+
+    validates :activity, presence: true, inclusion: {in: ["Run","Bike Ride", "Walk", "Hike", "Other"]}
     
   ############### Associations #########################
     
