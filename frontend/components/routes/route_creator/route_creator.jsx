@@ -37,6 +37,7 @@ export default class RouteCreator extends React.Component {
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this);
         this.initRouteRenderer = this.initRouteRenderer.bind(this);
         this.centerMap=this.centerMap.bind(this);   
+        this.centerOnRoute = this.centerOnRoute.bind(this);
         
     }
 
@@ -174,6 +175,26 @@ export default class RouteCreator extends React.Component {
         this.map.setCenter(center);
     }
 
+    centerOnRoute () {
+
+        // If no route displayed, do nothing
+        if (this.routeCoordinates.length === 0){
+            return; 
+        }
+        // Extract bounds from routeRenderer
+        let dirs = this.routeRenderer.getDirections();
+        let bounds = dirs.routes[0].bounds
+        
+       // Pan to bounds
+        this.map.panToBounds(bounds, {
+            bottom:300,
+            top:300,
+            left:400,
+            right:600 
+        });
+         
+    }
+
     
 
     //Generate a url that can be passed to an <img/> tag to display a route thumb
@@ -212,7 +233,11 @@ export default class RouteCreator extends React.Component {
                     
                     <div id="map" ref={map => this.mapNode = map}> </div>
 
-                    <ToolWidget distance={this.state.distance} undo={this.undoLastWaypoint}/>
+                    <ToolWidget distance={this.state.distance} 
+                        undo={this.undoLastWaypoint}
+                        center={this.centerOnRoute}
+
+                    />
 
                 </div>
 

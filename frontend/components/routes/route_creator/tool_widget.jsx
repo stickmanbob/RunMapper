@@ -40,7 +40,7 @@ export default class ToolWidget extends React.Component{
                         </button>
 
                         <button className="tool-button clear"></button>
-                        <button className="tool-button center"></button>
+                        <button onClick={this.handleButton(this.props.center)} className="tool-button center">CENTER</button>
                     </nav>
                 </div>
             </div>
