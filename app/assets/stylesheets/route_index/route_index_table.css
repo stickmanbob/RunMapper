@@ -13,7 +13,7 @@
 */
 
 .route-index {
-    min-width: 935px;
+    width: 935px;
 }
 
 .route-index tr:nth-child(even){

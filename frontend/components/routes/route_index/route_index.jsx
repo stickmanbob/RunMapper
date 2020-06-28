@@ -73,9 +73,7 @@ export default class RouteIndex extends React.Component{
                             </Link>
                             
                         </td>
-                        <td>
-                            {route.description}
-                        </td>
+                    
                         <td>
                             <a className="options-button" 
                                 onClick={this.handleDelete(route.id)}>
@@ -95,7 +93,7 @@ export default class RouteIndex extends React.Component{
                 <table className="route-index" >
                     <thead>
                         <tr >
-                            <th>Route</th> <th>Created</th> <th>Distance</th> <th>Name</th> <th>Description</th> <th>Options</th>
+                            <th>Route</th> <th>Created</th> <th>Distance</th> <th>Name</th>  <th>Options</th>
                         </tr>
                     </thead>
 
