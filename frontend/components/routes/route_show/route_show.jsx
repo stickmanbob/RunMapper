@@ -10,6 +10,8 @@
 /// Utilities
     import React from "react";
 /// Components
+
+    import RouteSidebar from "./route_info_sidebar"
     
 
 
@@ -143,9 +145,6 @@
             
         }
 
-        convertDistance(dist){
-            return (0.000621371*dist).toFixed(2);  
-        }
 
         render () {
                 this.checkProps(); 
@@ -184,29 +183,9 @@
                                     }
 
                                 </section>
-
                             </section>
 
-                        <section className="route-info-sidebar">
-                            <div className="creator">
-                                <h3>Created By: {creator.fname} {creator.lname}</h3>
-                            </div>
-
-                            <div className="metrics">
-                                <ul>
-                                    <li>
-                                        <span className="info-item-value">
-                                            {this.convertDistance(route.distance)} Miles
-                                        </span>
-
-                                        <span className="info-item-name">
-                                            Distance:
-                                        </span>
-                                    </li>
-
-                                </ul>
-                            </div>
-                         </section>
+                            <RouteSidebar creator={creator} route={route}/>
 
                     </section>
                 </section>
