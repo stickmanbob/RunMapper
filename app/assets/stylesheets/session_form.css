@@ -15,9 +15,12 @@
     justify-content: center;
     align-items: center;
     
+    width: 420px;
+    margin: 0 auto;
+
     position: relative;
     
-    /* background-color: green; */
+ 
     
 }
 
@@ -65,7 +68,7 @@
     color: gray;
     justify-self: flex-end;
     top:-15px;
-    right: 34%;
+    right: 0px;
     font-size: 14px;
     font-weight: bold;
     font-family: sans-serif;
@@ -82,7 +85,7 @@
    display: flex; 
    align-items: center;
    justify-content: center;
-   width: 30%;
+   width: 100%;
     margin: 0px;
 }
 
@@ -90,7 +93,7 @@
     display: block;
     height: 1px;
     border-bottom: 1px solid #C8C7CC;
-    width: 200px; 
+    width: 100%; 
    
 }
 

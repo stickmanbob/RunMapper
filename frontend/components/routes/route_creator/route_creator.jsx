@@ -35,7 +35,7 @@ export default class RouteCreator extends React.Component {
         this.updateDistance = this.updateDistance.bind(this); 
         this.getStaticMapUrl = this.getStaticMapUrl.bind(this); 
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this);
-        this.resetRouteRenderer = this.resetRouteRenderer.bind(this);
+        this.initRouteRenderer = this.initRouteRenderer.bind(this);
         this.centerMap=this.centerMap.bind(this);   
         
     }
@@ -60,11 +60,11 @@ export default class RouteCreator extends React.Component {
 
         // Create Route Renderer
          
-        this.resetRouteRenderer();
+        this.initRouteRenderer();
     }
 
   
-    resetRouteRenderer () {
+    initRouteRenderer () {
         this.routeRenderer = new google.maps.DirectionsRenderer({
 
             hideRouteList: true,
@@ -76,10 +76,12 @@ export default class RouteCreator extends React.Component {
                 strokeWeight: 2
             },
             preserveViewport: true,
-            draggable: true
+            draggable: false 
 
         });
 
+        // Update distance when route is dragged 
+        // IMPT - feature is bugged, changes will not save (routeCoordinates not updated)
         this.routeRenderer.addListener("directions_changed",
             () => this.updateDistance(this.routeRenderer.getDirections())); 
     }
@@ -172,6 +174,7 @@ export default class RouteCreator extends React.Component {
         this.map.setCenter(center);
     }
 
+    
 
     //Generate a url that can be passed to an <img/> tag to display a route thumb
     getStaticMapUrl(dirs) {
