@@ -160,51 +160,56 @@
                 }
 
                 return(
-                    <section className="route-show">
-                        <header className = "banner">
+
+                    <section className="show-route-container">
+
+                        <header className="banner">
                             <h1>{route.name}</h1>
-                            <h3>Created By: {creator.fname} {creator.lname}</h3>
-                            <button className="directions-button" onClick={this.toggleDirections}> DIRECTIONS </button>
                         </header>
 
-                        <section className= 'show-map-container'>
-                            
-                            <div id="map" className="show-map" ref={map => this.mapNode = map}> </div>
-                            
-                            { this.state.showDirections &&
-                                <section className="directions-panel">    
-                                    <div id="directions" ref={dirs => this.dirNode = dirs}></div>
-                                </section>
-                            }
-        
 
-                        </section>
-
-                        <section className="route-info">
-                            <ul>
-                                <li> 
-                                    <span className="info-item-name">
-                                        Distance:
-                                    </span> 
+                        <section className="route-container">
+                            
+                            <section className="route-body">
+                                
+                                <section className= 'show-map-container'>
+                                    <button className="directions-button" onClick={this.toggleDirections}> DIRECTIONS </button>
+                                    <div id="map" className="show-map" ref={map => this.mapNode = map}> </div>
                                     
-                                    <span className="info-item-value">
-                                        {this.convertDistance(route.distance)} Miles
-                                    </span>  
-                                </li>
-    
-                            </ul>
-                        </section>
+                                    { this.state.showDirections &&
+                                        <div className="directions-panel">    
+                                            <div id="directions" ref={dirs => this.dirNode = dirs}></div>
+                                        </div>
+                                    }
+                
 
-                        <section>
-                            <h2>Description</h2>
-                            <p>{route.description}</p>
-                        </section>
+                                </section>
 
+                            </section>
 
-                        
+                        <section className="route-info-sidebar">
+                            <div className="creator">
+                                <h3>Created By: {creator.fname} {creator.lname}</h3>
+                            </div>
 
+                            <div className="metrics">
+                                <ul>
+                                    <li>
+                                        <span className="info-item-value">
+                                            {this.convertDistance(route.distance)} Miles
+                                        </span>
+
+                                        <span className="info-item-name">
+                                            Distance:
+                                        </span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                         </section>
 
                     </section>
+                </section>
                 )
       
         }
