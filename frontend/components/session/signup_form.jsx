@@ -31,6 +31,8 @@ export default class SignUpForm extends React.Component {
         }
         // Before mounting, clear outstanding session errors
         this.props.clearErrors(); 
+
+        // Function Bindings
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.loginDummyUser = this.loginDummyUser.bind(this);
