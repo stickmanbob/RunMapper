@@ -35,6 +35,11 @@
     vertical-align: middle;
 }   
 
+.route-index td {
+    font-family: sans-serif;
+
+}
+
 .route-index th{
     font-family: Armour, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 500;
