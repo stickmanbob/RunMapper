@@ -92,8 +92,15 @@
 }
 
 .tool-button i{
-    color: blue;
     vertical-align: middle;
+}
+
+.tool-button.undo i{
+    color: blue;
+}
+
+.tool-button.center i{
+    color: green;
 }
 
 .tool-button span {
