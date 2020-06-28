@@ -167,13 +167,14 @@
                             <h1>{route.name}</h1>
                         </header>
 
-
+                        <nav className="route-actions">
+                            <a onClick={this.toggleDirections}>Show Directions</a>
+                        </nav>
                         <section className="route-container">
                             
                             <section className="route-body">
                                 
                                 <section className= 'show-map-container'>
-                                    <button className="directions-button" onClick={this.toggleDirections}> DIRECTIONS </button>
                                     <div id="map" className="show-map" ref={map => this.mapNode = map}> </div>
                                     
                                     { this.state.showDirections &&
@@ -181,7 +182,6 @@
                                             <div id="directions" ref={dirs => this.dirNode = dirs}></div>
                                         </div>
                                     }
-                
 
                                 </section>
 
