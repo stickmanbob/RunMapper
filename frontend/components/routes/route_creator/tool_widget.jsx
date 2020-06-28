@@ -39,10 +39,13 @@ export default class ToolWidget extends React.Component{
                             <span>UNDO</span>
                         </button>
 
-                        <button className="tool-button clear"></button>
+                        <button onClick={this.props.clear} className="tool-button clear">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <span>CLEAR</span>
+                        </button>
                         <button onClick={this.handleButton(this.props.center)} 
                         className="tool-button center">
-                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                            <i className="fa fa-angle-double-down" aria-hidden="true"></i>
                             <span>CENTER</span>
                         </button>
                     </nav>

@@ -38,6 +38,7 @@ export default class RouteCreator extends React.Component {
         this.initRouteRenderer = this.initRouteRenderer.bind(this);
         this.centerMap=this.centerMap.bind(this);   
         this.centerOnRoute = this.centerOnRoute.bind(this);
+        this.clearMap = this.clearMap.bind(this); 
         
     }
 
@@ -108,6 +109,12 @@ export default class RouteCreator extends React.Component {
         // Remove the last waypoint
         this.routeCoordinates.pop(); 
         
+        //Clear the map if the last waypoint is undone
+        if(this.routeCoordinates.length === 0){
+            this.clearMap();
+            return; 
+        } 
+
         this.updatePath();
     }
 
@@ -115,6 +122,11 @@ export default class RouteCreator extends React.Component {
 
     // Requests new directions and renders them
     updatePath() {
+
+        //Reset the renderer after a clear
+        if (!this.routeRenderer) {
+            this.initRouteRenderer()
+        }
 
         // First, map the route coordinates into google maps Waypoint literals
 
@@ -152,7 +164,7 @@ export default class RouteCreator extends React.Component {
     }
 
     updateDistance(dirs){
-
+       
         //Calculate distance by adding up length of each leg
         let dist = 0;
 
@@ -183,7 +195,8 @@ export default class RouteCreator extends React.Component {
         }
         // Extract bounds from routeRenderer
         let dirs = this.routeRenderer.getDirections();
-        let bounds = dirs.routes[0].bounds
+        console.log(dirs); 
+        let bounds = dirs.routes[0].bounds; 
         
        // Pan to bounds
         this.map.panToBounds(bounds, {
@@ -193,6 +206,34 @@ export default class RouteCreator extends React.Component {
             right:600 
         });
          
+    }
+
+    clearMap() {
+
+        //Do nothing if already cleared
+        if (!this.routeRenderer){
+            return; 
+        }
+
+        //First clear the coordinates
+        this.routeCoordinates = [];
+        // Then remove the route markers and line
+        this.routeRenderer.setOptions({
+
+            hideRouteList: true,
+            map: this.map,
+            suppressMarkers:true,
+            suppressPolylines:true 
+
+        });
+
+        // Set the renderer to null to remove route completely
+        // (Prevent the "flashing" bug from just re-enabling route polylines)
+        this.routeRenderer = null; 
+
+        //Finally, clear the distance 
+        this.setState({distance:0})
+
     }
 
     
@@ -236,6 +277,7 @@ export default class RouteCreator extends React.Component {
                     <ToolWidget distance={this.state.distance} 
                         undo={this.undoLastWaypoint}
                         center={this.centerOnRoute}
+                        clear={this.clearMap}
 
                     />
 
