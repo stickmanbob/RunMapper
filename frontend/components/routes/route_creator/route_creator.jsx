@@ -108,6 +108,8 @@ export default class RouteCreator extends React.Component {
         this.updatePath();
     }
 
+
+
     // Requests new directions and renders them
     updatePath() {
 
@@ -169,6 +171,7 @@ export default class RouteCreator extends React.Component {
     centerMap(center){
         this.map.setCenter(center);
     }
+
 
     //Generate a url that can be passed to an <img/> tag to display a route thumb
     getStaticMapUrl(dirs) {
