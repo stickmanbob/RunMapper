@@ -6,7 +6,6 @@ class Api::RoutesController < ApplicationController
     end
 
     def create 
-        debugger 
         @route = Route.create(route_params)
         @route.creator_id = current_user.id
 
