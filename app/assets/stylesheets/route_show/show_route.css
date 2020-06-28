@@ -1,11 +1,31 @@
+/*  Route Show Page */
+    .show-route-container{
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        width: 1100px; 
 
-.show-route-container{
-    margin: 0px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    width: 1100px; 
-}
+        margin-top: 20px;
+    }
+
+/* Banner */
+    .route-show .banner{
+        display: flex;
+        justify-content: left;
+        align-items: baseline;
+        width:100%; 
+        padding: 10px 0px; 
+        
+    }
+
+    .banner h1{
+        font-family: sans-serif;
+        font-size: 34px;
+        font-weight: 600;
+        margin: 0px 30px 0px 5px;
+        /* font-family: MaisonNeue, "Segoe UI", "Helvetica Neue", -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+    }
 
 /* Buttons above map */
     .route-actions{
@@ -43,6 +63,7 @@
         position: relative;
         border-radius: 5px;
         border: 1px solid whitesmoke;
+        margin: 0px 5x ;
     }
 
 
@@ -55,7 +76,7 @@
 
     }
 
-
+    /* Directions element */
     #directions{
         display: block;
         overflow-y: scroll;
@@ -64,42 +85,61 @@
     .directions-panel {
     display: flex;
     flex-direction: column;
-    /* position: absolute; */
     height: 100%;
     width: 350px;
-    /* top: 0px;
-    right: 0px;
-   */
+
 }
 
+/* Route Info Sidebar */
+    .route-info-sidebar{
+        width: 200px;
+        margin-left: 16px;  
+    }
 
-.route-show .banner{
-    display: flex;
-    justify-content: left;
-    align-items: baseline;
-    width:100%; 
-    padding: 10px 0px; 
+    .creator h2{
+        font-size: 22px;
+        font-family: sans-serif;
+    }
+
+    .creator span{
+        color:rgb(109, 109, 120);
+        font-size: 12px;
+        font-family: sans-serif;
+    }
+
+    /* Metrics */
+
+        .metrics li{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-item-name{
+            color:rgb(73, 73, 80);;
+            font-size: 12px;
+            font-family: sans-serif;
+        }
+
+        .info-item-value{
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+    /* Description */
+        .description p {
+            font-size: 14px;
+            font-family: sans-serif;
+            color: rgb(36, 36, 40);
+        }
+
+
+
     
-}
-
-.banner h1{
-    font-family: sans-serif;
-    font-size: 34px;
-    font-weight: 600;
-    margin: 0px 30px 0px 5px;
-    /* font-family: MaisonNeue, "Segoe UI", "Helvetica Neue", -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
-}
-
-.route-info-sidebar{
-    width: 300px;
-
-}
 
 
 
 /* table name in google directions
 its tr 's contain the steps */
-.adp-directions tr{
-    border-radius: 5px;
-}
+    .adp-directions tr{
+        border-radius: 5px;
+    }
 

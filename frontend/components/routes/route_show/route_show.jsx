@@ -151,7 +151,12 @@
 
 
                 // Must pass an empty route and creator to the render 
-                let route = this.props.route || {name: "", creatorId: null} ;
+                let route = this.props.route || {
+                    name: "", 
+                    creatorId: null, 
+                    createdAt: new Date()
+                };
+                
                 let creator = this.props.creator || {fname: "", lname:""}
 
                 if (this.routeRenderer){
