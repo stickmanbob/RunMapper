@@ -51,6 +51,17 @@
 
 }
 
+/* Activity Dropdown */
+select.activity-dropdown {
+    background-image: linear-gradient( white, #e8e8e8);
+    padding: 7px;
+    border-radius: 4px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
 .detail-form textarea{
     height: 40px;
     box-shadow:rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset;
@@ -59,6 +70,8 @@
     font-family:"Open Sans", sans-serif;
     font-size: 14px;
 }
+
+
 
 .submit-route{
     margin: 15px 0px;

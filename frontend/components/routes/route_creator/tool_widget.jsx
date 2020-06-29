@@ -40,7 +40,7 @@ export default class ToolWidget extends React.Component{
                         </button>
 
                         <button onClick={this.props.clear} className="tool-button clear">
-                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <i className="fa fa-times" aria-hidden="true"></i>
                             <span>CLEAR</span>
                         </button>
                         <button onClick={this.handleButton(this.props.center)} 
