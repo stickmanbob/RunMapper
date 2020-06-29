@@ -35,12 +35,6 @@ export default class RouteIndex extends React.Component{
         }
     }
 
-    convertUrl(url) {
-         let newurl =url.replace(/(\r\n|\n|\r)/gm, "");
-        console.log(newurl);
-        return newurl;
-    }
-
     convertDateTime(date){
         return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
     }
@@ -57,7 +51,6 @@ export default class RouteIndex extends React.Component{
                             <Link className="options-button" to={`/routes/${route.id}`}>
                                 <img className="route-thumb" src={route.imageUrl} alt="" />
                             </Link>
-                            
                         </td>
                         <td>
                             <Link className="options-button" to={`/routes/${route.id}`}>
@@ -70,14 +63,12 @@ export default class RouteIndex extends React.Component{
                         <td>
                             <Link className="options-button" to={`/routes/${route.id}`}>
                                 {route.name}
-                            </Link>
-                            
+                            </Link>    
                         </td>
                     
                         <td>
                             <a className="options-button" 
                                 onClick={this.handleDelete(route.id)}>
-                                
                                 Delete
                             </a>
                         </td>
@@ -93,7 +84,7 @@ export default class RouteIndex extends React.Component{
                 <table className="route-index" >
                     <thead>
                         <tr >
-                            <th>Route</th> <th>Created</th> <th>Distance</th> <th>Name</th>  <th>Options</th>
+                            <th>Route</th><th>Created</th><th>Distance</th><th>Name</th><th>Options</th>
                         </tr>
                     </thead>
 
