@@ -5,7 +5,7 @@ before_action :require_login, only: [:create, :destroy]
     def index
         user = User.find_by(id: params[:user_id])
         if user 
-            @workouts = user.workouts 
+            @workouts = user.workouts.includes(:route, :user) 
             render :index 
         else
             render json: ["User not Found!"], status: 404
