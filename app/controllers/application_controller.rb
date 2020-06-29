@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     
     ########ONLY FOR POSTMAN TESTING!!###########
-    # skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
     ##############################################
 
     helper_method :current_user, :logged_in?
@@ -12,7 +12,10 @@ class ApplicationController < ActionController::Base
     end
 
     def require_login
-        redirect_to new_session_url unless logged_in?
+        if !logged_in? 
+            render json:["Must be logged in!"], status: 401 
+            return 
+        end
     end
 
     def logged_in? 

@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     namespace :api, defaults: {format: :json} do #defaults to json
       ## Users: create, show and destroy
        resources :users, only:[:create, :show, :destroy] do
+          ## All of a user's routes or workouts
           resources :routes, only: [:index] 
+          resources :workouts, only: [:index]
        end
       
       ##Session: create and destroy
@@ -19,5 +21,8 @@ Rails.application.routes.draw do
       
       ## Routes: create, destroy, and show
         resources :routes, only: [:create, :show, :destroy] 
+
+      ## Workouts: create, destroy, and show
+        resources :workouts, only: [:create, :show, :destroy] 
     end
 end

@@ -1,5 +1,7 @@
 class Api::RoutesController < ApplicationController
 
+    before_action :require_login, only: [:create, :destroy]
+
     def index
         @routes = Route.where(creator_id: params[:user_id]).order(created_at: :desc)
         render :index
