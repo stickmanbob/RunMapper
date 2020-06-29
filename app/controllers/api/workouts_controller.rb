@@ -38,7 +38,7 @@ before_action :require_login, only: [:create, :destroy]
     def destroy
 
         @workout = Workout.find_by(id: params[:id])
-        debugger
+        
         if @workout and @workout.user_id == current_user.id 
             @workout.destroy
             render :show 

@@ -33,11 +33,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 ////////// TEST FUNCTIONS //////////////////////////
-import * as util from "./util/routes_util";
-// window.fetchUserRoutes = (userId) => util.fetchUserRoutes(userId).then((res)=>console.log(res)); 
-// window.createRoute = (route) => util.createRoute(route).then((res) => console.log(res)).fail((res)=>console.log(res.responseText));
-window.deleteRoute = (routeId) => util.deleteRoute(routeId).then((res) => console.log(res)).fail((res) => console.log(res.responseText));
-// window.fetchRoute = (routeId) => util.fetchRoute(routeId).then((res) => console.log(res));
-
-import * as actions from "./actions/route_actions";
-window.actions = actions;
+import * as util from "./util/workout_api_util";
+window.util = util; 
