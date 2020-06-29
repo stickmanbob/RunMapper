@@ -36,6 +36,7 @@ export default class RouteIndex extends React.Component{
     }
 
     convertDateTime(date){
+        debugger 
         return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
     }
 
