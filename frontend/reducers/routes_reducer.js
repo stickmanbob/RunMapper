@@ -12,6 +12,7 @@
             RECEIVE_ROUTE, 
             DELETE_ROUTE
             } from "../actions/route_actions";
+    import { RECEIVE_WORKOUT, RECEIVE_WORKOUTS } from "../actions/workout_actions";
 
 
 /////////////////////// Main ////////////////////////////////////////////
@@ -30,6 +31,10 @@ export default function routesReducer(state = {}, action) {
             delete newState[action.route.id];
             
             return newState; 
+        case RECEIVE_WORKOUTS:
+            return action.routes;
+        case RECEIVE_WORKOUT:
+            return Object.assign({},state,{[action.route.id]:action.route})
         default:
             return state; 
     }

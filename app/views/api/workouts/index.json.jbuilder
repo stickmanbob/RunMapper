@@ -20,11 +20,13 @@ json.routes do
     end
 end
 
-json.users do 
-    users.each do |user|
-        json.set! user.id do
-            json.partial! "api/users/user", user:user 
-        end
-    end
-end
+## Uncomment if need to send down users. DONT FORGET TO MODIFY CONTROLLER (N+1)!
+
+# json.users do 
+#     users.each do |user|
+#         json.set! user.id do
+#             json.partial! "api/users/user", user:user 
+#         end
+#     end
+# end
 

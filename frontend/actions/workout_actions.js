@@ -19,8 +19,8 @@ export const receiveWorkouts = (data) => {
     return {
         type: RECEIVE_WORKOUTS,
         workouts: data.workouts,
-        users: data.users,
-        routes: data.routes 
+        routes: data.routes,
+        // users:data.users 
     }
 };
 
@@ -54,14 +54,14 @@ export const removeWorkout = (workout) =>{
 /////////////////////// Thunk Action Creators ////////////////////////////////
 
 /// Add history argument once component is final
-export const createWorkout = (workout) => (dispatch) => {
-    return workoutAPIUtil.postWorkout(workout)
+export const createWorkout = (workout,date) => (dispatch) => {
+    return workoutAPIUtil.postWorkout(workout,date)
         .then((res)=> dispatch(receiveWorkout(res)))
         .fail((res)=>dispatch(receiveWorkoutErrors(res)))
 }
 
 export const fetchWorkout = (id) => (dispatch) => {
-    workoutAPIUtil.fetchRoute(id)
+    workoutAPIUtil.fetchWorkout(id)
         .then((res) => dispatch(receiveWorkout(res)))
         .fail((res) => dispatch(receiveWorkoutErrors(res)));
 }
@@ -75,7 +75,7 @@ export const fetchUserWorkouts = (userId) => (dispatch) => {
 export const deleteWorkout = (id) => (dispatch) => {
     workoutAPIUtil.destroyWorkout(id)
         .then((res) => dispatch(removeWorkout(res)))
-        .fail((res) => dispatch(receiveRouteErrors(res)));
+        .fail((res) => dispatch(receiveWorkoutErrors(res)));
 }
 
 
