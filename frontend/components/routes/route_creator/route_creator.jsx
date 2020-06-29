@@ -48,7 +48,8 @@ export default class RouteCreator extends React.Component {
         const mapOptions = {
             center: { lat: 37.7758, lng: -122.435 }, // this is SF
             zoom: 13,
-            clickableIcons:false 
+            clickableIcons:false,
+            draggableCursor: "crosshair",
         };
 
         // wrap this.mapNode in a Google Map
