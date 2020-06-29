@@ -72,7 +72,7 @@ export default class SignUpForm extends React.Component {
                 <form className="session-form" onSubmit={this.handleSubmit}>
                     <Link className="session-form-nav" to="/login"> LOG IN</Link>
 
-                    <button className="guest-user-button" onClick={this.loginDummyUser}>SIGN UP AS GUEST USER </button>
+                    <button className="guest-user-button" type="button" onClick={this.loginDummyUser}>SIGN UP AS GUEST USER </button>
 
                     <div className="form-divider">
                         <span className="divider-line"></span>
