@@ -12,6 +12,7 @@
     import React from "react";
     import {withRouter} from "react-router-dom"; 
 /// Components
+    import ErrorMessage from "../../error_message";
 
 
 
@@ -69,7 +70,7 @@ class RouteDetails extends React.Component {
                     <input className="name-input" onChange={this.handleChange("name")} 
                             type="text" placeholder="Name this Map" 
                             value={this.state.name}/>
-
+                        <ErrorMessage className="error-message" errors={this.props.errors} field="name"/>
                     {/* Activity Dropdown */}
                     <select className="activity-dropdown" value={this.state.activity} onChange={this.handleChange("activity")} >
                         <option value="">Choose an Activity</option>
@@ -79,9 +80,13 @@ class RouteDetails extends React.Component {
                         <option value="Hike">Hike</option>
                         <option value="Other">Other Sport/Activity</option>
                     </select>
+                        <ErrorMessage className="error-message" errors={this.props.errors} field="activity" />
 
                     {/* Submit button */}
-                    <input className="submit-route" type="submit" value="Save Route"/>
+                    <div className="submit-container">
+                        <input className="submit-route" type="submit" value="Save Route"/>
+                        {this.props.errors["route_data"] && <span className="error-message"> Route must have at least 2 points</span>}
+                    </div>
 
                     <textarea onChange={this.handleChange("description")} placeholder="Describe this Map" cols="30" rows="10"></textarea>
 

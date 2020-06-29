@@ -16,7 +16,7 @@
     import React from "react";
     import {Link} from "react-router-dom";
   /// Components
-    import ErrorMessage from "./session_error_message"; 
+    import ErrorMessage from "../error_message"; 
 //////////////////// Main ///////////////////////////////////////////
 
 export default class SignUpForm extends React.Component {

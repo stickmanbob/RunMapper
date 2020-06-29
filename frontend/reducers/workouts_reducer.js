@@ -18,7 +18,7 @@ export default function workoutsReducer(state = {}, action) {
 
     switch (action.type) {
         case RECEIVE_WORKOUTS:
-            return {workouts: action.workouts};
+            return action.workouts;
         case RECEIVE_WORKOUT:
             return Object.assign({}, state, {[action.workout.id]:action.workout});
         case REMOVE_WORKOUT:

@@ -38,7 +38,8 @@ export default class RouteCreator extends React.Component {
         this.initRouteRenderer = this.initRouteRenderer.bind(this);
         this.centerMap=this.centerMap.bind(this);   
         this.centerOnRoute = this.centerOnRoute.bind(this);
-        this.clearMap = this.clearMap.bind(this); 
+        this.clearMap = this.clearMap.bind(this);
+         
         
     }
 

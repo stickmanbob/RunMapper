@@ -16,7 +16,9 @@
 /////////////////////// Main ////////////////////////////////////////////
 
 function mSTP (state) {
-    return {};
+    return {
+        errors: state.errors.routes 
+    };
 };
 
 // createRoute maps the createRoute action to props. Expects the route and 

@@ -14,7 +14,7 @@ class Api::RoutesController < ApplicationController
         if @route.save
             render :show
         else
-            render json: @route.errors.full_messages, status: 400 #Change if time for detailed errors 
+            render json: @route.errors, status: 400 #Change if time for detailed errors 
         end
     end
 
