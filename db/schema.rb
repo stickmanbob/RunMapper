@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_233857) do
+ActiveRecord::Schema.define(version: 2020_06_29_002624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_233857) do
     t.text "image_url"
     t.string "activity", null: false
     t.index ["activity"], name: "index_routes_on_activity"
+    t.index ["creator_id"], name: "index_routes_on_creator_id"
     t.index ["name"], name: "index_routes_on_name"
   end
 
@@ -39,6 +40,20 @@ ActiveRecord::Schema.define(version: 2020_06_28_233857) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "route_id", null: false
+    t.integer "duration", null: false
+    t.datetime "start_datetime", null: false
+    t.text "notes"
+    t.string "activity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity"], name: "index_workouts_on_activity"
+    t.index ["route_id"], name: "index_workouts_on_route_id"
+    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
 end

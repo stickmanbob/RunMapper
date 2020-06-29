@@ -28,4 +28,6 @@ class Route < ApplicationRecord
         foreign_key: :creator_id,
         class_name: :User 
     
+    has_many :logged_workouts,
+        class_name: :Workout 
 end
