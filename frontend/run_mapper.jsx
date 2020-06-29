@@ -33,5 +33,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 ////////// TEST FUNCTIONS //////////////////////////
-import * as util from "./util/workout_api_util";
-window.util = util; 
+import * as workout from "./actions/workout_actions";
+
+window.workout = workout; 
