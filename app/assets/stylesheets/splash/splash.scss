@@ -1,0 +1,57 @@
+/* Splash Page
+    
+    Classes:
+        .splash-page: overall container
+        .splash-background: selects a main background (combine with it's number class)
+        .splash-header: Text inside of a background image
+*/
+
+.splash-page{
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    margin-top: 2px;
+    align-items: center;
+}
+.splash-background.one{
+    display: block;
+    background-image: linear-gradient(to right, rgba(249,249,249,0.0), rgba(0,255,231,0.6)), url(asset_path("splash-1.jpg"));
+    background-size: cover; 
+    background-position: center;
+    height: 560px ;
+    width: 1175px; 
+    position: relative;
+}
+
+.splash-background.one::after{
+    content: "";
+    display: block;
+    height: 30%;
+    position: absolute;
+    bottom: -100px;
+    transform: rotate(-5deg);
+    background-color: white;
+    right: -10px;
+    width: 110%;
+
+}
+
+.splash-header {
+    position: absolute;
+    right: 69px;
+    top: 18px;
+    display: flex;
+    font-size: 36px;
+    align-items: center;
+    font-family: "Heebo",sans-serif;
+    flex-direction: column;
+    font-weight: 1000;
+    color: white;
+}
+
+.splash-header hr {
+    display: block;
+    width: 30%;
+    height: 5px;
+    background-color: white;
+}

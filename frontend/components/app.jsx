@@ -15,6 +15,9 @@
     import LoginFormContainer from './session/Login_container';
     import Header from './header/header';
 
+    // Splash page
+    import Splash from "./splash/splash";
+
     // MyRoutes
     import MyRoutes from './routes/route_index/my_routes';
     // Route Creator
@@ -33,13 +36,14 @@ export default function App (){
            <Header/>
            
             <Switch>
-
+               
                 <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
                 <ProtectedRoute path="/routes/my_routes" component={MyRoutes}/>
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
                 <ProtectedRoute path="/workouts/my_workouts" component={WorkoutIndex}/>
+                <Route path="/" component={Splash} />
 
             </Switch>
         </>
