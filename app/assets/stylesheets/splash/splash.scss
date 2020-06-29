@@ -41,17 +41,49 @@
     right: 69px;
     top: 18px;
     display: flex;
-    font-size: 36px;
-    align-items: center;
+    
+    align-items: flex-end;
     font-family: "Heebo",sans-serif;
     flex-direction: column;
-    font-weight: 1000;
+    
     color: white;
+}
+
+.splash-header h1{
+    font-size: 36px;
+    font-weight: 1000;
+    margin: 30px 0px; 
 }
 
 .splash-header hr {
     display: block;
-    width: 30%;
+    width: 35%;
     height: 5px;
     background-color: white;
+    margin-left: 65%;
+}
+
+.splash-header p{
+    margin: 10px 0px;
+    width: 40%;
+    text-align: end;
+    font-weight: 600;
+    margin-top: 150px;
+}
+
+.sign-up{
+    background-color: #16D374;
+    height: 20px; 
+    box-sizing: border-box;
+    height: 44px;
+    font-size: 16px; 
+    padding: 12px 22px; 
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border-radius: 2px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: whitesmoke; 
 }

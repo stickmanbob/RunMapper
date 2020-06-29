@@ -87,7 +87,6 @@ export default class LoginForm extends React.Component {
 
                     <input className="session-form-input" type="password" placeholder="Password" onChange={this.handleChange("password")} />
                     
-                    
 
                     <input className='submit' type="submit" value="Log In" />
 
