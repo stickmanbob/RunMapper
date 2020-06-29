@@ -197,7 +197,7 @@ export default class RouteCreator extends React.Component {
         }
         // Extract bounds from routeRenderer
         let dirs = this.routeRenderer.getDirections();
-        console.log(dirs); 
+        
         let bounds = dirs.routes[0].bounds; 
         
        // Pan to bounds
@@ -233,8 +233,10 @@ export default class RouteCreator extends React.Component {
         // (Prevent the "flashing" bug from just re-enabling route polylines)
         this.routeRenderer = null; 
 
-        //Finally, clear the distance 
-        this.setState({distance:0})
+        //Finally, clear the distance and routeData
+        this.setState({distance:0,
+            routeData: ""
+        })
 
     }
 
