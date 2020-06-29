@@ -39,7 +39,7 @@ export default function App (){
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
                 <ProtectedRoute path="/routes/my_routes" component={MyRoutes}/>
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
-                {/* <ProtectedRoute path="/workouts/my_workouts" component={WorkoutIndex}/> */}
+                <ProtectedRoute path="/workouts/my_workouts" component={WorkoutIndex}/>
 
             </Switch>
         </>

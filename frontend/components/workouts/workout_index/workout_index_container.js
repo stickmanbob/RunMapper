@@ -14,7 +14,7 @@ import { fetchUserWorkouts } from "../../../actions/workout_actions";
 const mapStatetoProps = function (state) {
     
     let workouts = Object.values(state.entities.workouts)
-    workouts.sort((a, b) => b.createdAt - a.createdAt);
+    // workouts.sort((a, b) => b.createdAt - a.createdAt);
     
  
     return {

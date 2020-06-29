@@ -8,12 +8,13 @@ export default class WorkoutIndex extends React.Component {
     }
 
     componentDidMount (){
-        this.props.fetchWorkouts(this.props.user);
+        // this.props.fetchWorkouts(this.props.user);
 
     }
 
     modWorkout(workout){
-        let route = this.props.routes[workout.route_id];
+        debugger 
+        let route = this.props.routes[workout.routeId];
         console.log(route)
         if(route){
             console.log("SUCCESS!")
@@ -23,9 +24,10 @@ export default class WorkoutIndex extends React.Component {
     render() {
         
         this.props.workouts.forEach(this.modWorkout)
+       
         return(
             <div>
-                test
+                
             </div>
         )
     }
