@@ -16,6 +16,7 @@ export const receiveWorkouts = (data) => {
         data.workouts[key].startDatetime = new Date(data.workouts[key].startDatetime);
     }
 
+
     return {
         type: RECEIVE_WORKOUTS,
         workouts: data.workouts,

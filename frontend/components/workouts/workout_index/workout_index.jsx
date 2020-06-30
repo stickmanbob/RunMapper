@@ -6,13 +6,13 @@ export default class WorkoutIndex extends React.Component {
     constructor(props) {
         super(props); 
         this.modWorkout = this.modWorkout.bind(this); 
-        this.loaded = true; 
+        this.loaded = false; 
         this.renderTableRows = this.renderTableRows.bind(this); 
     }
 
     componentDidMount (){
         this.props.fetchWorkouts(this.props.user);
-
+        this.loaded = true; 
     }
 
     modWorkout(workout){
@@ -22,10 +22,6 @@ export default class WorkoutIndex extends React.Component {
             workout.routeName = route.name; 
             workout.distance = route.distance; 
         } 
-        // else{
-        //     this.loaded = false;
-        //     return; 
-        // }
     }
 
     convertDateTime(date) {
@@ -36,11 +32,15 @@ export default class WorkoutIndex extends React.Component {
         return (dist * 0.000621371).toFixed(2)
     }
 
+    convertDuration(dur){
+       return new Date(dur * 1000).toISOString().substr(11, 8)
+    }
+
     renderTableRows() {
         return this.props.workouts.map((workout, i) => {
             return (
                 <tr key={i}>
-                    <td>
+                    <td className="image-col">
                         <Link className="options-button" to={`/workouts/${workout.id}`}>
                             <img className="route-thumb" src={workout.imageUrl} alt="" />
                         </Link>
@@ -62,7 +62,7 @@ export default class WorkoutIndex extends React.Component {
                         {this.convertDistance(workout.distance)} Miles
                     </td>
                     <td>
-                        {workout.duration}
+                        {this.convertDuration(workout.duration)}
                     </td>
 
 
@@ -83,10 +83,12 @@ export default class WorkoutIndex extends React.Component {
         
         this.props.workouts.forEach(this.modWorkout); 
        
-        if (this.loaded){
+        if (!this.loaded){
+            return (<div>Loading...</div>)
+        }
             return(
                 <div className = "workout-index-container">
-                    <table className="workout-index" >
+                    <table className="route-index" >
                         <thead>
                             <tr >
                                 <th></th><th>Sport</th><th>Date</th><th>Route</th><th>Distance</th><th>Duration</th><th>Options</th>
@@ -100,11 +102,7 @@ export default class WorkoutIndex extends React.Component {
                     </table>
                 </div>
             )
-        } else {
-            return (
-                <div>Loading...</div>
-            )
-        }
+        
     }
 
 }

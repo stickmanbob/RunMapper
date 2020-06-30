@@ -19,13 +19,14 @@
 export default class RouteIndex extends React.Component{
     constructor(props){
         super(props);
-
+        this.loaded = false; 
         // Function bindings
             this.handleDelete = this.handleDelete.bind(this); 
     }
 
     componentDidMount() {
         this.props.fetchUserRoutes(this.props.user);
+        this.loaded = true; 
     }
 
     handleDelete(id){
@@ -36,7 +37,7 @@ export default class RouteIndex extends React.Component{
     }
 
     convertDateTime(date){
-        debugger 
+        
         return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
     }
 
@@ -79,6 +80,10 @@ export default class RouteIndex extends React.Component{
     }
 
     render() {
+
+        if(!this.loaded){
+            return (<div>loading</div>)
+        }
 
         return(
             <div className="route-index-container">
