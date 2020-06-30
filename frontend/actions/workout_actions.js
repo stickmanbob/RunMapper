@@ -45,10 +45,10 @@ export const receiveWorkoutErrors = (errors) => {
 }
 
 export const REMOVE_WORKOUT = "REMOVE_WORKOUT";
-export const removeWorkout = (workout) =>{
+export const removeWorkout = (data) =>{
     return {
         type: REMOVE_WORKOUT,
-        workout: workout 
+        workout: data.workout 
     }
 }
 

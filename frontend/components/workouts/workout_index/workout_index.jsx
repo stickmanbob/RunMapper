@@ -34,7 +34,7 @@ export default class WorkoutIndex extends React.Component {
     handleDelete(id) {
         return (e) => {
             e.preventDefault();
-            this.props.deleteRoute(id);
+            this.props.deleteWorkout(id);
         }
     }
 

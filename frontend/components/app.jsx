@@ -19,14 +19,14 @@
     import Splash from "./splash/splash";
 
     // MyRoutes
-    import MyRoutes from './routes/route_index/my_routes';
+    import MyRoutes from './routes/route_index/my_routes_container';
     // Route Creator
     import RouteCreator from './routes/route_creator/route_creator';
     //Show Route
     import ShowRoute from "./routes/route_show/route_show_container"; 
 
     // My Workouts
-    import WorkoutIndex from "./workouts/workout_index/workout_index_container";
+    import WorkoutIndex from "./workouts/workout_index/my_workouts_container";
 /////////////////////////////////////////
 
 
