@@ -126,7 +126,6 @@
             //Request google for a new route via the Directions API, then 
             // pass the directions to the renderer
             this.dirService.route(routeOpts, (dirs)=> this.routeRenderer.setDirections(dirs))
-            console.log("rendered"); 
 
             // Reset the map center to the rendered route 
             this.map.setCenter(coordinates[0]); 
@@ -174,6 +173,7 @@
                         <nav className="route-actions">
                             <a onClick={this.toggleDirections}>Show Directions</a>
                         </nav>
+
                         <section className="route-container">
                             
                             <section className="route-body">
@@ -188,6 +188,7 @@
                                     }
 
                                 </section>
+                                
                             </section>
 
                             <RouteSidebar creator={creator} route={route}/>

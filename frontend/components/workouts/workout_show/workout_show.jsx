@@ -9,6 +9,7 @@
     import React from "react";
     import * as Unit from "../../../util/unit_util"; 
 /// Components
+    import WorkoutMap from "./workout_map";
 
 
 
@@ -95,7 +96,7 @@ export default class ShowWorkout extends React.Component {
                 </section>
 
                 <section className="workout-map">
-
+                    <WorkoutMap route={route}/> 
                 </section>
             </div>
         )
