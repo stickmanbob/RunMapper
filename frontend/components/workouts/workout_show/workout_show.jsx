@@ -7,7 +7,7 @@
 
 /// Utilities
     import React from "react";
-import workout_show_container from "./workout_show_container";
+    import * as Unit from "../../../util/unit_util"; 
 /// Components
 
 
@@ -24,7 +24,7 @@ export default class ShowWorkout extends React.Component {
         this.loaded = false;
 
       /// Function bindings
-
+        this.paceUnit = this.paceUnit.bind(this); 
     };
 
 
@@ -35,6 +35,13 @@ export default class ShowWorkout extends React.Component {
         this.loaded = true;
     }
 
+    paceUnit(){
+        if(this.props.workout.activity = "Bike Ride"){
+            return <abbr title="miles per hour">mph</abbr>
+        } else{
+            return <abbr title="minutes per mile">/mi</abbr>
+        }
+    }
     render () {
 
         if (!this.loaded){
@@ -44,10 +51,11 @@ export default class ShowWorkout extends React.Component {
         let workout = this.props.workout;
         let route = this.props.routes[workout.routeId]; 
         let user = this.props.users[workout.userId];
-
+        let distance = Unit.convertDistance(route.distance).toFixed(2);
+        let pace = Unit.convertPace(route.distance, workout.duration, workout.activity);
         return(
             <div className="show-workout">
-                <section classname="workout-info-box">
+                <section className="workout-info-box">
                     
                     <header>
                         <h1>
@@ -57,7 +65,7 @@ export default class ShowWorkout extends React.Component {
 
                     <div className="workout-info-body">
                         <div>
-                            <h3>{workout.startDatetime}</h3>
+                            <h3> {Unit.convertDateTime(workout.startDatetime)}</h3>
                             <h1>{route.name}</h1>
                             <p>{workout.notes}</p>
                         </div>
@@ -65,7 +73,7 @@ export default class ShowWorkout extends React.Component {
                         <div className="workout-metrics">
                             <div className="workout-metric">
                                 <h2>
-                                    {route.distance}
+                                    {distance}
                                     <abbr title="miles">mi</abbr>
                                 </h2>
                             </div>
@@ -78,8 +86,8 @@ export default class ShowWorkout extends React.Component {
 
                             <div className="workout-metric">
                                 <h2>
-                                    Pace
-                                    <abbr title="minutes per mile">/mi</abbr>
+                                    {pace}
+                                    {this.paceUnit()}
                                 </h2>
                             </div>
                         </div>

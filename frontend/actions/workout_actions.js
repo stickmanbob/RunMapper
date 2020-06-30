@@ -28,6 +28,10 @@ export const receiveWorkouts = (data) => {
 export const RECEIVE_WORKOUT = "RECEIVE_WORKOUT";
 
 export const receiveWorkout = (data) => {
+
+    // Convert the start time to a Date object
+    data.workout.startDatetime = new Date(data.workout.startDatetime)
+
     return {
         type: RECEIVE_WORKOUT,
         workout: data.workout,
