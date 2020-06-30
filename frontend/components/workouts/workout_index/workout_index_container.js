@@ -7,7 +7,7 @@
 
 import { connect } from 'react-redux';
 import WorkoutIndex from "./workout_index";
-import { fetchUserWorkouts } from "../../../actions/workout_actions";
+import { fetchUserWorkouts,deleteWorkout } from "../../../actions/workout_actions";
 
 /////////////////////// Main ////////////////////////////////////////////
 
@@ -27,7 +27,8 @@ const mapStatetoProps = function (state) {
 const mapDispatchtoProps = function (dispatch,ownProps) {
     
     return {
-        fetchWorkouts: (id)=> dispatch(fetchUserWorkouts(id))
+        fetchWorkouts: (id)=> dispatch(fetchUserWorkouts(id)),
+        deleteWorkout: (id) => dispatch(deleteWorkout(id))
     }
 }
 

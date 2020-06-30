@@ -5,13 +5,20 @@ export default class WorkoutIndex extends React.Component {
     
     constructor(props) {
         super(props); 
-        this.modWorkout = this.modWorkout.bind(this); 
+        
+      /// Conditional rendering on asset fetching
         this.loaded = false; 
+
+      /// Function Bindings
+        this.modWorkout = this.modWorkout.bind(this); 
         this.renderTableRows = this.renderTableRows.bind(this); 
+        this.handleDelete = this.handleDelete.bind(this); 
     }
 
     componentDidMount (){
         this.props.fetchWorkouts(this.props.user);
+
+      /// Alert component that assets are loaded
         this.loaded = true; 
     }
 
@@ -22,6 +29,13 @@ export default class WorkoutIndex extends React.Component {
             workout.routeName = route.name; 
             workout.distance = route.distance; 
         } 
+    }
+
+    handleDelete(id) {
+        return (e) => {
+            e.preventDefault();
+            this.props.deleteRoute(id);
+        }
     }
 
     convertDateTime(date) {
@@ -69,10 +83,10 @@ export default class WorkoutIndex extends React.Component {
 
 
                     <td>
-                        {/* <a className="options-button"
-                            onClick={this.handleDelete(route.id)}>
+                        <a className="options-button"
+                            onClick={this.handleDelete(workout.id)}>
                             Delete
-                            </a> */}
+                            </a>
                     </td>
                 </tr>
             )
