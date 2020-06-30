@@ -27,6 +27,9 @@
 
     // My Workouts
     import WorkoutIndex from "./workouts/workout_index/my_workouts_container";
+
+    // Workouts Show
+    import ShowWorkout from "./workouts/workout_show/workout_show_container";
 /////////////////////////////////////////
 
 
@@ -43,6 +46,7 @@ export default function App (){
                 <ProtectedRoute path="/routes/my_routes" component={MyRoutes}/>
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
                 <ProtectedRoute path="/workouts/my_workouts" component={WorkoutIndex}/>
+                <ProtectedRoute path="/workouts/:workoutId" component={ShowWorkout}/>; 
                 <Route path="/" component={Splash} />
 
             </Switch>
