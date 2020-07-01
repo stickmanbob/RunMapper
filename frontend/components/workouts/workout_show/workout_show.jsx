@@ -45,7 +45,7 @@ export default class ShowWorkout extends React.Component {
     render () {
 
         if (!this.loaded){
-            return (<div>Loading...</div>);
+            return (<div className="loading">Loading...</div>);
         }
 
         let workout = this.props.workout;

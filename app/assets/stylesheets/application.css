@@ -17,3 +17,8 @@
  .main-component{
      min-height: 700px;
  }
+
+ .loading{
+     text-align: center;
+     vertical-align: center;
+ }

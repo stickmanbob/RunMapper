@@ -156,11 +156,6 @@ import { Link } from "react-router-dom";
                     var creator = this.props.creator
                 }
                  
-                
-
-                if (this.routeRenderer){
-                    console.log(this.state.showDirections, this.routeRenderer.panel); 
-                }
 
                 return(
 

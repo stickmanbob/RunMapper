@@ -82,7 +82,7 @@ export default class RouteIndex extends React.Component{
     render() {
 
         if(!this.loaded){
-            return (<div>loading</div>)
+            return (<div>Loading...</div>)
         }
 
         return(
