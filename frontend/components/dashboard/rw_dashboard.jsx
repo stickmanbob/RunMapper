@@ -10,7 +10,7 @@
 /// Components
     import RouteIndex from "../routes/route_index/my_routes_container";
     import WorkoutIndex from "../workouts/workout_index/my_workouts_container";
-    import { Link } from "react-router-dom";
+    import { NavLink } from "react-router-dom";
 
 
 
@@ -29,8 +29,8 @@ export default class RWDashboard extends React.Component {
                 <h1>MY ROUTES AND WORKOUTS</h1>
                 
                 <nav className="view-buttons">
-                    <Link to="/rw_dashboard/#routes" >ROUTES</Link>
-                    <Link to={{ pathname: "my_home/rw_dashboard/#workouts" }} >WORKOUTS</Link>
+                    <NavLink to="#" exact>ROUTES</NavLink>
+                    <NavLink to="#/workouts" >WORKOUTS</NavLink>
                 </nav>
             </div>
         );

@@ -1,0 +1,39 @@
+.rw-dashboard{
+    display: flex;
+    flex-direction: column;
+    width: 938px;
+    margin: 0px auto;
+    margin-top: 25px;
+    font-family:Armour, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+    h1{
+        font-size: 30px; 
+        font-weight: 500;
+    }
+}
+
+.view-buttons{
+    margin-top: 5px;
+    display: flex;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    
+
+    a{
+        color:black;
+        background-color: #f6f7f8;
+        font-size: 12px;
+        font-weight: 900;
+        padding: 15px 8px;
+        border: 1px solid rgb(221, 221, 221);
+        border-bottom: 0px solid white;
+        border-top: 0px;
+        box-shadow:rgb(27, 119, 185) 0px 1px 0px 0px inset;
+        width: 320px;
+        height: 42px; 
+        box-sizing: border-box;
+    }
+    a:hover{
+        box-shadow: rgb(47, 152, 217) 0px 3px 0px 0px inset;
+        background-color: white;
+    }
+}
