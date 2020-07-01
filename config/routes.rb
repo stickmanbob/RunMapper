@@ -28,5 +28,7 @@ Rails.application.routes.draw do
     end
 
 ##### Redirect other gets to React browser router ###############
+
+  ## IMPT! this must go last
   get '*path', to: 'static_pages#root'
 end

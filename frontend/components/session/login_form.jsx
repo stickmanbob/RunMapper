@@ -51,7 +51,8 @@ export default class LoginForm extends React.Component {
         });
     }
 
-    handleSubmit() { //=> dispatches the signup action with current state as argument
+    handleSubmit(e) { //=> dispatches the signup action with current state as argument
+        e.preventDefault();
         this.props.action(this.state);
     }
 
