@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   #### Default root view, app will render here #####
     root to: 'static_pages#root'
-    get '*path', to: 'static_pages#root'
+    
   ###################################################
 
   #### API Endpoints ##############
@@ -26,4 +26,7 @@ Rails.application.routes.draw do
       ## Workouts: create, destroy, and show
         resources :workouts, only: [:create, :show, :destroy] 
     end
+
+##### Redirect other gets to React browser router ###############
+  get '*path', to: 'static_pages#root'
 end
