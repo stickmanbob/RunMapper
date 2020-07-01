@@ -13,10 +13,18 @@
 
 /////////////////////// Main ////////////////////////////////////////////
 
-export default function Footer (){
+export default function Footer (props){
+    let showPaths = ["/"];
+    var showFooter;
+    console.log(showPaths.includes(props.location.pathname)); 
+    if (showPaths.includes(props.location.pathname)){
+        showFooter = "show-footer"
+    } else{
+        showFooter = "hide-footer"
+    }
 
     return(
-        <footer className="main-footer">
+        <footer className={`main-footer ${showFooter}`}>
             <div className="top-span">
                 <img src={window.logo} alt=""/>
 
