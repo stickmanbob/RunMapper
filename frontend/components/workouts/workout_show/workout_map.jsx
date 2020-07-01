@@ -57,10 +57,7 @@ export default class Map extends React.Component{
                 strokeColor: '#FF0000',
                 strokeOpacity: 1.0,
                 strokeWeight: 2
-            },
-            preserveViewport: true,
-            draggable: false
-
+            },draggable: false
         });
     }
 
@@ -90,8 +87,6 @@ export default class Map extends React.Component{
         // pass the directions to the renderer
         this.dirService.route(routeOpts, (dirs) => this.routeRenderer.setDirections(dirs))
 
-        // Reset the map center to the rendered route 
-        this.map.setCenter(coordinates[0]);
     }
 
     render(){

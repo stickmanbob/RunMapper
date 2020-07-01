@@ -30,6 +30,9 @@
 
     // Workouts Show
     import ShowWorkout from "./workouts/workout_show/workout_show_container";
+    
+    // Workout New
+    import NewWorkout from "./workouts/workout_new/new_workout_container";
 /////////////////////////////////////////
 
 
@@ -46,7 +49,9 @@ export default function App (){
                 <ProtectedRoute path="/routes/my_routes" component={MyRoutes}/>
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
                 <ProtectedRoute path="/workouts/my_workouts" component={WorkoutIndex}/>
+          <ProtectedRoute exact path="/workouts/new" component={NewWorkout} />
                 <ProtectedRoute path="/workouts/:workoutId" component={ShowWorkout}/>; 
+                
                 <Route path="/" component={Splash} />
 
             </Switch>

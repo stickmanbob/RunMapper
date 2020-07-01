@@ -10,9 +10,7 @@
     import * as Unit from "../../../util/unit_util"; 
 /// Components
     import WorkoutMap from "./workout_map";
-
-
-
+    import {Link} from "react-router-dom"; 
 
 /////////////////////// Main ////////////////////////////////////////////
 
@@ -54,6 +52,7 @@ export default class ShowWorkout extends React.Component {
         let user = this.props.users[workout.userId];
         let distance = Unit.convertDistance(route.distance).toFixed(2);
         let pace = Unit.convertPace(route.distance, workout.duration, workout.activity);
+        let duration = Unit.convertDuration(workout.duration);
         return(
             <div className="show-workout">
                 <section className="workout-info-box">
@@ -65,39 +64,44 @@ export default class ShowWorkout extends React.Component {
                     </header>
 
                     <div className="workout-info-body">
-                        <div>
-                            <h3> {Unit.convertDateTime(workout.startDatetime)}</h3>
-                            <h1>{route.name}</h1>
+                        <div className="workout-info">
+                            <h3> On {Unit.convertDateTime(workout.startDatetime)}</h3>
+                            <h1>{route.name} <Link to={`/routes/${route.id}`} className="view-route-link">View Route</Link></h1>
                             <p>{workout.notes}</p>
                         </div>
 
                         <div className="workout-metrics">
                             <div className="workout-metric">
                                 <h2>
-                                    {distance}
-                                    <abbr title="miles">mi</abbr>
+                                    {distance}<abbr title="miles">mi</abbr>
                                 </h2>
+                                
+                                <h3>Distance</h3>
                             </div>
 
                             <div className="workout-metric">
                                 <h2>
-                                    {route.duration}
+                                    {duration}
                                 </h2>
+
+                                <h3>Duration</h3>
                             </div>
 
                             <div className="workout-metric">
                                 <h2>
-                                    {pace}
-                                    {this.paceUnit()}
+                                    {pace}{this.paceUnit()}
                                 </h2>
+
+                                <h3>Average Pace</h3>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section className="workout-map">
+                <section className="workout-map-container">
                     <WorkoutMap route={route}/> 
                 </section>
+                
             </div>
         )
     }

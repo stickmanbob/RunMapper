@@ -8,6 +8,7 @@ export function convertDateTime(date) {
     return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
 }
 
+
 export function convertDistance(dist) {
     return (dist * 0.000621371)
 }
