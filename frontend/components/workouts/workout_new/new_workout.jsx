@@ -8,6 +8,7 @@
 /// Utilities
     import React from "react";
 /// Components
+    import ErrorMessage from "../../error_message";
 
 
 
@@ -87,15 +88,19 @@ export default class NewWorkout extends React.Component {
     }
 
     calcDuration(){
+
+        if(!this.state.hours && !this.state.minutes && !this.state.seconds){
+            return null; 
+        }
+
         let hours = parseInt(this.state.hours) || 0;
         let minutes = parseInt(this.state.minutes) || 0;
         let seconds = parseInt(this.state.seconds) || 0;
-        console.log(hours,  minutes, seconds); 
         return (seconds + (minutes*60) + (hours*3600)); 
     }
 
     render(){
-
+        
         if(!this.loaded){
             return <div>Loading...</div>
         }
@@ -110,32 +115,36 @@ export default class NewWorkout extends React.Component {
                 <section>
                     <div className="name-date">
                         <div className="input-field workout-name">
-                            <h2>Workout name</h2>
+                            <h2>Workout name  <ErrorMessage errors={this.props.errors} field={"name"} /></h2>
                             <input type="text" value={this.state.name} onChange={this.handleChange("name")}/>
+                           
                         </div>
 
                         <div className="input-field workout-date">
-                            <h2>Date</h2>
+                            <h2>Date <ErrorMessage errors={this.props.errors} field={"start_datetime"} /></h2>
                             <input type="date" onChange={this.handleChange("date")}/>
+                            
                         </div>
                     </div>
 
 
                     <div className="time-duration">
                         <div className="input-field workout-time">
-                            <h2>Start time</h2>
+                            <h2>Start time <ErrorMessage errors={this.props.errors} field={"start_datetime"} /></h2>
                             <input type="time" placeholder="00:00 AM" value={this.state.time} onChange={this.handleChange("time")} />
+                            
                         </div>
 
                         <div className="input-field workout-duration" >
-                            <h2>Duration</h2>
-
+                            <h2>Duration <ErrorMessage errors={this.props.errors} field={"duration"} /></h2>
+                            
                             <input type="number" maxLength="3" placeholder="hh" value={this.state.hours} onChange={this.handleChange("hours")} /> :
 
                             <input type="number" max="60" placeholder="mm" value={this.state.minutes} onChange={this.handleChange("minutes")} /> :
 
                             <input type="number" max="60" placeholder="ss" value={this.state.seconds} onChange={this.handleChange("seconds")} />
                         </div>
+
                     </div>
 
                     <div className="input-field workout-notes">
@@ -145,7 +154,7 @@ export default class NewWorkout extends React.Component {
                 </section>
 
                 <div className="input-field workout-activity">
-                    <h2>Activity</h2>
+                    <h2>Activity  <ErrorMessage errors={this.props.errors} field={"activity"} /></h2>
                     <select className="workout-dropdown" value={this.state.activity} onChange={this.handleChange("activity")} >
                         <option value="">Choose an Activity</option>
                         <option value="Run">Run</option>
@@ -157,7 +166,7 @@ export default class NewWorkout extends React.Component {
                 </div>
 
                 <div className="input-field workout-route">
-                    <h2>Route</h2>
+                    <h2>Route  <ErrorMessage errors={this.props.errors} field={"route_id"} /></h2>
                     <select className="workout-dropdown" value={this.state.route_id} onChange={this.handleChange("route_id")} >
                         <option value="">Select Route</option>
                         {this.routeOptions()}

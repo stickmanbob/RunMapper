@@ -17,7 +17,8 @@ const mapStatetoProps = function (state) {
     routes.sort((a, b) => b.createdAt - a.createdAt); 
     return {
         routes: routes,
-        currentUser: currentUser
+        currentUser: currentUser,
+        errors: state.errors.workouts
     };
 }
 

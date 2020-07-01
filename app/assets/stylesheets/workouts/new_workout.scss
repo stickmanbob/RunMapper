@@ -82,6 +82,10 @@
                 margin-bottom: 10px;
                 font-weight: 550;
             }
+
+            span.error-message:nth-child(2) {
+                display: none;
+            }
         
         }
     
