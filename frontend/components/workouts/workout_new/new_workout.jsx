@@ -108,29 +108,29 @@ export default class NewWorkout extends React.Component {
 
                 <section>
                     <div className="name-date">
-                        <div className="input-field">
+                        <div className="input-field workout-name">
                             <h2>Workout name</h2>
                             <input type="text"/>
                         </div>
 
-                        <div className="input-field">
+                        <div className="input-field workout-date">
                             <h2>Date</h2>
                             <input type="date" onChange={this.handleChange("date")}/>
                         </div>
                     </div>
 
-                    <div className="input-field">
+                    <div className="input-field workout-time">
                         <h2>Start time</h2>
-                        <input type="time" value={this.state.time} onChange={this.handleChange("time")} />
+                        <input type="time" placeholder="00:00 AM" value={this.state.time} onChange={this.handleChange("time")} />
                     </div>
 
-                    <div className="input-field">
+                    <div className="input-field workout-notes">
                         <h2>How did it go?</h2>
                         <textarea onChange={this.handleChange("notes")} value={this.state.notes} cols="40" rows="5"></textarea>
                     </div>
                 </section>
 
-                <div className="input-field">
+                <div className="input-field workout-activity">
                     <h2>Activity</h2>
                     <select className="workout-dropdown" value={this.state.activity} onChange={this.handleChange("activity")} >
                         <option value="">Choose an Activity</option>
@@ -142,7 +142,7 @@ export default class NewWorkout extends React.Component {
                     </select>
                 </div>
 
-                <div className="input-field">
+                <div className="input-field workout-route">
                     <h2>Route</h2>
                     <select className="workout-dropdown" value={this.state.route_id} onChange={this.handleChange("route_id")} >
                         <option value="">Select Route</option>
@@ -150,7 +150,7 @@ export default class NewWorkout extends React.Component {
                     </select>
                 </div>
 
-                <div className="input-field">
+                <div className="input-field workout-duration" >
                     <h2>Duration</h2>
 
                     <input type="number" maxLength="3" placeholder="hh" value={this.state.hours} onChange={this.handleChange("hours")} /> :
