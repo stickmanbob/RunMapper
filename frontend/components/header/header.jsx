@@ -21,14 +21,26 @@ export default function Header () {
             <header className="nav-header">
                 <img src={window.logo} alt=""/>
                 <nav className="nav-links">
+
                     <div className="nav-bar dropdown-container">
-                        <Link className="nav-link" to="/routes/">ROUTES</Link>
+                        <Link className="nav-link" to="">ROUTES</Link>
                         <ul className="dropdown-menu nav-bar">
         
                             <Link className="dropdown-menu-item nav-bar" to="/routes/create"> Create Route</Link>
                             <Link className="dropdown-menu-item nav-bar" to="/routes/my_routes">My Routes</Link>
                             
                         </ul>
+                    </div>
+
+                    <div className="nav-bar dropdown-container">
+
+                        <Link className="nav-link" to="">WORKOUTS</Link>
+
+                        <ul className="dropdown-menu nav-bar">
+                            <Link className="dropdown-menu-item nav-bar" to="/my_home/rw_dashboard/workouts"> My Workouts</Link>
+                            <Link className="dropdown-menu-item nav-bar" to="/workouts/new">Log Workout</Link>
+                        </ul>
+
                     </div>
                 </nav>
                 <GreetingContainer />
