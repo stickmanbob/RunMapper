@@ -13,7 +13,12 @@
     import {AuthRoute,ProtectedRoute} from "../util/route_protection_util.jsx";
     import SignUpFormContainer from './session/signup_container';
     import LoginFormContainer from './session/Login_container';
+
+    //Header
     import Header from './header/header';
+
+    //Footer
+    import Footer from "./Footer/footer";
 
     // Splash page
     import Splash from "./splash/splash";
@@ -50,15 +55,21 @@ export default function App (){
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
                 <ProtectedRoute path="/my_home/rw_dashboard" component={RWDashboard}/>
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
-                <ProtectedRoute path="/routes/my_routes" component={MyRoutes}/>
+                <ProtectedRoute path="/routes/my_routes" component={RWDashboard}/>
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
-                <ProtectedRoute path="/workouts/my_workouts" component={WorkoutIndex}/>
+                <ProtectedRoute path="/workouts/my_workouts" component={RWDashboard}/>
                 <ProtectedRoute exact path="/workouts/new" component={NewWorkout} />
                 <ProtectedRoute path="/workouts/:workoutId" component={ShowWorkout}/>; 
                 
                 <AuthRoute path="/" component={Splash} />
 
             </Switch>
+          <Switch>
+            <Route path="/routes/create" component="none"/>
+            <Route path="/" component={Footer}/>
+          
+          </Switch>
+          
         </>
     )
 }

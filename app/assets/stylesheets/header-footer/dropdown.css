@@ -48,7 +48,7 @@
 
 .dropdown-menu-item:hover{
     color:black;
-    cursor: default;
+    cursor: pointer; 
     
 }
 
@@ -64,5 +64,5 @@
     font-weight: bold;
     background-image: linear-gradient(360deg, #0a88ce, #1dbbf4);
     color: white;
-    cursor: default;
+    cursor: pointer;
 }
