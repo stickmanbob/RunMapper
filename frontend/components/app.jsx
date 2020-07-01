@@ -46,9 +46,10 @@
 
 export default function App (){
     return(
-        <>
+        < >
            <Header/>
            
+          <div className="main-component">
             <Switch>
                
                 <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
@@ -64,10 +65,12 @@ export default function App (){
                 <AuthRoute path="/" component={Splash} />
 
             </Switch>
+          </div>
+
+
           <Switch>
             <Route path="/routes/create" component="none"/>
             <Route path="/" component={Footer}/>
-          
           </Switch>
           
         </>

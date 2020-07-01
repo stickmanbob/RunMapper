@@ -16,8 +16,36 @@
 export default function Footer (){
 
     return(
-        <footer>
+        <footer className="main-footer">
+            <div className="top-span">
+
+            </div>
+
+            <div className="middle-span">
+                <ul>
+                    <li>Social</li>
+                    <li><a href="https://github.com/stickmanbob/RunMapper">Check out our Github</a></li>
+                    <li><a>Connect on LinkedIn</a></li>
+                    
+                </ul>
+
+                <ul>
+                    <li>Help</li>
+                    <li>Account Settings</li>
+                    <li>Coming Soon</li>
+                </ul>
+
+                <ul>
+                    <li>About Us</li>
+                    <li>Single Developer</li>
+                    <li>Needs Job</li>
+                </ul>
+            </div>
             
+
+            <div className="bottom-span">
+
+            </div>
         </footer>
     )
 }
