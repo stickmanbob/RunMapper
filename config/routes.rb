@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   #### Default root view, app will render here #####
     root to: 'static_pages#root'
+    get '*path', to: 'static_pages#root'
   ###################################################
 
   #### API Endpoints ##############

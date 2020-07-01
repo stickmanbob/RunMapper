@@ -30,8 +30,8 @@ export default class RWDashboard extends React.Component {
                 
                 <nav className="view-buttons">
                     <ul>
-                        <NavLink to="#" exact>ROUTES</NavLink>
-                        <NavLink to="#/workouts" >WORKOUTS</NavLink>
+                        <NavLink to="/my_home/rw_dashboard" exact>ROUTES</NavLink>
+                        <NavLink to="/my_home/rw_dashboard/workouts" >WORKOUTS</NavLink>
                     </ul>
                 </nav>
             </div>

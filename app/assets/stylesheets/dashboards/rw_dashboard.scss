@@ -40,7 +40,7 @@
         height: 42px; 
         box-sizing: border-box;
     }
-    a:hover{
+    a:hover, a.active{
         box-shadow: rgb(47, 152, 217) 0px 3px 0px 0px inset;
         background-color: white;
     }
