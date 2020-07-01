@@ -32,6 +32,12 @@ export default function Splash () {
 
                 </div>
             </section>
+
+            <section className="splash-background two">
+                <div className="splash-header">
+                    
+                </div>
+            </section>
         </div>
     );
 }

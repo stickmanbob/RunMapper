@@ -12,6 +12,7 @@
     margin: 0px auto;
     margin-top: 2px;
     align-items: center;
+     width: 1175px; 
 }
 .splash-background.one{
     display: block;
@@ -19,8 +20,14 @@
     background-size: cover; 
     background-position: center;
     height: 560px ;
-    width: 1175px; 
+    width: 100%;
     position: relative;
+
+    .splash-header{
+        position: absolute;
+        right: 69px;
+        top: 18px;
+    }
 }
 
 .splash-background.one::after{
@@ -37,9 +44,6 @@
 }
 
 .splash-header {
-    position: absolute;
-    right: 69px;
-    top: 18px;
     display: flex;
     
     align-items: flex-end;
@@ -48,6 +52,7 @@
     
     color: white;
 }
+
 
 .splash-header h1{
     font-size: 36px;
@@ -86,4 +91,10 @@
     font-family: sans-serif;
     font-weight: bold;
     color: whitesmoke; 
+}
+
+.splash-background.two{
+    width: 100%;
+    height: 700px;
+    background-image: image-url("splash-2.jpg");
 }
