@@ -32,7 +32,8 @@ export default function routesReducer(state = {}, action) {
             
             return newState; 
         case RECEIVE_WORKOUTS:
-            return action.routes;
+            let routes = action.routes ? action.routes : {};
+            return routes;
         case RECEIVE_WORKOUT:
             return Object.assign({},state,{[action.route.id]:action.route})
         default:
