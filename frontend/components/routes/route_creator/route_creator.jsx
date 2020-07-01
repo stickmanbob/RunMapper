@@ -44,11 +44,24 @@ export default class RouteCreator extends React.Component {
     }
 
     componentDidMount() {
-        // set the map to show SF
+
+        //Get user's location and center the map
+        navigator.geolocation.getCurrentPosition((res)=> this.initMap(res),(res)=>this.initMap(null)); 
+
+    }
+
+    initMap(res){
+
+        let center = { lat: 37.7758, lng: -122.435 } //Default center for geolocation fail
+
+        if(res){
+            center = {lat: res.coords.latitude, lng: res.coords.longitude};
+        } 
+
         const mapOptions = {
-            center: { lat: 37.7758, lng: -122.435 }, // this is SF
+            center: center,
             zoom: 13,
-            clickableIcons:false,
+            clickableIcons: false,
             draggableCursor: "crosshair",
         };
 
@@ -56,15 +69,15 @@ export default class RouteCreator extends React.Component {
         this.map = new google.maps.Map(this.mapNode, mapOptions);
 
         // Add event listener to map to add a waypoint on click
-        this.map.addListener('click', this.addWaypoint); 
+        this.map.addListener('click', this.addWaypoint);
 
         // create the directions requester
 
         this.dirService = new google.maps.DirectionsService();
 
         // Create Route Renderer
-         
-        this.initRouteRenderer();
+
+        this.initRouteRenderer();   
     }
 
   

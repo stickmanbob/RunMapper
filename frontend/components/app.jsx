@@ -45,6 +45,7 @@
 
 
 export default function App (){
+    let EmptyFooter = () => <></> ;
     return(
         < >
            <Header/>
@@ -69,7 +70,7 @@ export default function App (){
 
 
           <Switch>
-            <Route path="/routes/create" component="none"/>
+            <Route path="/routes/create" component={EmptyFooter}/>
             <Route path="/" component={Footer}/>
           </Switch>
           

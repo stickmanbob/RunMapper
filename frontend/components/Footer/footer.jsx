@@ -16,7 +16,6 @@
 export default function Footer (props){
     let showPaths = ["/"];
     var showFooter;
-    console.log(showPaths.includes(props.location.pathname)); 
     if (showPaths.includes(props.location.pathname)){
         showFooter = "show-footer"
     } else{
