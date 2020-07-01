@@ -61,7 +61,7 @@
 .buttons{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     box-sizing: border-box;
     height:226px;
@@ -86,6 +86,8 @@
     cursor: pointer;
     border: 1px solid black;
     border-radius: 8px ;
+
+    margin: 10px 0px;
     
 }
 

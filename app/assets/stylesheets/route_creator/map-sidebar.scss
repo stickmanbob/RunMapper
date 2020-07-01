@@ -60,6 +60,11 @@ select.activity-dropdown {
     font-size: 14px;
     font-weight: 500;
     margin-top: 10px;
+    cursor: pointer;
+
+    option{
+        cursor: pointer;
+    }
 }
 
 .detail-form textarea{
