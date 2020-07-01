@@ -19,7 +19,9 @@ export default function Header () {
 
         <div className="main-header"> 
             <header className="nav-header">
-                <img src={window.logo} alt=""/>
+
+                <Link to="/"><img src={window.logo} alt="" /></Link>
+                
                 <nav className="nav-links">
 
                     <div className="nav-bar dropdown-container">

@@ -56,7 +56,7 @@ export default function App (){
                 <ProtectedRoute exact path="/workouts/new" component={NewWorkout} />
                 <ProtectedRoute path="/workouts/:workoutId" component={ShowWorkout}/>; 
                 
-                <Route path="/" component={Splash} />
+                <AuthRoute path="/" component={Splash} />
 
             </Switch>
         </>
