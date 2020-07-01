@@ -23,7 +23,7 @@ export default function Header () {
                 <nav className="nav-links">
 
                     <div className="nav-bar dropdown-container">
-                        <Link className="nav-link" to="">ROUTES</Link>
+                        <span className="nav-link" to="">ROUTES</span>
                         <ul className="dropdown-menu nav-bar">
         
                             <Link className="dropdown-menu-item nav-bar" to="/routes/create"> Create Route</Link>
@@ -34,7 +34,7 @@ export default function Header () {
 
                     <div className="nav-bar dropdown-container">
 
-                        <Link className="nav-link" to="">WORKOUTS</Link>
+                        <span className="nav-link" to="">WORKOUTS</span>
 
                         <ul className="dropdown-menu nav-bar">
                             <Link className="dropdown-menu-item nav-bar" to="/my_home/rw_dashboard/workouts"> My Workouts</Link>
