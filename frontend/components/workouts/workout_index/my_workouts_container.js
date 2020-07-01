@@ -15,7 +15,7 @@ const mapStatetoProps = function (state) {
     return {
         formType: "My Workouts",
         buttonType: "Create a Workout",
-        buttonLink: "/workouts/create",
+        buttonLink: "/workouts/new",
         
     }
 }

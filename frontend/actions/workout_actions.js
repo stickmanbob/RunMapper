@@ -59,9 +59,10 @@ export const removeWorkout = (data) =>{
 /////////////////////// Thunk Action Creators ////////////////////////////////
 
 /// Add history argument once component is final
-export const createWorkout = (workout) => (dispatch) => {
+export const createWorkout = (workout,history) => (dispatch) => {
     return workoutAPIUtil.postWorkout(workout)
         .then((res)=> dispatch(receiveWorkout(res)))
+        .then((res)=> history.push(`/workouts/my_workouts`))
         .fail((res)=>dispatch(receiveWorkoutErrors(res)))
 }
 

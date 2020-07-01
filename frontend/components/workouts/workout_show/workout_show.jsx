@@ -35,10 +35,11 @@ export default class ShowWorkout extends React.Component {
     }
 
     paceUnit(){
-        if(this.props.workout.activity = "Bike Ride"){
+     
+        if(this.props.workout.activity === "Bike Ride"){
             return <abbr title="miles per hour">mph</abbr>
         } else{
-            return <abbr title="minutes per mile">/mi</abbr>
+            return <abbr title="minutes per mile">min/mi</abbr>
         }
     }
     render () {

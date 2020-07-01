@@ -15,9 +15,7 @@ before_action :require_login, only: [:create, :destroy]
     def create
 
         @workout = Workout.new(workout_params)
-        date = DateTime.parse(@workout.start_datetime)
         @workout.user_id = current_user.id
-        @workout.start_datetime = date 
         if @workout.save
             render :show
         else

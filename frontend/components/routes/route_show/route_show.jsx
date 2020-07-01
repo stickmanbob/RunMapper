@@ -23,9 +23,9 @@
             super(props);
             this.props_fetched = false; 
             this.state = {
-                test: 0 ,
                 showDirections:false 
             }
+
             this.initRouteRenderer = this.initRouteRenderer.bind(this); 
             this.initMap = this.initMap.bind(this);
             this.toggleDirections = this.toggleDirections.bind(this); 
@@ -34,19 +34,10 @@
         componentDidMount(){
             // Initialize state by fetching the route in question
             this.props.fetchRoute(this.props.match.params.routeId);
-            this.setState({
-                test:1 
-            })
 
             this.initMap();
         }
 
-        componentDidUpdate(){
-       
-            if (this.mapNode && !this.map) {
-                //init map?
-            }
-        }
 
         initMap () {
           // Initialize the map component
@@ -149,14 +140,22 @@
                 this.checkProps(); 
 
 
-                // Must pass an empty route and creator to the render 
-                let route = this.props.route || {
-                    name: "", 
-                    creatorId: null, 
-                    createdAt: new Date()
-                };
+                // Must pass an empty route and creator to the render
+
+                if(!this.props_fetched){
+                    var route =  {
+                        name: "", 
+                        creatorId: null, 
+                        createdAt: new Date()
+                    };
+
+                    var creator = { fname: "", lname: "" }
+                } else {
+                    var route = this.props.route;
+                    var creator = this.props.creator
+                }
+                 
                 
-                let creator = this.props.creator || {fname: "", lname:""}
 
                 if (this.routeRenderer){
                     console.log(this.state.showDirections, this.routeRenderer.panel); 
