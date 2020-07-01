@@ -18,6 +18,9 @@
     // Splash page
     import Splash from "./splash/splash";
 
+    //Route/Workout Dashboard
+    import RWDashboard from "./dashboard/rw_dashboard";
+
     // MyRoutes
     import MyRoutes from './routes/route_index/my_routes_container';
     // Route Creator
@@ -45,6 +48,7 @@ export default function App (){
                
                 <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
+                <ProtectedRoute path="/my_home/rw_dashboard" component={RWDashboard}/>
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
                 <ProtectedRoute path="/routes/my_routes" component={MyRoutes}/>
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>

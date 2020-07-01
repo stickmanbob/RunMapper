@@ -40,7 +40,7 @@
             )
         } else {
             return (
-                <Redirect to="/my_home/dashboard" />
+                <Redirect to="/my_home/rw_dashboard" />
             )
         }
     }
