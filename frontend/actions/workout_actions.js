@@ -62,7 +62,7 @@ export const removeWorkout = (data) =>{
 export const createWorkout = (workout,history) => (dispatch) => {
     return workoutAPIUtil.postWorkout(workout)
         .then((res)=> dispatch(receiveWorkout(res)))
-        .then((res)=> history.push(`/workouts/my_workouts`))
+        .then((res)=> history.push(`/my_home/rw_dashboard/workouts`))
         .fail((res)=>dispatch(receiveWorkoutErrors(res)))
 }
 
