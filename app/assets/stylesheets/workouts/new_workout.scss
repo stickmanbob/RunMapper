@@ -11,6 +11,22 @@
     textarea{
         border:none; 
     }
+
+    button{
+        background-color:rgb(0, 118, 192);
+        height: 44px;
+        font-size: 16px;
+        font-weight: 550;
+        color: white;
+        padding: 12px 15px; 
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover{
+        background-color: #0168a8;
+
+    }
 }
 
     .new-workout header {
@@ -96,9 +112,14 @@
     font-size: 14px;
     padding: 14px 16px 12px;
     color: #aaa;
+    cursor: pointer;
 
     option{
         color: black;
     }
+}
+
+.save-workout{
+    width: 187px;
 }
 

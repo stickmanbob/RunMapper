@@ -162,7 +162,7 @@ export default class NewWorkout extends React.Component {
 
                 <hr/>
 
-                <button onClick={this.handleSubmit}>SAVE</button>
+                <button className="save-workout" onClick={this.handleSubmit}>SAVE</button>
                 
             </div>
         )
