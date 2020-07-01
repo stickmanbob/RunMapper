@@ -23,7 +23,12 @@ export default class RWDashboard extends React.Component {
     }
 
     render(){
-
+        var mainComponent;
+        if (this.props.location.pathname === "/my_home/rw_dashboard/workouts"){
+            mainComponent = <WorkoutIndex/>
+        }else{
+            mainComponent = <RouteIndex/>
+        }
         return(
             <div className="rw-dashboard">
                 <h1>MY ROUTES AND WORKOUTS</h1>
@@ -34,6 +39,9 @@ export default class RWDashboard extends React.Component {
                         <NavLink to="/my_home/rw_dashboard/workouts" >WORKOUTS</NavLink>
                     </ul>
                 </nav>
+
+                {mainComponent}
+
             </div>
         );
     }
