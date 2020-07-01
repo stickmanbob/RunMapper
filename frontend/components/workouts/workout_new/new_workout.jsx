@@ -20,7 +20,8 @@ export default class NewWorkout extends React.Component {
         this.state = {
             route_id: "",
             duration: "",
-            start_datetime: "",
+            date: "",
+            time: "",
             notes: "",
             activity: "",
         }
@@ -37,13 +38,13 @@ export default class NewWorkout extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // build out the route with all our data
-        let workout = Object.assign({}, this.state);
+        // // build out the route with all our data
+        // let workout = Object.assign({}, this.state);
 
-        // Submit route and pass withRouter history prop
-        this.props.createWorkout(workout, this.props.history);
-
-    }
+        // // Submit route and pass withRouter history prop
+        // this.props.createWorkout(workout, this.props.history);
+        console.log(this.state); 
+    }   
 
     handleChange(field) {
         return (e) => this.setState({
@@ -77,13 +78,13 @@ export default class NewWorkout extends React.Component {
 
                         <div className="input-field">
                             <h2>Date</h2>
-                            <input type="date" onChange={this.handleChange("start_datetime")}/>
+                            <input type="date" onChange={this.handleChange("date")}/>
                         </div>
                     </div>
 
                     <div className="input-field">
                         <h2>Start time</h2>
-                        <input type="time" />
+                        <input type="time" value={this.state.time} onChange={this.handleChange("time")} />
                     </div>
 
                     <div className="input-field">
@@ -110,7 +111,7 @@ export default class NewWorkout extends React.Component {
 
                 <hr/>
 
-                <button onclick={this.handleSubmit}>SAVE</button>
+                <button onClick={this.handleSubmit}>SAVE</button>
                 
             </div>
         )

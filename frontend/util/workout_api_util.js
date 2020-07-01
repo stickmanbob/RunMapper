@@ -22,11 +22,11 @@ export const destroyWorkout = (id) => {
     });
 }
 
-export const postWorkout = (workout,date) => {
+export const postWorkout = (workout) => {
     return $.ajax({
         url: `/api/workouts/`,
         method: "POST",
-        data: {workout: workout, date:date} 
+        data: {workout: workout} 
     });
 }
 

@@ -15,7 +15,7 @@ before_action :require_login, only: [:create, :destroy]
     def create
 
         @workout = Workout.new(workout_params)
-        date = DateTime.civil_from_format(:local, *date_params)
+        date = DateTime.parse(@workout.start_datetime)
         @workout.user_id = current_user.id
         @workout.start_datetime = date 
         if @workout.save
@@ -52,17 +52,17 @@ before_action :require_login, only: [:create, :destroy]
     private
 
     def workout_params
-        params.require(:workout).permit(:route_id, :duration, :notes, :activity)
+        params.require(:workout).permit(:route_id, :duration, :notes, :activity, :start_datetime)
     end
 
     #Required to process date info from javascript front end during #create
-    def date_params
-        data = params.require(:date).permit(:year, :month, :day, :hours, :minutes)
-        values = data.values 
-        values.map! do |datum|
-            datum.to_i
-        end
+    # def date_params
+    #     data = params.require(:date).permit(:year, :month, :day, :hours, :minutes)
+    #     values = data.values 
+    #     values.map! do |datum|
+    #         datum.to_i
+    #     end
         
-        return values 
-    end
+    #     return values 
+    # end
 end
