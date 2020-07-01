@@ -41,4 +41,4 @@ Workout.destroy_all
 
 ############ Workouts #############################
 
-   Workout.create(user_id: dummy.id, route_id: eden.id, duration: 2700, start_datetime: DateTime.new(2020,2,3,4,5,6), notes: "Fun Ride!", activity:"Bike Ride")
+   Workout.create(name: "Lunch Ride", user_id: dummy.id, route_id: eden.id, duration: 2700, start_datetime: DateTime.parse("2020-06-23 12:20 PM"), notes: "Fun Ride!", activity:"Bike Ride")

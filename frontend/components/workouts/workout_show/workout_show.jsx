@@ -67,7 +67,7 @@ export default class ShowWorkout extends React.Component {
                     <div className="workout-info-body">
                         <div className="workout-info">
                             <h3> On {Unit.convertDateTime(workout.startDatetime)}</h3>
-                            <h1>{route.name} <Link to={`/routes/${route.id}`} className="view-route-link">View Route</Link></h1>
+                            <h1>{workout.name} <Link to={`/routes/${route.id}`} className="view-route-link">View Route: {route.name}</Link></h1>
                             <p>{workout.notes}</p>
                         </div>
 

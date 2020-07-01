@@ -1,5 +1,5 @@
 json.workout do 
-    json.extract! @workout,  :id, :user_id, :route_id, :duration, :start_datetime, :notes, :activity
+    json.extract! @workout,  :id, :name, :user_id, :route_id, :duration, :start_datetime, :notes, :activity
 end 
 
 json.user do 

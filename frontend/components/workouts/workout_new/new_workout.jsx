@@ -22,6 +22,7 @@ export default class NewWorkout extends React.Component {
 
         this.state = {
             route_id: "",
+            name:"",
             duration: "",
             date: "",
             time: "",
@@ -52,7 +53,8 @@ export default class NewWorkout extends React.Component {
             route_id: this.state.route_id,
             duration: this.state.duration,
             notes: this.state.notes,
-            activity: this.state.activity
+            activity: this.state.activity,
+            name: this.state.name,
         };
 
         workout.start_datetime = this.formatStartDateTime(this.state.date, this.state.time);  
@@ -110,7 +112,7 @@ export default class NewWorkout extends React.Component {
                     <div className="name-date">
                         <div className="input-field workout-name">
                             <h2>Workout name</h2>
-                            <input type="text"/>
+                            <input type="text" value={this.state.name} onChange={this.handleChange("name")}/>
                         </div>
 
                         <div className="input-field workout-date">
