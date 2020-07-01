@@ -19,9 +19,8 @@ export default class NewWorkout extends React.Component {
         super(props);
 
         this.loaded = false;
-
         this.state = {
-            route_id: "",
+            route_id: this.props.location.route ? this.props.location.route.id : "",
             name:"",
             duration: "",
             date: "",

@@ -12,6 +12,7 @@
 /// Components
 
     import RouteSidebar from "./route_info_sidebar"
+import { Link } from "react-router-dom";
     
 
 
@@ -171,6 +172,8 @@
 
                         <nav className="route-actions">
                             <a onClick={this.toggleDirections}>Show Directions</a>
+
+                            <Link to={{pathname:"/workouts/new/", route:route}}>Log as Workout</Link>
                         </nav>
 
                         <section className="route-container">

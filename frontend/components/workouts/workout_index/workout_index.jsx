@@ -69,7 +69,7 @@ export default class WorkoutIndex extends React.Component {
                     </td>
                     <td>
                         <Link className="options-button" to={`/workouts/${workout.id}`}>
-                            {workout.name}
+                            {workout.name || workout.routeName}
                         </Link>
                     </td>
                     <td>
