@@ -48,6 +48,7 @@
         background-color: rgba(211, 214, 220, 0.2);
         box-sizing: border-box;
         padding: 20px;
+        padding-right: 32px;
         padding-bottom: 0px;
         display: flex;
         flex-direction: column;
@@ -57,6 +58,12 @@
 
         .name-date {
             display: flex;
+            justify-content: space-between;
+        }
+
+        .time-duration{
+            display: flex;
+            justify-content: space-between;;
         }
 
         .input-field{
@@ -79,7 +86,7 @@
         }
     
         .input-field.workout-date{
-                margin-left: 58px;
+                // margin-left: 58px;
 
                 input{
                     width: 237px; 
@@ -99,7 +106,14 @@
             width: 633px;
         }
 
+        .input-field.workout-time{
+            input{
+                width: 250px;
+            }
+        }
+
         .input-field.workout-duration{
+            // margin-left: 177px;
             input{
                 width: 85px;
             }

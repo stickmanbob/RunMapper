@@ -119,9 +119,22 @@ export default class NewWorkout extends React.Component {
                         </div>
                     </div>
 
-                    <div className="input-field workout-time">
-                        <h2>Start time</h2>
-                        <input type="time" placeholder="00:00 AM" value={this.state.time} onChange={this.handleChange("time")} />
+
+                    <div className="time-duration">
+                        <div className="input-field workout-time">
+                            <h2>Start time</h2>
+                            <input type="time" placeholder="00:00 AM" value={this.state.time} onChange={this.handleChange("time")} />
+                        </div>
+
+                        <div className="input-field workout-duration" >
+                            <h2>Duration</h2>
+
+                            <input type="number" maxLength="3" placeholder="hh" value={this.state.hours} onChange={this.handleChange("hours")} /> :
+
+                            <input type="number" max="60" placeholder="mm" value={this.state.minutes} onChange={this.handleChange("minutes")} /> :
+
+                            <input type="number" max="60" placeholder="ss" value={this.state.seconds} onChange={this.handleChange("seconds")} />
+                        </div>
                     </div>
 
                     <div className="input-field workout-notes">
@@ -148,16 +161,6 @@ export default class NewWorkout extends React.Component {
                         <option value="">Select Route</option>
                         {this.routeOptions()}
                     </select>
-                </div>
-
-                <div className="input-field workout-duration" >
-                    <h2>Duration</h2>
-
-                    <input type="number" maxLength="3" placeholder="hh" value={this.state.hours} onChange={this.handleChange("hours")} /> :
-
-                    <input type="number" max="60" placeholder="mm" value={this.state.minutes} onChange={this.handleChange("minutes")}/> :
-
-                    <input type="number" max="60" placeholder="ss" value={this.state.seconds} onChange={this.handleChange("seconds")}/>
                 </div>
 
                 <hr/>
