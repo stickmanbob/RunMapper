@@ -59,6 +59,10 @@
     cursor: pointer;  
 }
 
+.route-index a:hover{
+    text-decoration: underline;
+}
+
 .route-index .image-col{
     padding: 0px; 
 }
