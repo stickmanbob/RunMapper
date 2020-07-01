@@ -77,7 +77,7 @@ export default class NewWorkout extends React.Component {
 
                         <div className="input-field">
                             <h2>Date</h2>
-                            <input type="date" onChange={this.handleChange("start_datetime")/>
+                            <input type="date" onChange={this.handleChange("start_datetime")}/>
                         </div>
                     </div>
 
