@@ -14,8 +14,16 @@
 
 .view-buttons{
     margin-top: 5px;
-    display: flex;
+    height: 44px;
     border-bottom: 1px solid rgb(204, 204, 204);
+    position: relative;
+
+    ul{
+        display: flex;
+        position: absolute;
+        bottom: -1px;
+        border-bottom: none;
+    }
     
 
     a{
