@@ -13,8 +13,30 @@ footer.main-footer {
     .top-span{
         height: 50px;
         background-color: #f0f2f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            width: initial;
+            height: initial;
+            padding:10px 20px ;
+            border-right: 1px solid #D3D6DC;
+        }
+
+        ul{
+            display: flex;
+
+            li{
+                padding: 10px 20px;
+                font-size: 14px;
+                font-weight: 900;
+                color: #9DA0A2;
+            }
+        }
 
     }
+
     .middle-span{
         background-image: image-url("footer-background.png");
         height: 132px;

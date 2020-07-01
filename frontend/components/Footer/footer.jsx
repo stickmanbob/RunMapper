@@ -18,6 +18,14 @@ export default function Footer (){
     return(
         <footer className="main-footer">
             <div className="top-span">
+                <img src={window.logo} alt=""/>
+
+                <ul>
+                    <li>RUN</li>
+                    <li>WALK</li>
+                    <li>HIKE</li>
+                    <li>FITNESS</li>
+                </ul>
 
             </div>
 
