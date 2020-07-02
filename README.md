@@ -112,7 +112,7 @@ The function `updatePath()` takes our current list of waypoint coordinates (`rou
 
 ```
 
-##Future Direction
+## Future Direction
 
 * Allow routes to be searchable by location, activity type, and name
 
