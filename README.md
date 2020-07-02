@@ -17,7 +17,6 @@ RunMappr is a workout tracking app aimed at endurance sports. It allows users to
 ### User Profiles
 
 Users can create profiles to sign in to the app from the main page. A demo user is also availible for viewing the app's features before signing up.
-
 ### Dashboard
 
 On login, users are routed to their dashboard. The dashboard has tabs for viewing both saved routes and their workout log, as well as links on both pages to create a new route or log a new workout respectively. The user can also delete routes and workouts from the dashboard view.
@@ -32,7 +31,7 @@ Clicking on a workout in the dasboard directs the user to a detailed view of the
 
 ### Route Creator
 
-The route creator is accessible from the dashboard "Routes" tab by clicking "Create Route", and also from the main nav header by hovering over "Routes" and clicking the "Create Route" button in the dropdown. The map can be centered on any location in the world by using the search bar in the top left. Routes are built by clicking the map to add a waypoint to that spot. A path is automatically calculated between the previous waypoint and the one just added. Users can add as many waypoints as they need in a chain like fashion. If the user makes a mistake, the widget on the right contains "Undo" and "Clear" buttons which will remove the last waypoint or clear the map, respectively. The "Center" button re-centers the map over the currently drawn route if one exists, otherwise it does nothing. Finally, users can select the primary activity type for the route, add a descruption if desired, and hit "Save Route". 
+The route creator is accessible from the dashboard "Routes" tab by clicking "Create Route", and also from the main nav header by hovering over "Routes" and clicking the "Create Route" button in the dropdown. The map can be centered on any location in the world by using the search bar in the top left. Routes are built by clicking the map to add a waypoint to that spot. A path is automatically calculated between the previous waypoint and the one just added. The route and total distance are dynamically displayed as more waypoints are added. If the user makes a mistake, the widget on the right contains "Undo" and "Clear" buttons which will remove the last waypoint or clear the map, respectively. The "Center" button re-centers the map over the currently drawn route if one exists, otherwise it does nothing. Finally, users can select the primary activity type for the route, add a description if desired, and hit "Save Route". 
 
 ### Workout Logger
 
@@ -69,4 +68,62 @@ The google maps API supports event listeners on the map itself. In this case, we
         this.updatePath();         
     }
 ```
+The function `updatePath()` takes our current list of waypoint coordinates (`routeCoordinates`) and queries the google maps directions API to generate a route that will link them all together in order. The API returns an object containing detailed data about the route. `updatePath()` then calls another function, `renderRoute()`, to parse the resulting route data and render it on the map. 
+
+``` Javascript
+
+// Create the google maps directions API interface
+
+    this.dirService = new google.maps.DirectionsService();
+
+ // Requests new directions and renders them
+    updatePath() {
+
+        // First, map the route coordinates into google maps Waypoint literals
+
+        let waypoints = this.routeCoordinates.map((waypoint)=> {
+            return {
+                location: waypoint,
+                stopover: false 
+               
+            }
+        }).slice(1, this.routeCoordinates.length -1); 
+        
+
+        // Define the route options for the new path, passing in our list of waypoints
+
+        let routeOpts = {
+            origin: this.routeCoordinates[0],
+            destination: this.routeCoordinates[this.routeCoordinates.length -1],
+            travelMode: google.maps.DirectionsTravelMode.WALKING,
+            waypoints: waypoints, 
+        }
+
+      // If there are one or more waypoints in the route, 
+      // make a google directions API request and render the result 
+      
+        if(this.routeCoordinates.length > 0){
+
+            this.dirService.route(routeOpts ,this.renderRoute);
+
+        } 
+       
+    }
+
+```
+
+##Future Direction
+
+* Allow routes to be searchable by location, activity type, and name
+
+    * Allow users to bookmark routes made by other users and log them as workouts
+    * Allow users to set the privacy of created routes to public or private
+
+* Add elevation data to routes
+
+* Add a user dashboard to track workout stats (total miles by activity, total number of workouts logged, etc)
+
+* Add commenting on public routes
+
+
 
