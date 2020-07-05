@@ -50,7 +50,7 @@ before_action :require_login, only: [:create, :destroy]
     private
 
     def workout_params
-        params.require(:workout).permit(:route_id, :duration, :notes, :activity, :start_datetime)
+        params.require(:workout).permit(:route_id, :duration, :notes, :name, :activity, :start_datetime)
     end
 
     #Required to process date info from javascript front end during #create
