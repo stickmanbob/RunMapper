@@ -4,9 +4,17 @@
 
 
 
-export function convertDateTime(date) {
+export function convertDate(date) {
     return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
 }
+
+export function convertDatetime(datetime) {
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let date = datetime.toLocaleDateString(undefined, options);
+    let time = datetime.toLocaleTimeString();
+    return `${time}, ${date}` 
+}
+
 
 
 export function convertDistance(dist) {
