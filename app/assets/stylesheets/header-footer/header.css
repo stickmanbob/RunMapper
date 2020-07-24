@@ -30,6 +30,9 @@
     justify-content: space-between;
     width: 230px;
 }
+.nav-links.hide{
+    display: none;
+}
 
 
 .nav-link{

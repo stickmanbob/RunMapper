@@ -7,6 +7,7 @@
 
 /// Utilities
     import React from 'react';
+    import { connect } from "react-redux";
     import {Link} from 'react-router-dom';
 /// Components 
     import GreetingContainer from './greeting_container';
@@ -14,7 +15,11 @@
 
 /////////////////////// Main ////////////////////////////////////////////
 
-export default function Header () {
+function Header (props) {
+    let navStatus = ""; 
+    if (!props.loggedIn){
+        navStatus = "hide"
+    }
     return(
 
         <div className="main-header"> 
@@ -22,7 +27,7 @@ export default function Header () {
 
                 <Link to="/"><img src={window.logo} alt="" /></Link>
                 
-                <nav className="nav-links">
+                <nav className={`nav-links ${navStatus}`}>
 
                     <div className="nav-bar dropdown-container">
                         <span className="nav-link" to="">ROUTES</span>
@@ -50,3 +55,12 @@ export default function Header () {
         </div>
     )
 }
+
+function mSTP(state){
+    return {
+        loggedIn: Boolean(state.session.currentUser)
+    }
+}
+
+export default connect(mSTP, null)(Header); 
+
