@@ -30,7 +30,7 @@ On login, users are routed to their dashboard. The dashboard has tabs for viewin
 
 ### Route Show Page
 
-<img src="./readme_images/RMRoute-dirs.png">
+<img src="./readme_images/RMRoute.png">
 
 Clicking on a route in the dashbaord directs the user to a detailed show view of the route. Users can view the route map as well as Google directions by pressing the "Show Directions" button. From this view, pressing the "Log as Workout" button redirects the user to the workout logger with the current route already selected.
 
@@ -47,6 +47,8 @@ Clicking on a workout in the dasboard directs the user to a detailed view of the
 The route creator is accessible from the dashboard "Routes" tab by clicking "Create Route", and also from the main nav header by hovering over "Routes" and clicking the "Create Route" button in the dropdown. The map can be centered on any location in the world by using the search bar in the top left. Routes are built by clicking the map to add a waypoint to that spot. A path is automatically calculated between the previous waypoint and the one just added. The route and total distance are dynamically displayed as more waypoints are added. If the user makes a mistake, the widget on the right contains "Undo" and "Clear" buttons which will remove the last waypoint or clear the map, respectively. The "Center" button re-centers the map over the currently drawn route if one exists, otherwise it does nothing. Finally, users can select the primary activity type for the route, add a description if desired, and hit "Save Route". 
 
 ### Workout Logger
+
+<img src="./readme_images/RMWorkoutLog.png">
 
 The workout logger is accessible from the dashboard "Workouts" tab or from the main nav header by hovering over "Workouts" and clicking "Log Workout". It can also be accessed directly from a route's show page, in which case the "Route" field will be autofilled with that particular route. 
 
