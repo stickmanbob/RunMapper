@@ -30,7 +30,7 @@ On login, users are routed to their dashboard. The dashboard has tabs for viewin
 
 ### Route Show Page
 
-<img src="./readme_images/RMRoute.png">
+<img src="./readme_images/RMRoute.jpg">
 
 Clicking on a route in the dashbaord directs the user to a detailed show view of the route. Users can view the route map as well as Google directions by pressing the "Show Directions" button. From this view, pressing the "Log as Workout" button redirects the user to the workout logger with the current route already selected.
 
