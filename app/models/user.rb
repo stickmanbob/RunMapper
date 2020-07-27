@@ -31,6 +31,7 @@ class User < ApplicationRecord
  ############################ Associations #############################
     has_many :routes, foreign_key: :creator_id
     has_many :workouts
+    has_one_attached :profile_picture
  ############################# AUTH METHODS #############################
     
    def self.find_by_credentials(email, pass)
