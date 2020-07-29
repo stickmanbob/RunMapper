@@ -15,7 +15,13 @@ import logger from 'redux-logger';
 /////////////////////// Main ////////////////////
 
 export default function configureStore(preloaded_state){
-    return createStore(rootReducer,preloaded_state,applyMiddleware(thunk,logger)); 
+
+    // Apply redux logger only in dev mode
+    if (process.env.NODE_ENV === "development") {
+        return createStore(rootReducer, preloaded_state, applyMiddleware(thunk, logger)); 
+    } else {
+        return createStore(rootReducer, preloaded_state, applyMiddleware(thunk));
+    }
 }
 
 /////////////////////////////////////////////////////////
