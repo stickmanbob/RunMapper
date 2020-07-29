@@ -54,6 +54,15 @@ export default class ShowWorkout extends React.Component {
         let distance = Unit.convertDistance(route.distance).toFixed(2);
         let pace = Unit.convertPace(route.distance, workout.duration, workout.activity);
         let duration = Unit.convertDuration(workout.duration);
+
+        let viewRoute;
+        
+        if (route.creatorId){
+            viewRoute = <Link to={`/routes/${route.id}`} className="view-route-link">View Route: {route.name}</Link>;
+        } else{
+            viewRoute = <span className="view-route-link">Route not availible</span>;
+        } 
+        
         return(
             <div className="show-workout">
                 <section className="workout-info-box">
@@ -67,7 +76,9 @@ export default class ShowWorkout extends React.Component {
                     <div className="workout-info-body">
                         <div className="workout-info">
                             <h3> At {Unit.convertDatetime(workout.startDatetime)}</h3>
-                            <h1>{workout.name || route.name} <Link to={`/routes/${route.id}`} className="view-route-link">View Route: {route.name}</Link></h1>
+                            <h1>{workout.name || route.name} 
+                                {viewRoute}
+                            </h1>
                             <p>{workout.notes}</p>
                         </div>
 
