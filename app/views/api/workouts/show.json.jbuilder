@@ -7,6 +7,6 @@ json.user do
 end
 
 json.route do
-    json.extract! @workout.route, :id, :name, :route_data, :distance 
+    json.extract! @workout.route, :id, :name, :creator_id, :route_data, :distance 
 end
 
