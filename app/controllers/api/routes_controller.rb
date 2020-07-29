@@ -31,7 +31,13 @@ class Api::RoutesController < ApplicationController
         @route = Route.find_by(id: params[:id])
 
         if @route and @route.creator_id == current_user.id 
-            @route.destroy
+            # if the route has associated workouts, we do not want to destroy it entirely
+            if @route.logged_workouts.length > 0
+                @route.creator_id = nil
+                @route.save!
+            else
+                @route.destroy
+            end
             render :show 
         elsif @route and @route.creator_id != current_user.id 
             render json: ["Only the creator can delete this route"], status:401

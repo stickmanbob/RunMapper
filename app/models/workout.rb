@@ -11,6 +11,7 @@
 #  activity       :string           not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  name           :string
 #
 class Workout < ApplicationRecord
  ################ Validations ########################
@@ -19,7 +20,7 @@ class Workout < ApplicationRecord
 
   ############### Associations #########################
     belongs_to :user 
-
+    
     belongs_to :route 
 
     

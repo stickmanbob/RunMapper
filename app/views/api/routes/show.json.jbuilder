@@ -7,6 +7,8 @@ json.route do
     json.extract! @route, :route_data
 end
 
-json.creator do 
-    json.extract! @route.creator, :id, :fname, :lname 
-end
+if @route.creator_id 
+    json.creator do 
+        json.extract! @route.creator, :id, :fname, :lname 
+    end
+end 
