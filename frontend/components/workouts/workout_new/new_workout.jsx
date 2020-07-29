@@ -138,11 +138,11 @@ export default class NewWorkout extends React.Component {
                         <div className="input-field workout-duration" >
                             <h2>Duration <ErrorMessage errors={this.props.errors} field={"duration"} /></h2>
                             
-                            <input type="number" maxLength="3" placeholder="hh" value={this.state.hours} onChange={this.handleChange("hours")} /> :
+                            <input type="number" min="0" maxLength="3" placeholder="hh" value={this.state.hours} onChange={this.handleChange("hours")} /> :
 
-                            <input type="number" max="60" placeholder="mm" value={this.state.minutes} onChange={this.handleChange("minutes")} /> :
+                            <input type="number" min="0" max="60" placeholder="mm" value={this.state.minutes} onChange={this.handleChange("minutes")} /> :
 
-                            <input type="number" max="60" placeholder="ss" value={this.state.seconds} onChange={this.handleChange("seconds")} />
+                            <input type="number" min="0" max="60" placeholder="ss" value={this.state.seconds} onChange={this.handleChange("seconds")} />
                         </div>
 
                     </div>

@@ -29,5 +29,6 @@ class Route < ApplicationRecord
         class_name: :User 
     
     has_many :logged_workouts,
-        class_name: :Workout 
+        class_name: :Workout,
+        dependent: :destroy 
 end
