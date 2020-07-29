@@ -30,9 +30,6 @@ export default class UserDropdown extends React.Component {
             <div className="dropdown-container">
                 <h1 className="temp-dropdown-banner">{this.props.currentUser.fname} {this.props.currentUser.lname}</h1>
                 <ul className="dropdown-menu">
-                    <li className="dropdown-menu-item"> Friends </li>
-                    <li className="dropdown-menu-item"> Devices </li>
-                    <li className="dropdown-menu-item"> Support </li>
                     <li className="dropdown-menu-item" onClick={this.handleLogout}>Log Out</li>
                 </ul>
             </div>
