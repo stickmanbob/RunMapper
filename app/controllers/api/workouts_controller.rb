@@ -39,6 +39,11 @@ before_action :require_login, only: [:create, :destroy]
         
         if @workout and @workout.user_id == current_user.id 
             @workout.destroy
+
+            route = @workout.route 
+            if !route.creator_id && route.logged_workouts.length == 0
+               route.destroy 
+            end
             render :show 
         elsif @workout and @workout.user_id != current_user.id 
             render json: ["Only the creator can delete this workout"], status:401
