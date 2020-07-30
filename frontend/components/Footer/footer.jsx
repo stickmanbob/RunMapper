@@ -39,21 +39,20 @@ export default function Footer (props){
             <div className="middle-span">
                 <ul>
                     <li>Social</li>
-                    <li><a href="https://github.com/stickmanbob/RunMapper">Check out our Github</a></li>
-                    <li><a>Connect on LinkedIn</a></li>
+                    <li><a target="_blank" href="https://github.com/stickmanbob/RunMapper">Check out our Github</a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/ajay-rajamani-1789711b2/">Connect on LinkedIn</a></li>
+                    <li><a target="_blank" href="https://angel.co/u/ajay-rajamani">Connect on AngelList</a></li>
                     
                 </ul>
 
                 <ul>
                     <li>Help</li>
-                    <li>Account Settings</li>
-                    <li>Coming Soon</li>
+                    <li><a target="_blank" href="https://github.com/stickmanbob/RunMapper/#readme">Readme</a></li>
                 </ul>
 
                 <ul>
                     <li>About Us</li>
-                    <li>Single Developer</li>
-                    <li>Needs Job</li>
+                    <li><a target="_blank" href="https://ajay-rajamani.me">Portfolio</a></li>
                 </ul>
             </div>
             
