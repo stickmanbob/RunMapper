@@ -61,6 +61,7 @@
 
 .submit:hover {
     background-color: #14a05a;
+    cursor: pointer;
 }
 
 .session-form-nav {
@@ -122,6 +123,5 @@
 
 .guest-user-button:hover {
     background-color: #26468b;
+    cursor: pointer;
 }
-
-
