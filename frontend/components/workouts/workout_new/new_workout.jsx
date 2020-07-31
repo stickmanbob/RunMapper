@@ -60,8 +60,7 @@ export default class NewWorkout extends React.Component {
         workout.start_datetime = this.formatStartDateTime(this.state.date, this.state.time);  
 
         workout.duration = this.calcDuration(); 
-
-        console.log(workout); 
+ 
 
         // Submit route and pass withRouter history prop
         this.props.createWorkout(workout, this.props.history);
