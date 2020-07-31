@@ -74,9 +74,12 @@ export default class NewWorkout extends React.Component {
 
     handleChange(field) {
         
-        return (e) => this.setState({
-            [field]: e.target.value
-        })
+        return (e) => {
+            e.preventDefault(); 
+            this.setState({
+                [field]: e.target.value
+            })
+        }
     }
 
     routeOptions() {
