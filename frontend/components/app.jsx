@@ -41,6 +41,9 @@
     
     // Workout New
     import NewWorkout from "./workouts/workout_new/new_workout_container";
+
+    //User settings
+    import UserSettings from "./user_settings/user_settings";
 /////////////////////////////////////////
 
 
@@ -55,6 +58,7 @@ export default function App (){
                
                 <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
+                <ProtectedRoute exact path="/my_home/account_settings" component={UserSettings} />
                 <ProtectedRoute path="/my_home/rw_dashboard" component={RWDashboard}/>
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
                 <ProtectedRoute path="/routes/my_routes" component={RWDashboard}/>
