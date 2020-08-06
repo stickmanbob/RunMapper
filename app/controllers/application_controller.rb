@@ -35,6 +35,6 @@ class ApplicationController < ActionController::Base
     def user_params
         # Helper method for extracting user params from http
         # Used in UsersController and elsewhere
-        params.require(:user).permit(:email, :fname, :lname, :password)
+        params.require(:user).permit(:email, :fname, :lname, :password, :profile_picture)
     end
 end

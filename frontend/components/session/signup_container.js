@@ -6,7 +6,7 @@
 
 import {connect} from 'react-redux';
 import SignUpForm from './signup_form';
-import {signup, login, clearSessionErrors} from '../../actions/session_actions';
+import {signup, login, clearSessionErrors} from '../../actions/user_session_actions';
 /////////////////////// Main ////////////////////////////////////////////
 
  const mapStatetoProps = function (state) {

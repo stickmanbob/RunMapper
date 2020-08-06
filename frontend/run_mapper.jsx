@@ -11,7 +11,7 @@ import {createStore} from 'redux';
 import React from 'react'; 
 import Root from './components/root'
 import configureStore from './store/store'
-import {receiveCurrentUser} from "./actions/session_actions";
+import {receiveCurrentUser} from "./actions/user_session_actions";
 //////////////////////////////////////////////////////////////
 
 

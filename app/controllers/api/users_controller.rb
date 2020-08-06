@@ -26,8 +26,11 @@ class Api::UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
 
         if(@user)
-            @user.update(user_params)
-            render :show 
+            if @user.update(user_params)
+                render :show 
+            else
+                render json: @user.errors, status: 400
+            end
         else
             render json: ["User not found!"], status: 404
         end

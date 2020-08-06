@@ -1,4 +1,4 @@
-import { postUser, postSession, deleteSession } from '../util/session_api_util'
+import { postUser, postSession, deleteSession, getUser, patchUser } from '../util/user_session_api_util'
 
 
 
@@ -10,6 +10,14 @@ import { postUser, postSession, deleteSession } from '../util/session_api_util'
             type: RECEIVE_CURRENT_USER,
             user: user
         }
+    };
+
+    export const RECEIVE_USER = "RECEIVE_USER";
+    export const receiveUser = (user) => {
+        return {
+            type: RECEIVE_USER,
+            user: user
+        };
     };
 
     
@@ -35,6 +43,8 @@ import { postUser, postSession, deleteSession } from '../util/session_api_util'
         }
     };
 
+   
+
 
 ///////////////////////// Thunks ////////////////////////
 
@@ -50,3 +60,11 @@ import { postUser, postSession, deleteSession } from '../util/session_api_util'
 
     export const logout = () => (dispatch) => deleteSession()
         .then(() => dispatch(logoutCurrentUser()));
+    
+    export const fetchUser = (id) => (dispatch) => getUser(id)
+        .then ((user)=>dispatch(receiveUser(user)))
+        .fail(res => dispatch(receiveSessionErrors(res))); 
+
+    export const updateUser = (id,formData) => (dispatch) => patchUser(id,formData)
+        .then((user) => dispatch(receiveUser(user)))
+        .fail((res) => dispatch(receiveSessionErrors(res))); 

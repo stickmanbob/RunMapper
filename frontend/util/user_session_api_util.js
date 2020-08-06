@@ -3,7 +3,7 @@
 
 
 // GET all users
-export const fetchUsers = () =>{
+export const getUsers = () =>{
     return $.ajax({
         url:"/api/users",
         method:"GET"
@@ -11,7 +11,7 @@ export const fetchUsers = () =>{
 }
 
 // GET a user by ID
-export const fetchUser = (id) => {
+export const getUser = (id) => {
     return $.ajax({
         url: `/api/users/${id}`,
         method: "GET"
@@ -40,3 +40,14 @@ export const deleteSession = () => (
         method: "DELETE"
     })
 );
+
+//Update a user
+export const patchUser = (id,formData) => {
+    return $.ajax({
+        url: `/api/users/${id}`,
+        method: "PATCH",
+        data: formData,
+        contentType: false,
+        processData: false
+    })
+}

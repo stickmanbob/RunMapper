@@ -1,4 +1,4 @@
-import { LOGOUT_CURRENT_USER, RECEIVE_CURRENT_USER } from '../actions/session_actions'
+import { LOGOUT_CURRENT_USER, RECEIVE_CURRENT_USER } from '../actions/user_session_actions'
 
 const _nullSession = {
     currentUser: null,
