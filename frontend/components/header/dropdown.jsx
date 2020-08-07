@@ -26,9 +26,12 @@ export default class UserDropdown extends React.Component {
         this.props.logout(); 
     }
     render() {
+       let imageUrl = this.props.currentUser.photoUrl || window.defaultAvatar
+       console.log(imageUrl); 
         return (
             <div className="dropdown-container">
-                <h1 className="temp-dropdown-banner">{this.props.currentUser.fname} {this.props.currentUser.lname}</h1>
+                {/* <h1 className="temp-dropdown-banner">{this.props.currentUser.fname} {this.props.currentUser.lname}</h1> */}
+                <img src={imageUrl} />
                 <ul className="dropdown-menu">
                     <li className="dropdown-menu-item" onClick={this.handleLogout}>Log Out</li>
                 </ul>

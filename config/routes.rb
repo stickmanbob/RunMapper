@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #### Default root view, app will render here #####
     root to: 'static_pages#root'
     
+    
   ###################################################
 
   #### API Endpoints ##############
@@ -30,5 +31,6 @@ Rails.application.routes.draw do
 ##### Redirect other gets to React browser router ###############
 
   ## IMPT! this must go last
-  get '*path', to: 'static_pages#root'
+  # get '*path', to: 'static_pages#root'
+  get "*path", to: "static_pages#root", constraints: -> (req) { !(req.fullpath =~ /^\/rails\/.*/ ) }
 end

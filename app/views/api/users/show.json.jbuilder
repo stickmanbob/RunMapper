@@ -3,4 +3,6 @@
 
 json.partial! "/api/users/user", user:@user # email, id, fname, lname
 
-json.photo_url url_for(@user.profile_picture)
+if @user.profile_picture.attached?
+    json.photo_url url_for(@user.profile_picture)
+end
