@@ -34,17 +34,18 @@ class UserSettings extends React.Component{
 
     }
 
-    componentDidMount(){
-        this.props.fetchUser(this.props.userId)
-            .then(()=> {
+    // componentDidMount(){
+    //     this.props.fetchUser(this.props.userId)
+    //         .then(()=> {
                 
-                this.propsLoaded = true;
-                this.setState({
-                    user:this.props.users[this.props.userId]
-                });
+    //             this.propsLoaded = true;
+    //             this.setState({
+    //                 user:this.props.user
+    //             });
 
-            });
-    }
+    //         });
+    // }
+
 
     handleSubmit() {
         let formData = new FormData();
@@ -78,12 +79,14 @@ class UserSettings extends React.Component{
 
 
     render(){
-        if(!this.propsLoaded){
-            return <div>Loading...</div>
-        }
-
-        let user = this.state.user;
+        
+        // if(!this.propsLoaded){
+        //     return <div>Loading...</div>
+        // }
+        
+        let user = this.props.user;
         let photoUrl = user.photoUrl || window.defaultAvatar
+        
         return(
         <div className="account-settings">
             <img className="profile-picture" src={photoUrl} />
@@ -112,7 +115,7 @@ class UserSettings extends React.Component{
 
 function mSTP(state){
     return {
-        users: state.entities.users,
+        user: state.entities.users[state.session.currentUser],
         userId: state.session.currentUser,
         errors: state.errors.session 
     }
@@ -120,7 +123,7 @@ function mSTP(state){
 
 function mDTP(dispatch){
     return {
-        fetchUser: (id) => dispatch(fetchUser(id)),
+        // fetchUser: (id) => dispatch(fetchUser(id)),
         updateUser: (id,formData) => dispatch(updateUser(id,formData))
     }
 }

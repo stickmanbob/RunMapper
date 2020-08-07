@@ -3,3 +3,6 @@
 ## when rendering partial
 
 json.extract! user, :id, :email, :fname, :lname
+if user.profile_picture.attached?
+    json.photo_url url_for(user.profile_picture)
+end
