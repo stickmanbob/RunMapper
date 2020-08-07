@@ -78,32 +78,32 @@ class UserSettings extends React.Component{
 
 
     render(){
-        console.log(this.state); 
         if(!this.propsLoaded){
             return <div>Loading...</div>
         }
 
         let user = this.state.user;
+        let photoUrl = user.photoUrl || window.defaultAvatar
         return(
         <div className="account-settings">
-            <img className="profile-picture" src={user.photoUrl} alt={window.defaultAvatar}/>
+            <img className="profile-picture" src={photoUrl} />
             <h1>Account Settings</h1>
 
             <div className="settings-form">
                 <label>Upload Profile Picture
                     <input type="file" onChange={this.handleFile("profile_picture")}/>
                 </label>
-                    <label >First Name
-                        <input className="session-form-input" type="text" placeholder="First Name" onChange={this.handleChange("fname")} />
+                    <label className="field-label" >First Name
+                        <input className="session-form-input" type="text" value={user.fname} onChange={this.handleChange("fname")} />
                         <ErrorMessage errors={this.props.errors} field="fname" />
                     </label>
                     
-                    <label>
-                        <input className="session-form-input" type="text" placeholder="Last Name" onChange={this.handleChange("lname")} />
+                    <label className="field-label"> Last Name 
+                        <input className="session-form-input" type="text" value={user.lname} onChange={this.handleChange("lname")} />
                         <ErrorMessage errors={this.props.errors} field="lname" />
                     </label>
 
-                <input type="submit" onClick={this.handleSubmit}/>
+                <input type="submit" className="submit-route" value="Save Changes" onClick={this.handleSubmit}/>
             </div>
         </div>
         )

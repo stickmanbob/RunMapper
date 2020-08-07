@@ -25,4 +25,15 @@
         flex-direction: column;
         align-items: center;
     }
+
+    label{
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0px;
+        align-self: flex-start;
+    }
+
+    .session-form-input{
+        margin-bottom: 0px;
+    }
 }
