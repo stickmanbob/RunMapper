@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import { fetchUser, updateUser } from "../../actions/user_session_actions"
 /// Components
 
+import ErrorMessage from "../error_message";
+
 
 
 /////////////////////// Main ////////////////////////////////////////////
@@ -83,13 +85,23 @@ class UserSettings extends React.Component{
 
         let user = this.state.user;
         return(
-        <div className="user_settings.jsx">
-            <h1>Account Settings for {user.fname}</h1>
+        <div className="account-settings">
+            <img className="profile-picture" src={user.photoUrl} alt={window.defaultAvatar}/>
+            <h1>Account Settings</h1>
 
-            <div className="setting">
+            <div className="settings-form">
                 <label>Upload Profile Picture
                     <input type="file" onChange={this.handleFile("profile_picture")}/>
                 </label>
+                    <label >First Name
+                        <input className="session-form-input" type="text" placeholder="First Name" onChange={this.handleChange("fname")} />
+                        <ErrorMessage errors={this.props.errors} field="fname" />
+                    </label>
+                    
+                    <label>
+                        <input className="session-form-input" type="text" placeholder="Last Name" onChange={this.handleChange("lname")} />
+                        <ErrorMessage errors={this.props.errors} field="lname" />
+                    </label>
 
                 <input type="submit" onClick={this.handleSubmit}/>
             </div>
@@ -101,7 +113,8 @@ class UserSettings extends React.Component{
 function mSTP(state){
     return {
         users: state.entities.users,
-        userId: state.session.currentUser 
+        userId: state.session.currentUser,
+        errors: state.errors.session 
     }
 }
 

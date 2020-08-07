@@ -81,6 +81,8 @@ export default class SignUpForm extends React.Component {
                         <span className="divider-line"></span>
                     </div>
 
+                    <div>
+                        
                     <input className="session-form-input" type="text" placeholder="First Name" onChange={this.handleChange("fname")}/>
                     <ErrorMessage errors={this.props.errors} field="fname" />
 
@@ -95,6 +97,7 @@ export default class SignUpForm extends React.Component {
 
                     <input className='submit' type="submit" value="Sign Up"/>
                    
+                    </div>
                 </form>
             </div>
         )
