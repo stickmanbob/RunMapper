@@ -34,18 +34,6 @@ class UserSettings extends React.Component{
 
     }
 
-    // componentDidMount(){
-    //     this.props.fetchUser(this.props.userId)
-    //         .then(()=> {
-                
-    //             this.propsLoaded = true;
-    //             this.setState({
-    //                 user:this.props.user
-    //             });
-
-    //         });
-    // }
-
 
     handleSubmit() {
         let formData = new FormData();
@@ -80,9 +68,6 @@ class UserSettings extends React.Component{
 
     render(){
         
-        // if(!this.propsLoaded){
-        //     return <div>Loading...</div>
-        // }
         
         let user = this.props.user;
         let photoUrl = user.photoUrl || window.defaultAvatar
@@ -123,8 +108,7 @@ function mSTP(state){
 
 function mDTP(dispatch){
     return {
-        // fetchUser: (id) => dispatch(fetchUser(id)),
-        updateUser: (id,formData) => dispatch(updateUser(id,formData))
+        updateUser: (id,formData) => dispatch(updateUser(id,formData)),
     }
 }
 
