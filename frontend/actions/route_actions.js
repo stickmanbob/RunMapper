@@ -46,6 +46,13 @@
         
     }
 
+    export const CLEAR_ROUTE_ERRORS = "CLEAR_ROUTE_ERRORS";
+    export const clearRouteErrors = () => {
+        return {
+            type: CLEAR_ROUTE_ERRORS
+        }
+    }
+
     export const DELETE_ROUTE = "DELETE_ROUTE";
     export const removeRoute = (data) => {
         return {

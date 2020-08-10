@@ -11,9 +11,11 @@
 /// Components 
     import ToolWidget from "./tool_widget";
     import SideBar from "./route_creator_sidebar";
+import { clearRouteErrors } from '../../../actions/route_actions';
+import { connect } from 'react-redux';
 /////////////////////// Main ////////////////////////////////////////////
 
-export default class RouteCreator extends React.Component {
+class RouteCreator extends React.Component {
 
     constructor(props) {
         super(props);
@@ -48,6 +50,10 @@ export default class RouteCreator extends React.Component {
         //Get user's location and center the map
         navigator.geolocation.getCurrentPosition((res)=> this.initMap(res),(res)=>this.initMap(null)); 
 
+    }
+
+    componentWillUnmount(){
+        this.props.clearRouteErrors(); 
     }
 
     initMap(res){
@@ -307,3 +313,11 @@ export default class RouteCreator extends React.Component {
         )
     }
 }
+
+function mDTP (dispatch) {
+    return {
+        clearRouteErrors: ()=> dispatch(clearRouteErrors()),
+    }
+}
+
+export default connect(null,mDTP)(RouteCreator);
