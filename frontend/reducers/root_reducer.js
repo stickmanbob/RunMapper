@@ -9,15 +9,16 @@
         import {combineReducers} from 'redux';
   /// Reducers
         import {sessionReducer} from "./session_reducer";
-        import {usersReducer} from "./users_reducer";
         import entitiesReducer from "./entities_reducer";
         import errorsReducer from "./errors_reducer";
+        import uiReducer from "./ui_reducer";
 //////////////////// Main ////////////////////////////////////
 
   export default combineReducers({
     entities: entitiesReducer,
     session: sessionReducer,
-    errors: errorsReducer
+    errors: errorsReducer,
+    ui: uiReducer
   })
 
 /*

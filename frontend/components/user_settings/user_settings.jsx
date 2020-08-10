@@ -9,7 +9,8 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { fetchUser, updateUser } from "../../actions/user_session_actions"
+import { fetchUser, updateUser } from "../../actions/user_session_actions";
+import { toggleButtons } from "../../actions/button_actions";
 /// Components
 
 import ErrorMessage from "../error_message";
@@ -42,7 +43,11 @@ class UserSettings extends React.Component{
             formData.append(`user[${key}]`,user[key]);
         });
 
-        this.props.updateUser(this.props.userId,formData);
+        if(!this.props.hideButtons){
+            this.props.toggleButtons();
+            this.props.updateUser(this.props.userId,formData)
+                .then(()=> this.props.toggleButtons());
+        }
     }
 
     handleChange(field){
@@ -71,7 +76,8 @@ class UserSettings extends React.Component{
         
         let user = this.props.user;
         let photoUrl = user.photoUrl || window.defaultAvatar
-        
+        let submitText = this.props.hideButtons ? <img className="button-spinner" src={window.loadingSpinner} /> : "Submit Changes";
+        let disableSubmit = this.props.hideButtons ? "disabled" : ""
         return(
         <div className="account-settings">
             <img className="profile-picture" src={photoUrl} />
@@ -91,7 +97,7 @@ class UserSettings extends React.Component{
                         <ErrorMessage errors={this.props.errors} field="lname" />
                     </label>
 
-                <input type="submit" className="submit-route" value="Save Changes" onClick={this.handleSubmit}/>
+        <button type="submit" className={`submit-route ${disableSubmit}`} value="Save Changes" onClick={this.handleSubmit}>{submitText}</button>
             </div>
         </div>
         )
@@ -102,13 +108,15 @@ function mSTP(state){
     return {
         user: state.entities.users[state.session.currentUser],
         userId: state.session.currentUser,
-        errors: state.errors.session 
+        errors: state.errors.session,
+        hideButtons: state.ui.buttons.hideButtons,
     }
 }
 
 function mDTP(dispatch){
     return {
         updateUser: (id,formData) => dispatch(updateUser(id,formData)),
+        toggleButtons: () => dispatch(toggleButtons()),
     }
 }
 

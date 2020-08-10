@@ -22,3 +22,19 @@
      text-align: center;
      vertical-align: center;
  }
+
+ .button-spinner{
+     width: 25px;
+ }
+
+ .disabled{
+     cursor: default;
+ }
+
+ .disabled:focus{
+     outline: none; 
+ }
+
+ .disabled:hover{
+     cursor: default;
+ }

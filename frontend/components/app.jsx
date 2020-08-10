@@ -44,6 +44,9 @@
 
     //User settings
     import UserSettings from "./user_settings/user_settings";
+
+    //Modal
+    import Modal from "../components/modal/modal";
 /////////////////////////////////////////
 
 
@@ -51,9 +54,12 @@ export default function App (){
     let EmptyFooter = () => <></> ;
     return(
         < >
+         <Modal />
            <Header/>
            
           <div className="main-component">
+            
+
             <Switch>
                
                 <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
