@@ -86,7 +86,7 @@ class UserSettings extends React.Component{
 
             <div className="settings-form">
                 <label>Upload Profile Picture
-                    <input type="file" onChange={this.handleFile("profile_picture")}/>
+                    <input type="file" accept="image/*" onChange={this.handleFile("profile_picture")}/>
                 </label>
                     <label className="field-label" >First Name
                         <input className="session-form-input" type="text" value={user.fname} onChange={this.handleChange("fname")} />
