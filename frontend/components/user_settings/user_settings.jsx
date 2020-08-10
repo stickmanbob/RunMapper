@@ -46,7 +46,8 @@ class UserSettings extends React.Component{
         if(!this.props.hideButtons){
             this.props.toggleButtons();
             this.props.updateUser(this.props.userId,formData)
-                .then(()=> this.props.toggleButtons());
+                .then(()=> this.props.toggleButtons())
+                .fail(()=>this.props.toggleButtons());
         }
     }
 
@@ -74,9 +75,9 @@ class UserSettings extends React.Component{
     render(){
         
         
-        let user = this.props.user;
-        let photoUrl = user.photoUrl || window.defaultAvatar
-        let submitText = this.props.hideButtons ? <img className="button-spinner" src={window.loadingSpinner} /> : "Submit Changes";
+        let user = this.state.user;
+        let photoUrl = this.props.user.photoUrl || window.defaultAvatar
+        let submitText = this.props.hideButtons ? "" : "Submit Changes";
         let disableSubmit = this.props.hideButtons ? "disabled" : ""
         return(
         <div className="account-settings">
@@ -97,7 +98,10 @@ class UserSettings extends React.Component{
                         <ErrorMessage errors={this.props.errors} field="lname" />
                     </label>
 
-        <button type="submit" className={`submit-route ${disableSubmit}`} value="Save Changes" onClick={this.handleSubmit}>{submitText}</button>
+                    <button className={`submit-route ${disableSubmit}`} onClick={this.handleSubmit}>
+                        <img className={`button-spinner ${disableSubmit}`} src={window.loadingSpinner} />
+                        {submitText}
+                    </button>
             </div>
         </div>
         )

@@ -11,6 +11,7 @@
 /// Utilities
     import React from "react";
     import {withRouter} from "react-router-dom"; 
+    
 /// Components
     import ErrorMessage from "../../error_message";
 
@@ -46,7 +47,12 @@ class RouteDetails extends React.Component {
         route["image_url"] = this.props.imageUrl; 
 
         // Submit route and pass withRouter history prop
-        this.props.createRoute(route,this.props.history); 
+        if (!this.props.hideButtons) {
+            this.props.toggleButtons();
+            this.props.createRoute(route, this.props.history)
+                .then(() => this.props.toggleButtons())
+                .fail(() => this.props.toggleButtons());
+        } 
      
     }
 
@@ -58,13 +64,15 @@ class RouteDetails extends React.Component {
 
 
     render() {
+        let submitText = this.props.hideButtons ? "" : "Save Route";
+        let disableSubmit = this.props.hideButtons ? "disabled" : ""
         return(
             <div className="route-details">
                 <header className="sidebar-divider">
                     <h3>Route Details</h3>
                 </header>
 
-                <form className="detail-form" onSubmit = {this.handleSubmit}>
+                <form className="detail-form" >
 
                     {/* Name Field */}
                     <input className="name-input" onChange={this.handleChange("name")} 
@@ -84,7 +92,10 @@ class RouteDetails extends React.Component {
 
                     {/* Submit button */}
                     <div className="submit-container">
-                        <input className="submit-route" type="submit" value="Save Route"/>
+                        <button className={`submit-route ${disableSubmit}`} onClick={this.handleSubmit}>
+                            <img className={`button-spinner ${disableSubmit}`} src={window.loadingSpinner} />
+                            {submitText}
+                        </button>
                         {this.props.errors["route_data"] && <span className="error-message"> Route must have at least 2 points</span>}
                     </div>
 

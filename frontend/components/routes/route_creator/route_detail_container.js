@@ -10,6 +10,7 @@
     import {createRoute} from "../../../actions/route_actions";
     import { receiveRouteErrors } from "../../../actions/route_actions";
     import { connect } from "react-redux";
+    import { toggleButtons } from "../../../actions/button_actions";
 /// Components
     import routeDetails from "./route_details"; 
 
@@ -18,7 +19,8 @@
 
 function mSTP (state) {
     return {
-        errors: state.errors.routes 
+        errors: state.errors.routes,
+        hideButtons: state.ui.buttons.hideButtons,
     };
 };
 
@@ -27,7 +29,8 @@ function mSTP (state) {
 function mDTP (dispatch) {
     return {
         createRoute: (route,hist) => dispatch(createRoute(route,hist)),
-        receiveRouteErrors: (errors) => dispatch(receiveRouteErrors) 
+        receiveRouteErrors: (errors) => dispatch(receiveRouteErrors),
+        toggleButtons: () => dispatch(toggleButtons()),
     };
 };
 

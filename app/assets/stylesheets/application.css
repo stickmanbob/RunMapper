@@ -25,6 +25,11 @@
 
  .button-spinner{
      width: 25px;
+     display: none;
+ }
+
+ .button-spinner.disabled{
+     display: inline;
  }
 
  .disabled{
