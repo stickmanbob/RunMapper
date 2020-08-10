@@ -36,6 +36,26 @@ class RouteDetails extends React.Component {
 
     }
 
+    validateInput(route) {
+        let errors = {};
+        if (route.route_data.length < 2){
+            errors.route_data = ["Route must have at least 2 points"];
+        }
+
+        if(route.name.length === 0){
+            errors.name = ["Name is Required"];
+        }
+
+        if(route.activity.length === 0){
+            errors.activity = ["Must Choose Activity"];
+        }
+
+        return {
+            errors:errors,
+            isValid: Boolean(Object.values(errors).length === 0)
+        }
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         // build out the route with all our data
@@ -46,13 +66,19 @@ class RouteDetails extends React.Component {
         route["distance"] = this.props.distance; 
         route["image_url"] = this.props.imageUrl; 
 
+        // Validate input
+
+        const {errors, isValid} = this.validateInput(route);
+        
         // Submit route and pass withRouter history prop
-        if (!this.props.hideButtons) {
+        if (!this.props.hideButtons && isValid) {
             this.props.toggleButtons();
             this.props.createRoute(route, this.props.history)
                 .then(() => this.props.toggleButtons())
                 .fail(() => this.props.toggleButtons());
-        } 
+        } else{
+            this.props.receiveRouteErrors(errors); 
+        }
      
     }
 

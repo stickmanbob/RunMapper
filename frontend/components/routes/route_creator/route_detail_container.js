@@ -29,7 +29,7 @@ function mSTP (state) {
 function mDTP (dispatch) {
     return {
         createRoute: (route,hist) => dispatch(createRoute(route,hist)),
-        receiveRouteErrors: (errors) => dispatch(receiveRouteErrors),
+        receiveRouteErrors: (errors) => dispatch(receiveRouteErrors(errors)),
         toggleButtons: () => dispatch(toggleButtons()),
     };
 };

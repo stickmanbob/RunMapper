@@ -32,10 +32,18 @@
 
     export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
     export const receiveRouteErrors = (errors) => {
-        return {
-            type: RECEIVE_ROUTE_ERRORS,
-            errors: errors.responseJSON
+        if(errors.responseJSON){
+            return {
+                type: RECEIVE_ROUTE_ERRORS,
+                errors: errors.responseJSON
+            }
+        }else{
+            return{
+                type: RECEIVE_ROUTE_ERRORS,
+                errors: errors
+            }
         }
+        
     }
 
     export const DELETE_ROUTE = "DELETE_ROUTE";
