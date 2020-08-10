@@ -56,6 +56,13 @@ export const removeWorkout = (data) =>{
     }
 }
 
+export const CLEAR_WORKOUT_ERRORS = "CLEAR_WORKOUT_ERRORS";
+export const clearWorkoutErrors = () => {
+    return {
+        type: CLEAR_WORKOUT_ERRORS
+    }
+}
+
 /////////////////////// Thunk Action Creators ////////////////////////////////
 
 /// Add history argument once component is final

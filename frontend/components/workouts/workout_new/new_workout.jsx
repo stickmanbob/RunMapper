@@ -45,6 +45,10 @@ export default class NewWorkout extends React.Component {
         this.loaded = true; 
     }
 
+    componentWillUnmount(){
+        this.props.clearWorkoutErrors(); 
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         // // build out the route with all our data
@@ -61,9 +65,15 @@ export default class NewWorkout extends React.Component {
 
         workout.duration = this.calcDuration(); 
  
-
+        
         // Submit route and pass withRouter history prop
-        this.props.createWorkout(workout, this.props.history);
+
+        if (!this.props.hideButtons) {
+            this.props.toggleButtons();
+            this.props.createWorkout(workout, this.props.history)
+                .then(() => this.props.toggleButtons())
+                .fail(() => this.props.toggleButtons());
+        }
         
     }   
 
@@ -106,6 +116,9 @@ export default class NewWorkout extends React.Component {
         if(!this.loaded){
             return <div>Loading...</div>
         }
+
+        let submitText = this.props.hideButtons ? "" : "Submit Changes";
+        let disableSubmit = this.props.hideButtons ? "disabled" : ""
 
         return(
             <div className="new-workout">
@@ -177,7 +190,10 @@ export default class NewWorkout extends React.Component {
 
                 <hr/>
 
-                <button className="save-workout" onClick={this.handleSubmit}>SAVE</button>
+                <button className="save-workout ${disableSubmit}" onClick={this.handleSubmit}>
+                    <img className={`button-spinner ${disableSubmit}`} src={window.loadingSpinner} />
+                    {submitText}
+                </button>
                 
             </div>
         )
