@@ -4,7 +4,7 @@
 json.route do
     json.partial! "/api/routes/route", route:@route
 
-    json.extract! @route, :route_data
+    json.extract! @route, :route_data, :private?
 end
 
 if @route.creator_id 
