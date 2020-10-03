@@ -30,4 +30,12 @@ class Route < ApplicationRecord
     
     has_many :logged_workouts,
         class_name: :Workout
+
+  ## Geokit setup
+
+  acts_as_mappable :default_units => :miles,
+                   :default_formula => :sphere,
+                   :distance_field_name => :dist_from,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
 end

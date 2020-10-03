@@ -17,6 +17,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+#geokit for location search
+gem 'geokit-rails'
+
 #AWS S3 integration
 gem "aws-sdk-s3"
 
