@@ -22,7 +22,9 @@ Rails.application.routes.draw do
         resource :session, only: [:create, :destroy] 
       
       ## Routes: create, destroy, and show
-        resources :routes, only: [:create, :show, :destroy] 
+        resources :routes, only: [:create, :show, :destroy]
+        # Find by location
+        get "routes", to: "routes#find_by_location"
 
       ## Workouts: create, destroy, and show
         resources :workouts, only: [:create, :show, :destroy] 
