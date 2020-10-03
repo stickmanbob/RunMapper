@@ -33,8 +33,8 @@
     //Show Route
     import ShowRoute from "./routes/route_show/route_show_container"; 
 
-    // My Workouts
-    import WorkoutIndex from "./workouts/workout_index/my_workouts_container";
+    // Route Search
+    import RouteSearch from "./routes/route_search/route_search";
 
     // Workouts Show
     import ShowWorkout from "./workouts/workout_show/workout_show_container";
@@ -68,10 +68,12 @@ export default function App (){
                 <ProtectedRoute path="/my_home/rw_dashboard" component={RWDashboard}/>
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
                 <ProtectedRoute path="/routes/my_routes" component={RWDashboard}/>
+                <ProtectedRoute exact path="/routes/find_routes" component={RouteSearch} />
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
                 <ProtectedRoute path="/workouts/my_workouts" component={RWDashboard}/>
                 <ProtectedRoute exact path="/workouts/new" component={NewWorkout} />
-                <ProtectedRoute path="/workouts/:workoutId" component={ShowWorkout}/>; 
+                <ProtectedRoute path="/workouts/:workoutId" component={ShowWorkout}/>
+                
                 
                 <AuthRoute path="/" component={Splash} />
 
