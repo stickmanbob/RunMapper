@@ -7,6 +7,11 @@ class Api::RoutesController < ApplicationController
         render :index
     end
 
+    def find_by_location
+        @routes = Route.within(params[:radius], origin: [params[:lat], params[:lng]]).where(private?: false)
+        render :index 
+    end
+
     def create 
         @route = Route.create(route_params)
         @route.creator_id = current_user.id
