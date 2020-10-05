@@ -14,79 +14,88 @@ import { connect } from "react-redux";
 
 /////////////////////// Main ////////////////////////////////////////////
 
-function RouteSearch(){
+class RouteSearch extends React.Component{
 
-    // Set up the google places API on mount
-    var locationService; 
-    var dummyMap; 
+    constructor(props){
+        super(props);
 
-    useEffect(()=>{
+        this.state= {
+            query: "",
+        }
 
-            locationService = new google.maps.places.PlacesService(dummyMap);
-
-    }, [])
-
-    // Bind form input
-
-    const initalFormState = {
-        query: "",
+        this.handleSearch = this.handleSearch.bind(this);
+        this.getPlace = this.getPlace.bind(this); 
     }
 
-    const [form, setForm] = useState(initalFormState);
 
-    function handleChange(field){
+    componentDidMount(){
+    // Set up the google places API on mount
+
+        this.locationService = new google.maps.places.PlacesService(this.dummyMap);
+    
+    }
+
+
+    // Returns an event handler to bind a form input to the form stateful object
+    handleChange(field){
+
         return (e) => {
             
-            setForm({
-                ...form,
+            this.setState({
                 [field]: e.target.value,
             });
-            
-            console.log(form); 
+            console.log(this.state)
         }
     }
 
     // Make a google places request
-    function makeRequest(query) {
+    getPlace() {
 
         let request = {
-            query: query,
+            query: this.state.query,
             fields: ["geometry"]
         }
 
         this.locationService.findPlaceFromQuery(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 console.log(results); 
+            } else{
+                console.log("failed to find place!")
             }
         })
 
     }
 
-    function handleSearch(e){
-        e.preventDefaut();
+    handleSearch(e){
+        e.preventDefault();
+        
+        this.getPlace();
 
-        makeRequest()
     }
-        
+       
+    render(){
 
-    return (
+        return (
 
-        <section className="route-search">
-            <h1>Route Search</h1>
+            <section className="route-search">
+                <h1>Route Search</h1>
 
-            <form>
-                <div className="input-field">
-                    <h2>Location</h2>
-                    <input type="text" onChange={handleChange("query")}/>
-                </div>
+                
+                    <div className="input-field">
+                        <h2>Location</h2>
+                        <input type="text" onChange={this.handleChange("query")}/>
+                    </div>
 
-            </form>
+                    <button onClick={this.handleSearch}>
+                        Search Routes                    
+                    </button>
+                
+                <div ref={dummy => this.dummyMap = dummy}></div>
+            </section>
+            
+        );
 
-            {/* Dummy element for places API to load */}
-            <div id="dummymap" ref={dummyMap}> </div>
-        </section>
-        
-    );
+    }
 }
 
 function mSTP(state){
