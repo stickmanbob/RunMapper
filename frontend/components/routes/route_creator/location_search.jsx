@@ -52,7 +52,7 @@ export default class LocationSearch extends React.Component {
         }
 
         this.locationService.findPlaceFromQuery(request, (results, status) => {
-            if (status=== google.maps.places.PlacesServiceStatus.OK) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
                 this.props.centerMap(results[0].geometry.location); 
             }
         })

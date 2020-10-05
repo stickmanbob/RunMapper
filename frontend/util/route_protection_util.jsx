@@ -17,7 +17,7 @@
     function Protected (props) {
         if (props.logged_in) {
             return (
-                <Route path={props.path} exact={props.exact} component={props.component}/>
+                <Route {...props}/>
             )
         } else {
             return (

@@ -64,12 +64,15 @@ export default function App (){
                
                 <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
+                
                 <ProtectedRoute exact path="/my_home/account_settings" component={UserSettings} />
                 <ProtectedRoute path="/my_home/rw_dashboard" component={RWDashboard}/>
+
                 <ProtectedRoute exact path="/routes/create" component={RouteCreator}/>
-                <ProtectedRoute path="/routes/my_routes" component={RWDashboard}/>
                 <ProtectedRoute exact path="/routes/find_routes" component={RouteSearch} />
+                <ProtectedRoute path="/routes/my_routes" component={RWDashboard}/>
                 <ProtectedRoute path="/routes/:routeId" component={ShowRoute}/>
+                
                 <ProtectedRoute path="/workouts/my_workouts" component={RWDashboard}/>
                 <ProtectedRoute exact path="/workouts/new" component={NewWorkout} />
                 <ProtectedRoute path="/workouts/:workoutId" component={ShowWorkout}/>

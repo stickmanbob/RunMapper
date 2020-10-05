@@ -35,6 +35,7 @@ function Header (props) {
         
                             <Link className="dropdown-menu-item nav-bar" to="/routes/create"> Create Route</Link>
                             <Link className="dropdown-menu-item nav-bar" to="/routes/my_routes">My Routes</Link>
+                            <Link className="dropdown-menu-item nav-bar" to="/routes/find_routes">Find Routes</Link>
                             
                         </ul>
                     </div>
