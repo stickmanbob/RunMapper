@@ -8,6 +8,11 @@
 /// Utilities
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+
+// Needed to use ES6 features with Babel
+import "regenerator-runtime/runtime";
+
+
 /// Components
 
 
@@ -44,33 +49,34 @@ class RouteSearch extends React.Component{
             this.setState({
                 [field]: e.target.value,
             });
-            console.log(this.state)
         }
     }
 
     // Make a google places request
-    getPlace() {
+    async getPlace() {
 
         let request = {
             query: this.state.query,
             fields: ["geometry"]
         }
 
-        this.locationService.findPlaceFromQuery(request, (results, status) => {
+       this.locationService.findPlaceFromQuery(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(results); 
+                return results;
             } else{
                 console.log("failed to find place!")
             }
         })
 
+        return place; 
     }
 
-    handleSearch(e){
+    async handleSearch(e){
         e.preventDefault();
         
-        this.getPlace();
-
+       const place = await this.getPlace();
+        
+       console.log(place || "not found")
     }
        
     render(){
