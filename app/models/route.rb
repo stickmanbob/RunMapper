@@ -24,7 +24,8 @@ class Route < ApplicationRecord
 
     validates :name, :distance, :image_url, :route_data, presence: true
 
-    validates :activity, presence: true, inclusion: {in: ["Run","Bike Ride", "Walk", "Hike", "Other"]}
+    ACTIVITY_TYPES = ["Run","Bike Ride", "Walk", "Hike", "Other"]
+    validates :activity, presence: true, inclusion: {in: ACTIVITY_TYPES}
     
   ############### Associations #########################
     

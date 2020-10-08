@@ -13,7 +13,7 @@ class Api::RoutesController < ApplicationController
         # Get query parameters from request
         
         limit = params[:limit] || 20
-        activity = params[:activity] || ["Run", "Bike Ride"]
+        activity = params[:activity] || Route::ACTIVITY_TYPES
         search_radius = params[:radius]
         lat = params[:lat]
         lng = params[:lng]
