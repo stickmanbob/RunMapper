@@ -37,3 +37,19 @@ export const createRoute = (route) => {
         data: {route:route} 
     });
 }
+
+export const searchRoutes = (params) => {
+    return $.ajax({
+        url: `/api/routes`,
+        method: "GET",
+        data: {
+            radius: params.radius,
+            lat: params.lat,
+            lng: params.lng,
+            min_dist: params.minDist,
+            max_dist: params.maxDist,
+            limit: params.limit,
+            page: params.page
+        }
+    })
+}
