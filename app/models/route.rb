@@ -12,6 +12,10 @@
 #  updated_at  :datetime         not null
 #  image_url   :text
 #  activity    :string           not null
+#  private?    :boolean          not null
+#  lat         :decimal(10, 6)   not null
+#  lng         :decimal(10, 6)   not null
+#  location    :string           not null
 #
 
 class Route < ApplicationRecord

@@ -7,8 +7,22 @@ class Api::RoutesController < ApplicationController
         render :index
     end
 
+    # Query the database for routes based on coordinates
     def find_by_location
-        @routes = Route.within(params[:radius], origin: [params[:lat], params[:lng]]).where(private?: false)
+        
+        # Get query parameters from request
+        
+        limit = params[:limit] || 20
+        activity = params[:activity] || ["Run", "Bike Ride"]
+        search_radius = params[:radius]
+        lat = params[:lat]
+        lng = params[:lng]
+
+
+        @routes = Route.within(search_radius, origin: [lat,lng])
+                        .where(private?: false)
+                        .where("routes.activity IN (?)", activity)
+
         render :index 
     end
 
