@@ -12,16 +12,25 @@ class Api::RoutesController < ApplicationController
         
         # Get query parameters from request
         
-        limit = params[:limit] || 20
         activity = params[:activity] || Route::ACTIVITY_TYPES
         search_radius = params[:radius]
         lat = params[:lat]
         lng = params[:lng]
+        min_dist = params[:min_dist] || 0
+        max_dist = params[:max_dist] || Float::INFINITY 
+        limit = params[:limit] || 20
+        page = params[:page] || 1
 
+        # Calculate offset based on current page (starts at 1) and page limit
+        offset = (page-1) * limit
 
+        # Query routes
         @routes = Route.within(search_radius, origin: [lat,lng])
                         .where(private?: false)
                         .where("routes.activity IN (?)", activity)
+                        .where(distance: (min_dist..max_dist))
+                        .limit(limit)
+                        .offset(offset)
 
         render :index 
     end
