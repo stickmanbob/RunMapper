@@ -25,9 +25,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // window.getState = store.getState;
     // window.dispatch = store.dispatch;
     //////////////////////////////////
+
     if (window.currentUser){
         store.dispatch(receiveCurrentUser(window.currentUser)); 
     }
+    
     ReactDOM.render(<Root store={store}/> ,root)
 });
 

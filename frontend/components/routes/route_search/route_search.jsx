@@ -8,6 +8,7 @@
 /// Utilities
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { findRoutes } from "../../../actions/route_actions";
 
 // Needed to use ES6 features with Babel
 import "regenerator-runtime/runtime";
@@ -53,7 +54,7 @@ class RouteSearch extends React.Component{
     }
 
     // Make a google places request
-    async getPlace() {
+    getPlace() {
 
         let request = {
             query: this.state.query,
@@ -62,21 +63,25 @@ class RouteSearch extends React.Component{
 
        this.locationService.findPlaceFromQuery(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-                return results;
+                
+                let location = results[0].geometry.location
+
+                const lat = location.lat();
+                const lng = location.lng();
+                console.log(lat,lng)
+
             } else{
                 console.log("failed to find place!")
             }
         })
 
-        return place; 
     }
 
-    async handleSearch(e){
+    handleSearch(e){
         e.preventDefault();
         
-       const place = await this.getPlace();
+       this.getPlace();
         
-       console.log(place || "not found")
     }
        
     render(){
@@ -105,7 +110,16 @@ class RouteSearch extends React.Component{
 }
 
 function mSTP(state){
-
+    return {
+        routes: state.entities.routes 
+    }
 }
 
-export default connect(mSTP,null)(RouteSearch);
+function mDTP(dispatch){
+
+    return{
+        findRoutes: (params) => dispatch(findRoutes(params)), 
+    }
+}
+
+export default connect(mSTP,mDTP)(RouteSearch);
