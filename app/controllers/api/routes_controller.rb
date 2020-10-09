@@ -10,14 +10,7 @@ class Api::RoutesController < ApplicationController
     # Query the database for routes based on coordinates
     def find_by_location
 
-        # Check for required params
-
-        if !params[:lat] || !params[:lng]
-            render json: {
-                location: "Invalid Location"
-            }, status: 400
-            return 
-        end
+        return if !valid_search_params?
         
         sanitize_search_params
 
@@ -99,6 +92,24 @@ class Api::RoutesController < ApplicationController
         params[:page] = params[:page] ? params[:page].to_i : 1
         params[:min_dist] = params[:min_dist].to_i
         params[:max_dist] = params[:max_dist].to_i == 0 ? Float::INFINITY : params[:max_dist].to_i
+
+    end
+
+    # Validate required search params
+    def valid_search_params?
+
+        is_valid = true
+
+        # Check for required params
+        if !params[:lat] || !params[:lng]
+            render json: {
+                location: "Invalid Location"
+            }, status: 400
+
+            is_valid = false
+
+            return is_valid
+        end
 
     end
 
