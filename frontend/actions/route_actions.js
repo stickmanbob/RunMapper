@@ -89,13 +89,14 @@
         routeAPIUtil.deleteRoute(routeId)
         .then((res) => dispatch(removeRoute(res)))
         .fail((res) => dispatch(receiveRouteErrors(res)));
+    }
 
     export const findRoutes = (params) => (dispatch) => {
-        routeAPIUtil.findRoutes(params)
+        routeAPIUtil.searchRoutes(params)
         .then((res) => dispatch(receiveRoutes(res)))
         .fail((res) => dispatch(receiveRouteErrors(res)));
     }
-}
+
 
 
 

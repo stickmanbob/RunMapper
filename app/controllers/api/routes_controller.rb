@@ -9,17 +9,30 @@ class Api::RoutesController < ApplicationController
 
     # Query the database for routes based on coordinates
     def find_by_location
+
+        # Check for required params
+
+        if !params[:lat] || !params[:lng]
+            render json: {
+                location: "Invalid Location"
+            }, status: 400
+            return 
+        end
         
         # Get query parameters from request
-        
-        activity = params[:activity] || Route::ACTIVITY_TYPES
-        search_radius = params[:radius]
         lat = params[:lat]
         lng = params[:lng]
-        min_dist = params[:min_dist] || 0
-        max_dist = params[:max_dist] || Float::INFINITY 
+        
+        activity = params[:activity] || Route::ACTIVITY_TYPES
+        search_radius = params[:radius] || 20 # Default 20 mile radius 
         limit = params[:limit] || 20
         page = params[:page] || 1
+
+        min_dist = params[:min_dist].to_i
+        max_dist = params[:max_dist].to_i == 0 ? Float::INFINITY : params[:max_dist].to_i
+
+        puts(min_dist,max_dist)
+        
 
         # Calculate offset based on current page (starts at 1) and page limit
         offset = (page-1) * limit

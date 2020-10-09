@@ -7,7 +7,6 @@
 
 ///////////////// Imports ////////////////////////////////
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
 import React from 'react'; 
 import Root from './components/root'
 import configureStore from './store/store'
@@ -33,6 +32,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 ////////// TEST FUNCTIONS //////////////////////////
-import * as workout from "./actions/workout_actions";
+import * as route from "./actions/route_actions";
 
-window.workout = workout; 
+window.Route = route; 
