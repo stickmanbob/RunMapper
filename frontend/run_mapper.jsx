@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     let store = configureStore();
     
     // Test Functions /////////////////
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
     //////////////////////////////////
     if (window.currentUser){
         store.dispatch(receiveCurrentUser(window.currentUser)); 
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 ////////// TEST FUNCTIONS //////////////////////////
-import * as route from "./actions/route_actions";
 
-window.Route = route; 
+//// Window actions
+// import * as route from "./actions/route_actions";
+// window.Route = route; 
