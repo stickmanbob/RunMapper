@@ -15,6 +15,7 @@ import "regenerator-runtime/runtime";
 
 
 /// Components
+import RouteIndex from "./route_search_index_container";
 
 
 
@@ -30,7 +31,6 @@ class RouteSearch extends React.Component{
         }
 
         this.handleSearch = this.handleSearch.bind(this);
-        this.getPlace = this.getPlace.bind(this); 
     }
 
 
@@ -53,35 +53,29 @@ class RouteSearch extends React.Component{
         }
     }
 
-    // Make a google places request
-    getPlace() {
-
+    // Make a google places request for coordinates, then query the database for routes
+    handleSearch(e){
+        e.preventDefault();
+        
         let request = {
             query: this.state.query,
             fields: ["geometry"]
         }
 
-       this.locationService.findPlaceFromQuery(request, (results, status) => {
+        this.locationService.findPlaceFromQuery(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-                
+
                 let location = results[0].geometry.location
 
                 const lat = location.lat();
                 const lng = location.lng();
-                
-                this.props.findRoutes({lat:lat, lng:lng})
 
-            } else{
+                this.props.findRoutes({ lat: lat, lng: lng })
+
+            } else {
                 console.log("failed to find place!")
             }
         })
-
-    }
-
-    handleSearch(e){
-        e.preventDefault();
-        
-       this.getPlace();
         
     }
        
@@ -101,6 +95,8 @@ class RouteSearch extends React.Component{
                     <button onClick={this.handleSearch}>
                         Search Routes                    
                     </button>
+
+                <RouteIndex/>
                 
                 <div ref={dummy => this.dummyMap = dummy}></div>
             </section>
