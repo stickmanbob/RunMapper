@@ -19,20 +19,17 @@ class Api::RoutesController < ApplicationController
             return 
         end
         
-        # Get query parameters from request
+        sanitize_search_params
+
         lat = params[:lat]
         lng = params[:lng]
-        
-        activity = params[:activity] || Route::ACTIVITY_TYPES
-        search_radius = params[:radius] || 20 # Default 20 mile radius 
-        limit = params[:limit] || 20
-        page = params[:page] || 1
+        search_radius = params[:radius]
+        activity = params[:activity]
+        min_dist = params[:min_dist]
+        max_dist = params[:max_dist]
+        limit = params[:limit]
+        page = params[:page]
 
-        min_dist = params[:min_dist].to_i
-        max_dist = params[:max_dist].to_i == 0 ? Float::INFINITY : params[:max_dist].to_i
-
-        puts(min_dist,max_dist)
-        
 
         # Calculate offset based on current page (starts at 1) and page limit
         offset = (page-1) * limit
@@ -92,4 +89,17 @@ class Api::RoutesController < ApplicationController
     def route_params
         params.require(:route).permit(:name, :distance, :description, :image_url, :route_data, :activity)
     end
+
+    # Sanitize query parameters from request
+    def sanitize_search_params
+
+        params[:activity] ||= Route::ACTIVITY_TYPES
+        params[:radius] ||= 20 # Default 20 mile radius 
+        params[:limit] = params[:limit] ? params[:limit].to_i : 20
+        params[:page] = params[:page] ? params[:page].to_i : 1
+        params[:min_dist] = params[:min_dist].to_i
+        params[:max_dist] = params[:max_dist].to_i == 0 ? Float::INFINITY : params[:max_dist].to_i
+
+    end
+
 end
