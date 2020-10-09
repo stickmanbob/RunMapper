@@ -92,6 +92,7 @@
     }
 
     export const findRoutes = (params) => (dispatch) => {
+        console.log(params)
         routeAPIUtil.searchRoutes(params)
         .then((res) => dispatch(receiveRoutes(res)))
         .fail((res) => dispatch(receiveRouteErrors(res)));

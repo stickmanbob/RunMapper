@@ -108,9 +108,9 @@ class Api::RoutesController < ApplicationController
 
             is_valid = false
 
-            return is_valid
+            
         end
-
+        return is_valid
     end
 
 end

@@ -68,7 +68,8 @@ class RouteSearch extends React.Component{
 
                 const lat = location.lat();
                 const lng = location.lng();
-                console.log(lat,lng)
+                
+                this.props.findRoutes({lat:lat, lng:lng})
 
             } else{
                 console.log("failed to find place!")
