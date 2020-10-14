@@ -50,6 +50,7 @@ class RouteSearch extends React.Component{
             this.setState({
                 [field]: e.target.value,
             });
+            console.log(this.state)
         }
     }
 
@@ -91,6 +92,19 @@ class RouteSearch extends React.Component{
                         <h2>Location</h2>
                         <input type="text" onChange={this.handleChange("query")}/>
                     </div>
+
+                    <div className="input-field">
+                        <h2>Search Radius</h2>
+                        <div>
+                        <input type="number" min="0" onChange={this.handleChange("radius")} />
+                        <select>
+                            <option value="mi">Mi</option>
+                            <option value="km">Km</option>
+                        </select>
+                        </div>
+                        
+                    </div>
+
 
                     <button onClick={this.handleSearch}>
                         Search Routes                    
